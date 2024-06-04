@@ -1,10 +1,27 @@
 /*
-Theme Name: Nathalie_Mota
+Theme Name: Nathalie-Mota
 Theme URI: https://www.nathalie-mota.fr
 Author: Frederic Claveau
 Author URI: https://dysign.fr
 Description: Mon premier thème !
 Version: 1.0
-Tags: projet11, photographe, cours
-Text Domain: nathalie-mota
+Tags: projet 11, photographe, cours
+Text Domain: nathaliemota
 */
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #FFFFFF; 
+    color: #23282d; 
+    font-family: 'Space Mono', monospace;     
+    margin: auto; 
+    width: 100vw;
+    /* max-width: 1440px; */
+}
+
