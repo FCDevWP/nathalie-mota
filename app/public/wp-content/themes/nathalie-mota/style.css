@@ -9,6 +9,7 @@ Tags: projet 11, photographe, cours
 Text Domain: nathaliemota
 */
 
+/* Générallités */
 
 * {
     box-sizing: border-box;
@@ -16,12 +17,18 @@ Text Domain: nathaliemota
     padding: 0;
 }
 
-body {
-    background: #FFFFFF; 
-    color: #23282d; 
-    font-family: 'Space Mono', monospace;     
-    margin: auto; 
-    width: 100vw;
-    /* max-width: 1440px; */
+body{
+    font-family: 'Poppins';
 }
+
+h1 {
+    font-family: 'Space Mono';
+}
+
+
+
+
+
+
+
 

@@ -1,0 +1,1 @@
+[04-Jun-2024 17:37:11 UTC] PHP Warning:  Attempt to read property "title" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/class-wp-customize-widgets.php on line 905

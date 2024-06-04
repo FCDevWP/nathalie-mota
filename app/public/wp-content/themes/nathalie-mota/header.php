@@ -11,10 +11,10 @@
     <?php wp_head(); ?>
 </head>
 <body>
-    <!-- <header id="header" class="header flexrow">
+    <header id="header" class="header flexrow">
 		<div class="container-header flexrow">
 			<a href="<?php echo home_url( '/' ); ?>" aria-label="Page d'accueil de Nathalie Mota">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_nathalie_mota.png" 
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo.png" 
 				alt="Logo <?php echo bloginfo('name'); ?>">
 			</a>
 			<nav id="navigation">
@@ -35,4 +35,4 @@
                 </div>
 			</nav>
 		</div>
-	</header>	 -->
+	</header>	
