@@ -118,9 +118,9 @@ function nathaliemota_custom_fonts() {
 add_action( 'wp_enqueue_scripts', 'nathaliemota_custom_fonts' );
 
 
-/* JQuery dans JS */
+/* JQuery et JQuery UI dans JS */
 function nathalie_mota_enqueue_scripts() {
-    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'));
-  }
-  add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts');
-  
+    wp_enqueue_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
+    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'jquery-ui'));
+}
+add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts');

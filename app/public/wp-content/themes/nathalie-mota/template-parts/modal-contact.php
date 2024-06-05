@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- Votre formulaire de contact ira ici -->
+        <!-- Le formulaire de contact ira ici -->
       </div>
     </div>
   </div>
