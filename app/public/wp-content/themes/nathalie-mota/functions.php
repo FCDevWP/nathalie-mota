@@ -6,10 +6,90 @@ add_theme_support( 'post-thumbnails' );
 // Ajouter automatiquement le titre du site dans l'en-tête du site
 add_theme_support( 'title-tag' );
 
+
+// Ajout style
 function nathalie_mota_enqueue_styles() {
     wp_enqueue_style('nathalie-mota-style', get_stylesheet_uri());
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
+
+
+// Ajout page administration thème
+function nathaliemota_add_admin_pages() {
+    add_menu_page ('Paramètres du thème Nathalie Mota', 'Nathalie-Mota', 'manage_options', 'nathaliemota-settings', 'nathaliemota_theme_settings', 'dashicons-admin-settings', 60 );
+}
+
+function nathaliemota_theme_settings() {
+    ?>
+    <div class="wrap">
+        <h1><?php echo get_admin_page_title(); ?></h1>
+        <form action="options.php" method="post">
+            <?php settings_fields('nathaliemota_settings_fields'); ?>
+            <?php do_settings_sections('nathaliemota_settings_section'); ?>
+            <?php submit_button(); ?>
+        </form>
+    </div>
+    <?php
+}
+
+// Enregistrement des champs et des sections
+function nathaliemota_settings_register() {
+    register_setting('nathaliemota_settings_fields', 'nathaliemota_settings_fields', 'nathaliemota_settings_fields_validate');
+    add_settings_section('nathaliemota_settings_section', __('Section 1', 'nathaliemota'), 'nathaliemota_settings_section_introduction', 'nathaliemota_settings_section');
+    add_settings_field('nathaliemota_settings_field_title', 'Titre du site', 'nathaliemota_settings_field_title_output', 'nathaliemota_settings_section', 'nathaliemota_settings_section');
+    add_settings_field('nathaliemota_settings_field_slogan', 'Slogan du site', 'nathaliemota_settings_field_slogan_output', 'nathaliemota_settings_section', 'nathaliemota_settings_section');
+    add_settings_field('nathaliemota_settings_field_phone_number', 'Numéro de téléphone', 'nathaliemota_settings_field_phone_number_output', 'nathaliemota_settings_section', 'nathaliemota_settings_section');
+    add_settings_field('nathaliemota_settings_field_email', 'Courriel', 'nathaliemota_settings_field_email_output', 'nathaliemota_settings_section', 'nathaliemota_settings_section');
+}
+
+function nathaliemota_settings_section_introduction() {
+    echo __('Paramétrez les différentes options du thème Nathalie Mota.', 'nathaliemota');
+}
+
+function nathaliemota_settings_field_title_output() {
+    $value = get_option('nathaliemota_settings_field_title');
+
+    echo '<input type="text" name="nathaliemota_settings_field_title" value="'. $value .'" />';
+}
+
+function nathaliemota_settings_field_slogan_output() {
+    $value = get_option('nathaliemota_settings_field_slogan');
+
+    echo '<input type="text" name="nathaliemota_settings_field_slogan" value="'. $value .'" />';
+}
+
+function nathaliemota_settings_field_phone_number_output() {
+    $value = get_option('nathaliemota_settings_field_phone_number');
+
+    echo '<input type="text" name="nathaliemota_settings_field_phone_number" value="'. $value .'" />';
+}
+
+function nathaliemota_settings_field_email_output() {
+    $value = get_option('nathaliemota_settings_field_email');
+
+    echo '<input type="text" name="nathaliemota_settings_field_email" value="'. $value .'" />';
+}
+
+function nathaliemota_settings_fields_validate($inputs) {
+    if (!empty($_POST)) {
+        if(!empty($_POST['nathaliemota_settings_field_title'])) {
+            update_option('nathaliemota_settings_field_title', $_POST['nathaliemota_settings_field_title']);
+        }
+        if(!empty($_POST['nathaliemota_settings_field_slogan'])) {
+            update_option('nathaliemota_settings_field_slogan', $_POST['nathaliemota_settings_field_slogan']);
+        }
+        if(!empty($_POST['nathaliemota_settings_field_phone_number'])) {
+            update_option('nathaliemota_settings_field_phone_number', $_POST['nathaliemota_settings_field_phone_number']);
+        }
+        if(!empty($_POST['nathaliemota_settings_field_email'])) {
+            update_option('nathaliemota_settings_field_email', $_POST['nathaliemota_settings_field_email']);
+        }
+    }
+    return $inputs;
+}
+
+add_action('admin_menu', 'nathaliemota_add_admin_pages', 10);
+add_action('admin_init', 'nathaliemota_settings_register');
 
 /**
  * Displays the post thumbnail.
