@@ -13,6 +13,31 @@ function nathalie_mota_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
 
+/* ajout typographie Space Mono et poppins */
+
+function nathaliemota_custom_fonts() {
+    wp_enqueue_style( 'nathaliemota-space-mono', get_template_directory_uri() . '/fonts/Space_Mono/space-mono.css', array(), '1.0.0' );
+    wp_enqueue_style( 'nathaliemota-poppins', get_template_directory_uri() . '/fonts/Poppins/poppins.css', array(), '1.0.0' );
+}
+add_action( 'wp_enqueue_scripts', 'nathaliemota_custom_fonts' );
+
+
+/* JQuery et JQuery UI dans JS */
+function nathalie_mota_enqueue_scripts() {
+    wp_enqueue_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
+    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'jquery-ui'));
+}
+add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts');
+
+// Enregistrer les menus de navigation
+function register_my_menus() {
+    register_nav_menus(
+      array(
+        'main-menu' => __( 'Menu Principal' ),
+      )
+    );
+  }
+  add_action( 'init', 'register_my_menus' );
 
 // Ajout page administration thème
 function nathaliemota_add_admin_pages() {
@@ -189,18 +214,38 @@ function nathaliemota_entry_footer() {
     );
 }
 
-/* ajout typographie Space Mono et poppins */
+// Ajout CPT Photographie
 
-function nathaliemota_custom_fonts() {
-    wp_enqueue_style( 'nathaliemota-space-mono', get_template_directory_uri() . '/fonts/Space_Mono/space-mono.css', array(), '1.0.0' );
-    wp_enqueue_style( 'nathaliemota-poppins', get_template_directory_uri() . '/fonts/Poppins/poppins.css', array(), '1.0.0' );
+function nathaliemota_register_custom_post_types() {
+    $labels_photographie = array(
+        'menu_name'         => __('Photographies', 'nathaliemota'),
+        'name_admin_bar'    => __('Photographie', 'nathaliemota'),
+        'add_new_item'      => __('Ajouter une nouvelle photograhie', 'nathaliemota'),
+        'new_item'          => __('Nouvelle photographie', 'nathaliemota'),
+        'edit_item'         => __('Modifier l\'ajout', 'nathaliemota'),
+    );
+
+    $args_photographie = array(
+        'label'             => __('Photographies', 'nathaliemota'),
+        'description'       => __('Photographies', 'nathaliemota'),
+        'labels'            => $labels_photographie,
+        'supports'          => array('title', 'thumbnail', 'excerpt', 'editor'),
+        'hierarchical'      => false,
+        'public'            => true,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'menu_position'    => 40,
+        'show_in_admin_bar' => true,
+        'show_in_nav_menus' => true,
+        'can_export'        => true,
+        'has_archive'       => true,
+        'exclude_from_search'   => false,
+        'publicly_queryable' => true,
+        'capability_type'   => 'post',
+        'menu_icon'  => 'dashicons-drumstick',
+    );
+
+    register_post_type('cif_photographie', $args_photographie);
 }
-add_action( 'wp_enqueue_scripts', 'nathaliemota_custom_fonts' );
 
-
-/* JQuery et JQuery UI dans JS */
-function nathalie_mota_enqueue_scripts() {
-    wp_enqueue_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
-    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'jquery-ui'));
-}
-add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts');
+add_action('init', 'nathaliemota_register_custom_post_types', 11);

@@ -25,7 +25,48 @@ h1 {
     font-family: 'Space Mono';
 }
 
+/*Menu*/
 
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 30px 50px;
+    font-family: 'Space Mono', monospace;
+    border-radius: 5px;
+    box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.05),
+    10px 10px 10px rgba(0, 0, 0, 0.05),
+    -10px 10px 10px rgba(0, 0, 0, 0.05),
+    10px -10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo img {
+    height: 20px;
+}
+
+.main-menu {
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu li {
+    display: inline-block;  /* Modifié */
+    margin-left: 50px;
+}
+
+.main-menu li:first-child {
+    margin-left: 0;
+}
+
+.main-menu a {
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
 
 
 
