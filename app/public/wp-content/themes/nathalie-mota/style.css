@@ -9,7 +9,7 @@ Tags: projet 11, photographe, cours
 Text Domain: nathaliemota
 */
 
-/* Générallités */
+/* GENERALITES */
 
 * {
     box-sizing: border-box;
@@ -25,7 +25,7 @@ h1 {
     font-family: 'Space Mono';
 }
 
-/*Menu*/
+/*MENU HEADER*/
 
 
 nav {
@@ -43,7 +43,8 @@ nav {
 }
 
 .logo img {
-    height: 20px;
+    height: 16px;
+    margin-left:30px;
 }
 
 .main-menu {
@@ -68,8 +69,55 @@ nav {
     letter-spacing: 2px;
 }
 
+/*MENU FOOTER*/
+footer {
+    background-color: #f9f9f9; /* Couleur de fond du footer */
+    padding: 20px;
+    /* border-top: 19px solid black;  */
+  }
+  
+  .footer-container {
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black; 
+  }
+  
+  .left-space {
+    width: 28%;
+    height: 100%;
+  }
+  
+  .right-space {
+    width: 28%;
+    height: 100%;
+  }
+  
+  .nav-footer {
+    width: 42%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-footer li {
+    margin-right: 20px;
+  }
+  
+  .nav-footer li:last-child {
+    margin-right: 0;
+  }
+  
+  .nav-footer a {
+    color: #333;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-family: 'Space Mono';
+}
 
 
-
-
+  
 
