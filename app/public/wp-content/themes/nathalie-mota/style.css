@@ -69,7 +69,32 @@ nav {
     letter-spacing: 2px;
 }
 
-/*MENU FOOTER*/
+/*MODALE */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* fond noir opaque à 50% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-dialog {
+  width: 45%; /* taille de la modale */
+  height: auto;
+  margin: 50px auto; /* ajuster la marge pour centrer la modale */
+  background-color: #fff; /* fond blanc pour la modale elle-même */
+  border: 5px solid black; /* bordure noire de 5px */
+  border-radius: 0; /* pour enlever les coins arrondis */
+}
+
+
+
+/*MENU FOOTER */
 footer {
     background-color: #f9f9f9; /* Couleur de fond du footer */
     padding: 20px;

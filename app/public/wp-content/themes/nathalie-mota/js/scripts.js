@@ -10,9 +10,9 @@
       title: 'Contact'
     });
 
-    // Ouvre le dialogue sur clic
-    $('body').on('click', '.open-contact-modal', function() {
-      console.log('La modale est ouverte !');
+    // Ouvre le dialogue sur clic sur le lien "Contact"
+    $('body').on('click', '.open-contact-modal', function(event) {
+      event.preventDefault();
       $('#contact-modal').dialog('open');
     });
 

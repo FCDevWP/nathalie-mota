@@ -13,7 +13,7 @@ function nathalie_mota_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
 
-/* ajout typographie Space Mono et poppins */
+/* Ajout typographie Space Mono et poppins */
 
 function nathaliemota_custom_fonts() {
     wp_enqueue_style( 'nathaliemota-space-mono', get_template_directory_uri() . '/fonts/Space_Mono/space-mono.css', array(), '1.0.0' );
@@ -36,8 +36,24 @@ function register_my_menus() {
         'main-menu' => __( 'Menu Principal' ),
       )
     );
-  }
-  add_action( 'init', 'register_my_menus' );
+}
+add_action( 'init', 'register_my_menus' );
+
+// Modale ouverte Contact
+
+function add_contact_class_to_menu_item($menu_items, $args) {
+    foreach ($menu_items as $item) {
+        if ($item->title == 'Contact') {
+            $item->classes[] = 'open-contact-modal';
+        }
+    }
+    return $menu_items;
+}
+add_filter('wp_nav_menu_objects', 'add_contact_class_to_menu_item', 10, 2);
+
+
+
+
 
 // Ajout page administration thème
 function nathaliemota_add_admin_pages() {
@@ -216,36 +232,36 @@ function nathaliemota_entry_footer() {
 
 // Ajout CPT Photographie
 
-function nathaliemota_register_custom_post_types() {
-    $labels_photographie = array(
-        'menu_name'         => __('Photographies', 'nathaliemota'),
-        'name_admin_bar'    => __('Photographie', 'nathaliemota'),
-        'add_new_item'      => __('Ajouter une nouvelle photograhie', 'nathaliemota'),
-        'new_item'          => __('Nouvelle photographie', 'nathaliemota'),
-        'edit_item'         => __('Modifier l\'ajout', 'nathaliemota'),
-    );
+// function nathaliemota_register_custom_post_types() {
+//     $labels_photographie = array(
+//         'menu_name'         => __('Photographies', 'nathaliemota'),
+//         'name_admin_bar'    => __('Photographie', 'nathaliemota'),
+//         'add_new_item'      => __('Ajouter une nouvelle photograhie', 'nathaliemota'),
+//         'new_item'          => __('Nouvelle photographie', 'nathaliemota'),
+//         'edit_item'         => __('Modifier l\'ajout', 'nathaliemota'),
+//     );
 
-    $args_photographie = array(
-        'label'             => __('Photographies', 'nathaliemota'),
-        'description'       => __('Photographies', 'nathaliemota'),
-        'labels'            => $labels_photographie,
-        'supports'          => array('title', 'thumbnail', 'excerpt', 'editor'),
-        'hierarchical'      => false,
-        'public'            => true,
-        'show_ui'           => true,
-        'show_in_menu'      => true,
-        'menu_position'    => 40,
-        'show_in_admin_bar' => true,
-        'show_in_nav_menus' => true,
-        'can_export'        => true,
-        'has_archive'       => true,
-        'exclude_from_search'   => false,
-        'publicly_queryable' => true,
-        'capability_type'   => 'post',
-        'menu_icon'  => 'dashicons-drumstick',
-    );
+//     $args_photographie = array(
+//         'label'             => __('Photographies', 'nathaliemota'),
+//         'description'       => __('Photographies', 'nathaliemota'),
+//         'labels'            => $labels_photographie,
+//         'supports'          => array('title', 'thumbnail', 'excerpt', 'editor'),
+//         'hierarchical'      => false,
+//         'public'            => true,
+//         'show_ui'           => true,
+//         'show_in_menu'      => true,
+//         'menu_position'    => 40,
+//         'show_in_admin_bar' => true,
+//         'show_in_nav_menus' => true,
+//         'can_export'        => true,
+//         'has_archive'       => true,
+//         'exclude_from_search'   => false,
+//         'publicly_queryable' => true,
+//         'capability_type'   => 'post',
+//         'menu_icon'  => 'dashicons-drumstick',
+//     );
 
-    register_post_type('cif_photographie', $args_photographie);
-}
+//     register_post_type('cif_photographie', $args_photographie);
+// }
 
-add_action('init', 'nathaliemota_register_custom_post_types', 11);
+// add_action('init', 'nathaliemota_register_custom_post_types', 11);
