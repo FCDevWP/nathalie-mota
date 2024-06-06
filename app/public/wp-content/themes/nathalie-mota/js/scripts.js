@@ -1,26 +1,23 @@
-
-
 /* Apparition et disparition Modale contact */
 (function($) {
-  $(document).ready(function() {
-    // Initialise le widget de dialogue
-    $('#contact-modal').dialog({
-      autoOpen: false,
-      modal: true,
-      title: 'Contact'
+    $(document).ready(function() {
+      // Ouvre la modale lors du clic sur le lien "Contact"
+      $('.open-contact-modal').on('click', function(e) {
+        e.preventDefault();
+        $('#contact-modal').fadeIn();
+      });
+  
+      // Ferme la modale lors du clic en dehors de celle-ci
+      $(document).on('click', function(e) {
+        if ($(e.target).closest('.modal-content').length === 0 && !$(e.target).hasClass('open-contact-modal')) {
+          $('#contact-modal').fadeOut();
+        }
+      });
+  
+      // Ferme la modale lorsque le formulaire est envoyé
+      $('#contact-modal form').on('submit', function() {
+        $('#contact-modal').fadeOut();
+      });
     });
-
-    // Ouvre le dialogue sur clic sur le lien "Contact"
-    $('body').on('click', '.open-contact-modal', function(event) {
-      event.preventDefault();
-      $('#contact-modal').dialog('open');
-    });
-
-    // Ferme le dialogue sur clic à l'extérieur ou sur le bouton de fermeture
-    $('body').on('click', function(event) {
-      if ($(event.target).hasClass('modal') || $(event.target).hasClass('close')) {
-        $('#contact-modal').dialog('close');
-      }
-    });
-  });
-})(jQuery);
+  })(jQuery);
+  

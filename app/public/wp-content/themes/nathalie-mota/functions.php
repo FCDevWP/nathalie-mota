@@ -25,6 +25,7 @@ add_action( 'wp_enqueue_scripts', 'nathaliemota_custom_fonts' );
 /* JQuery et JQuery UI dans JS */
 function nathalie_mota_enqueue_scripts() {
     wp_enqueue_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
+    wp_enqueue_style('jquery-ui-css', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
     wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'jquery-ui'));
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts');
@@ -40,18 +41,12 @@ function register_my_menus() {
 add_action( 'init', 'register_my_menus' );
 
 // Modale ouverte Contact
-
-function add_contact_class_to_menu_item($menu_items, $args) {
-    foreach ($menu_items as $item) {
-        if ($item->title == 'Contact') {
-            $item->classes[] = 'open-contact-modal';
-        }
-    }
-    return $menu_items;
-}
-add_filter('wp_nav_menu_objects', 'add_contact_class_to_menu_item', 10, 2);
-
-
+// function add_contact_modal_script() {
+//     if (is_page('contact')) {
+//         wp_enqueue_script('contact-modal-script', get_template_directory_uri() . '/js/contact-modal.js', array('jquery'), '1.0', true);
+//     }
+// }
+// add_action('wp_enqueue_scripts', 'add_contact_modal_script');
 
 
 

@@ -11,19 +11,22 @@
     <?php wp_head(); ?>
 </head>
 <body>
-	<header>
-	  <nav>
-	    <div class="logo">
-	      <a href="<?php echo home_url(); ?>">
-	        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo.png" alt="Logo Nathalie Mota">
-	      </a>
-	    </div>
-	    <?php 
-	      wp_nav_menu(array(
-	        'theme_location' => 'main-menu',
-	        'container' => false,
-	        'menu_class' => 'main-menu',
-	      )); 
-	    ?>
-	  </nav>
-	</header>
+<header>
+  <nav>
+    <div class="logo">
+      <a href="<?php echo home_url(); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo.png" alt="Logo Nathalie Mota">
+      </a>
+    </div>
+    <?php 
+      wp_nav_menu(array(
+        'theme_location' => 'main-menu',
+        'container' => false,
+        'menu_class' => 'main-menu',
+        'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#" class="open-contact-modal">Contact</a></li></ul>',
+      )); 
+    ?>
+  </nav>
+</header>
+
+
