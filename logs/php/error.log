@@ -73,3 +73,24 @@ Stack trace:
 [07-Jun-2024 07:27:12 UTC] PHP Warning:  Attempt to read property "title" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/class-wp-customize-widgets.php on line 905
 [07-Jun-2024 07:38:44 UTC] PHP Warning:  Attempt to read property "title" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/class-wp-customize-widgets.php on line 905
 [07-Jun-2024 07:48:11 UTC] PHP Warning:  Attempt to read property "title" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/class-wp-customize-widgets.php on line 905
+[07-Jun-2024 10:13:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nathaliemota_get_icon_svg() in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php:36
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#3 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 36
+[07-Jun-2024 10:14:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nathaliemota_get_icon_svg() in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php:36
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#3 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 36
+[07-Jun-2024 11:18:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nathaliemota_get_icon_svg() in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php:36
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#3 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 36

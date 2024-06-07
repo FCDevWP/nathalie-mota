@@ -132,6 +132,8 @@ nav {
 
 .wpcf7-form-control {
 	height:40px;
+  border-radius: 3px;
+  border: 1px solid #d8d8d8;
 }
 
 .wpcf7-textarea {
@@ -142,7 +144,7 @@ nav {
   margin: 20px auto; /* centrer le bouton */
   display: block; /* pour que le bouton prenne la largeur maximale */
   text-align: center; /* centrer le texte du bouton */
-  background-color: transparent; /* supprimer la couleur de fond */
+  background-color: #d8d8d8; 
   border: none; /* supprimer la bordure */
   cursor: pointer; /* ajouter un curseur de pointeur */
   width: 100%; /* ajuster la largeur du bouton à 100% */
@@ -153,7 +155,7 @@ nav {
 .wpcf7-submit:hover {
   background-color: #000; /* changer la couleur de fond en noir */
   color: #fff; /* changer la couleur du texte en blanc */
-  transition: background-color 0.3s, color 0.3s; /* ajouter un effet de transition pour la couleur de fond et du texte */
+  transition: background-color 1s, color 1s; /* ajouter un effet de transition pour la couleur de fond et du texte */
 }
 
 
