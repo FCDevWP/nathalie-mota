@@ -84,11 +84,31 @@ nav {
 }
 
 .modal-content {
+  max-width: 600px;
+  max-height: 795px;
+  height: 795px; /* ajout de cette propriété pour forcer la hauteur */
+  overflow-y: auto; /* pour ajouter une barre de défilement vertical si le contenu dépasse la hauteur */
   background-color: #fff;
   margin: 10% auto;
   padding: 20px;
   border: 5px solid black;
   width: 45%;
+}
+
+.modal-header img {
+  width: 100%; /* pour que l'image prenne la largeur du conteneur */
+  height: 100%; /* pour que l'image prenne la hauteur du conteneur */
+  object-fit: cover; /* pour que l'image soit coupée si elle dépasse les dimensions du conteneur */
+  /* overflow: hidden; pour cacher les parties de l'image qui débordent du conteneur */
+}
+
+.header-container {
+  width: 550px;
+  height: 110px;
+  overflow: hidden; /* pour cacher les parties de l'image qui débordent du conteneur */
+  margin: 0 auto; /* pour centrer le conteneur */
+  padding: 0; /* pour supprimer les padding par défaut */
+  border: none; /* pour supprimer les bordures par défaut */
 }
 
 

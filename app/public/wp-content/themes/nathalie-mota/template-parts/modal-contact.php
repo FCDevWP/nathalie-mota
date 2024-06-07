@@ -4,7 +4,9 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Contact header.png" alt="Contact header">
+          <div class="header-container">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Contact-header.png" alt="Contact header">
+          </div>
         </div>
         <div class="modal-body">
           <?php echo $args['formulaire_contact']; ?>
