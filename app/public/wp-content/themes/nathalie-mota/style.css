@@ -85,8 +85,8 @@ nav {
 
 .modal-content {
   max-width: 600px;
-  max-height: 795px;
-  height: 795px; /* ajout de cette propriété pour forcer la hauteur */
+  max-height: 810px;
+  height: 810px; /* ajout de cette propriété pour forcer la hauteur */
   overflow-y: auto; /* pour ajouter une barre de défilement vertical si le contenu dépasse la hauteur */
   background-color: #fff;
   margin: 10% auto;
@@ -110,6 +110,52 @@ nav {
   padding: 0; /* pour supprimer les padding par défaut */
   border: none; /* pour supprimer les bordures par défaut */
 }
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mise en page des champs de la modale*/
+
+.wpcf7-form {
+	margin-top: 50px;
+  font-family: 'space Mono';
+}
+
+.wpcf7-form-control-wrap {
+	display: inline-block;
+	height: 60px;
+}
+
+.wpcf7-form-control {
+	height:40px;
+}
+
+.wpcf7-textarea {
+		height:190px;
+}
+
+.wpcf7-submit {
+  margin: 20px auto; /* centrer le bouton */
+  display: block; /* pour que le bouton prenne la largeur maximale */
+  text-align: center; /* centrer le texte du bouton */
+  background-color: transparent; /* supprimer la couleur de fond */
+  border: none; /* supprimer la bordure */
+  cursor: pointer; /* ajouter un curseur de pointeur */
+  width: 100%; /* ajuster la largeur du bouton à 100% */
+  box-sizing: border-box; /* prendre en compte les bordures et les padding dans la largeur */
+  font-size: 16px;
+}
+
+.wpcf7-submit:hover {
+  background-color: #000; /* changer la couleur de fond en noir */
+  color: #fff; /* changer la couleur du texte en blanc */
+  transition: background-color 0.3s, color 0.3s; /* ajouter un effet de transition pour la couleur de fond et du texte */
+}
+
 
 
 /*MENU FOOTER */
