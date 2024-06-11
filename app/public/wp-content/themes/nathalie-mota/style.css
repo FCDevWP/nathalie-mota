@@ -19,10 +19,18 @@ Text Domain: nathaliemota
 
 body{
     font-family: 'Poppins';
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
     font-family: 'Space Mono';
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /*MENU HEADER*/
@@ -73,7 +81,8 @@ nav {
 .hero-header {
   position: relative;
   height: 100vh; /* Faites de l'en-tête héroïque plein écran */
-  width: 100%; /* Faites de l'en-tête héroïque plein écran */
+  max-width: 100%; 
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,9 +94,9 @@ nav {
 }
 
 .hero-image {
-  width: 100%; /* Faites de l'image plein écran */
-  height: 100%; /* Faites de l'image plein écran */
-  object-fit: cover; /* Faites de l'image couvrir tout l'en-tête héroïque */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-overlay {
@@ -136,6 +145,13 @@ padding: 0 50px;
   color: #000000;
 }
 
+.category-general option,
+.format-general option,
+.tri-general option {
+  background-color: inherit;
+  color: inherit;
+}
+
 .category-general option, .format-general option, .tri-general option {
   padding: 10px;
   background-color: #ffffff; /* Ajouter ce code pour que le fond des options soit blanc */
@@ -146,8 +162,8 @@ padding: 0 50px;
 .category-general option.custom-option:hover,
 .format-general option.custom-option:hover,
 .tri-general option.custom-option:hover {
-  background-color: greenyellow !important;
-  color: #ffffff;
+  background-color: red !important;
+  color: white !important;
 }
 
 /* Ajouter ce code pour mettre les éléments à gauche et à droite */
@@ -279,55 +295,38 @@ padding: 0 50px;
   font-size: 16px;
 }
 
-.wpcf7-submit:hover {
-  background-color: #000; /* changer la couleur de fond en noir */
-  color: #fff; /* changer la couleur du texte en blanc */
-  transition: background-color 1s, color 1s; /* ajouter un effet de transition pour la couleur de fond et du texte */
+.wpcf7-submit.submit-btn:hover {
+  background-color: #000;
+  color: #fff;
+  transition: background-color 1s, color 1s;
 }
 
 
 
 /*MENU FOOTER */
 footer {
-    background-color: #f9f9f9; /* Couleur de fond du footer */
-    padding: 20px;
-    /* border-top: 19px solid black;  */
-  }
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-top: 1px solid black;
+}
   
-  .footer-container {
+.nav-footer {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid black; 
-  }
+}
   
-  .left-space {
-    width: 28%;
-    height: 100%;
-  }
-  
-  .right-space {
-    width: 28%;
-    height: 100%;
-  }
-  
-  .nav-footer {
-    width: 42%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .nav-footer li {
+.nav-footer li {
     margin-right: 20px;
-  }
+}
   
-  .nav-footer li:last-child {
+.nav-footer li:last-child {
     margin-right: 0;
-  }
+}
   
-  .nav-footer a {
+.nav-footer a {
     color: #333;
     text-transform: uppercase;
     text-decoration: none;
@@ -336,6 +335,14 @@ footer {
     font-family: 'Space Mono';
 }
 
+.nav-footer span a {
+  color: #333;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-family: 'Space Mono';
+}
 
   
 

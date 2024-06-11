@@ -31,19 +31,6 @@ function nathalie_mota_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts');
 
-// Enregistrer les menus de navigation
-function register_my_menus() {
-    register_nav_menus(
-        array(
-            'main-menu' => __('Menu Principal'),
-            'menu-1' => __('Menu 1'),
-            'menu-2' => __('Menu 2'),
-            'menu-3' => __('Menu 3')
-        )
-    );
-}
-add_action('init', 'register_my_menus');
-
 // Ajout page administration thème
 function nathaliemota_add_admin_pages() {
     add_menu_page('Paramètres du thème Nathalie Mota', 'Nathalie-Mota', 'manage_options', 'nathaliemota-settings', 'nathaliemota_theme_settings', 'dashicons-admin-settings', 60);

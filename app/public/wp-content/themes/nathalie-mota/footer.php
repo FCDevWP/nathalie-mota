@@ -1,19 +1,13 @@
 
 
 
-        <div class="footer-container">
-            <div class="left-space"></div>
+        <footer>
             <div class="nav-footer">
                 <span><a href="#">MENTIONS LEGALES</a></span>
                 <span><a href="#">VIE PRIVÉE</a></span>
                 <span><a href="#">TOUS DROITS RÉSERVÉS</a></span>
             </div>
-            <div class="right-space"></div>
-        </div>
-
-
-
-
+        </footer>
 
         <?php
             ob_start(); // Démarrer la mise en mémoire tampon
