@@ -21,3 +21,30 @@
     });
   })(jQuery);
   
+
+  /* Ajout requete JQuey */
+  jQuery(document).ready(function($) {
+    $.ajax({
+        url: nathaliemotaAjax.ajaxurl,
+        type: 'post',
+        data: {
+            action: 'request_photos'
+        },
+        success: function(response) {
+            if(response) {
+                let output = '';
+                $.each(response, function(index, photo) {
+                    output += '<div class="photo-item">';
+                    output += '<a href="' + photo.link + '">';
+                    output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
+                    output += '<h2>' + photo.title + '</h2>';
+                    output += '</a>';
+                    output += '</div>';
+                });
+                $('#photo-gallery').html(output);
+            } else {
+                $('#photo-gallery').html('<p>No photos found</p>');
+            }
+        }
+    });
+});

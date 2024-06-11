@@ -69,6 +69,132 @@ nav {
     letter-spacing: 2px;
 }
 
+/* HERO HEADER */
+.hero-header {
+  position: relative;
+  height: 100vh; /* Faites de l'en-tête héroïque plein écran */
+  width: 100%; /* Faites de l'en-tête héroïque plein écran */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.hero-header .category-general, .hero-header .format-general, .hero-header .tri-general {
+  margin-right: 20px;
+}
+
+.hero-image {
+  width: 100%; /* Faites de l'image plein écran */
+  height: 100%; /* Faites de l'image plein écran */
+  object-fit: cover; /* Faites de l'image couvrir tout l'en-tête héroïque */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hero-text {
+  width: 100%; /* Faites du texte en surimpression plein écran */
+  height: auto; /* Faites du texte en surimpression auto-hauteur */
+}
+
+/* Menus déroulants*/
+
+
+.category-general, .format-general, .tri-general {
+  display: inline-block;
+  margin-left: 30px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.category-general label, .format-general label, .tri-general label {
+  font-family: 'Space Mono';
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 2px;
+  display: block; 
+}
+
+.category-general select, .format-general select, .tri-general select {
+  font-family: 'Space Mono';
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid #000; /* Ajouter ce code pour ajouter une bordure noire de 1px */
+  background-color: #ffffff; /* Ajouter ce code pour que le fond du menu déroulant soit blanc */
+  width: 100%; /* Ajouter ce code pour que les menus déroulants prennent toute la largeur disponible */
+  color: #000000; /* Ajouter ce code pour que le titre soit écrit en noir sur fond blanc */
+}
+
+
+.category-general option, .format-general option, .tri-general option {
+  padding: 10px;
+  background-color: #ffffff; /* Ajouter ce code pour que le fond des options soit blanc */
+  color: #000000; /* Ajouter ce code pour que le texte des options soit noir */
+}
+
+.category-general select:hover, .format-general select:hover, .tri-general select:hover {
+  background-color: #cc0000; /* Ajouter ce code pour que le fond devienne rouge lors du survol */
+  color: #ffffff; /* Ajouter ce code pour que le texte devienne blanc lors du survol */
+}
+
+
+
+/* Ajouter ce code pour mettre les éléments à gauche et à droite */
+.category-general, .format-general {
+  float: left;
+  margin-right: 20px;
+}
+
+.tri-general {
+  float: right;
+}
+
+
+
+
+/* Galerie de photos */
+/* .photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.photo-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.photo-item:hover {
+  transform: scale(1.05);
+}
+
+.photo-item h2 {
+  font-size: 16px;
+  text-align: center;
+  margin: 10px 0 0;
+} */
+
+
 /*MODALE */
 
 .modal {
