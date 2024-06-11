@@ -105,12 +105,15 @@ nav {
 
 /* Menus déroulants*/
 
-
 .category-general, .format-general, .tri-general {
   display: inline-block;
   margin-left: 30px;
   margin-right: 50px;
   margin-bottom: 50px;
+}
+
+#category, #format, #tri {
+padding: 0 50px;
 }
 
 .category-general label, .format-general label, .tri-general label {
@@ -127,12 +130,11 @@ nav {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  border: 1px solid #000; /* Ajouter ce code pour ajouter une bordure noire de 1px */
-  background-color: #ffffff; /* Ajouter ce code pour que le fond du menu déroulant soit blanc */
-  width: 100%; /* Ajouter ce code pour que les menus déroulants prennent toute la largeur disponible */
-  color: #000000; /* Ajouter ce code pour que le titre soit écrit en noir sur fond blanc */
+  border: 1px solid #000;
+  background-color: #ffffff; 
+  width: 100%; 
+  color: #000000;
 }
-
 
 .category-general option, .format-general option, .tri-general option {
   padding: 10px;
@@ -140,12 +142,13 @@ nav {
   color: #000000; /* Ajouter ce code pour que le texte des options soit noir */
 }
 
-.category-general select:hover, .format-general select:hover, .tri-general select:hover {
-  background-color: #cc0000; /* Ajouter ce code pour que le fond devienne rouge lors du survol */
-  color: #ffffff; /* Ajouter ce code pour que le texte devienne blanc lors du survol */
+/* Règle CSS plus spécifique pour les options avec la classe "custom-option" au survol */
+.category-general option.custom-option:hover,
+.format-general option.custom-option:hover,
+.tri-general option.custom-option:hover {
+  background-color: greenyellow !important;
+  color: #ffffff;
 }
-
-
 
 /* Ajouter ce code pour mettre les éléments à gauche et à droite */
 .category-general, .format-general {
@@ -156,8 +159,6 @@ nav {
 .tri-general {
   float: right;
 }
-
-
 
 
 /* Galerie de photos */
