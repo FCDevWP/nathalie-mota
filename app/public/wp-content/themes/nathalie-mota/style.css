@@ -181,6 +181,7 @@ padding: 0 50px;
 .photo-gallery {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 50px;
 }
 
 .photo-item {
@@ -225,16 +226,35 @@ padding: 0 50px;
 .photo-category {
   position: absolute;
   bottom: 10px; /* réglez la distance entre le bas de l'image et la catégorie */
-  left: 10px; /* réglez la distance entre le côté gauche de l'image et la catégorie */
+  right: 10px; /* réglez la distance entre le côté droite de l'image et la catégorie */
   font-size: 14px; /* réglez la taille de la police de la catégorie */
   color: white; /* réglez la couleur de la catégorie à blanc */
   z-index: 1; /* réglez l'ordre d'empilement de la catégorie à 1 pour qu'elle soit au-dessus de l'overlay */
 }
 
-.photo-icon {
+.photo-eye {
   position: absolute;
-  top: 10px; /* réglez la distance entre le haut de l'image et l'icône */
-  right: 10px; /* réglez la distance entre le côté droit de l'image et l'icône */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: white; /* réglez la couleur de l'icône à blanc */
+  z-index: 1; /* réglez l'ordre d'empilement de l'icône à 1 pour qu'elle soit au-dessus de l'overlay */
+}
+
+.photo-expand {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 24px;
+  color: white; /* réglez la couleur de l'icône à blanc */
+  z-index: 1; /* réglez l'ordre d'empilement de l'icône à 1 pour qu'elle soit au-dessus de l'overlay */
+}
+.photo-icon {
+  display : none;
+  position: absolute;
+  top: 50px; /* réglez la distance entre le haut de l'image et l'icône */
+  right: 50px; /* réglez la distance entre le côté droit de l'image et l'icône */
   font-size: 24px; /* réglez la taille de l'icône */
   color: white; /* réglez la couleur de l'icône à blanc */
   z-index: 1; /* réglez l'ordre d'empilement de l'icône à 1 pour qu'elle soit au-dessus de l'overlay */
