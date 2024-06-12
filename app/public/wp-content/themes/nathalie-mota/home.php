@@ -47,32 +47,38 @@
   <button class="open-contact-modal">Ouvrir la modale</button>
 
   <!-- Galerie de photos -->
-  <div class="photo-gallery">
-    <?php
-    $args = array(
-        'post_type' => 'photographies',
-        'posts_per_page' => -1, // display all photos
-    );
-    $query = new WP_Query($args);
+    <div class="photo-gallery">
+      <?php
+        $args = array(
+            'post_type' => 'photographies',
+            'posts_per_page' => -1, // display all photos
+        );
+        $query = new WP_Query($args);
 
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            ?>
-            <div class="photo-item">
+        if ($query->have_posts()) {
+          while ($query->have_posts()) {
+              $query->the_post();
+              ?>
+              <div class="photo-item">
                 <a href="<?php the_permalink(); ?>">
-                    <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>">
-                    <h2><?php the_title(); ?></h2>
-                </a>
-            </div>
-            <?php
+                  <?php echo wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'full', false, array( 'class' => 'photo-img' ) ); ?>
+                  <div class="photo-overlay">
+                    <div class="photo-title"><?php the_title(); ?></div>
+                    <div class="photo-eye"><i class="fas fa-eye"></i></div>
+                    <div class="photo-category"><?php echo get_the_term_list( $post->ID, 'category', '', ', ', '' ); ?></div>
+                  </div>
+                  <div class="photo-icon"><i class="fas fa-eye"></i></div>
+               </a>
+              </div>
+              <?php
+          }
+          wp_reset_postdata();
+        } else {
+         echo '<p>No photos found</p>';
         }
-        wp_reset_postdata();
-    } else {
-        echo '<p>No photos found</p>';
-    }
-    ?>
-  </div>
+      ?>
+    </div>
+
 
 </div>
 

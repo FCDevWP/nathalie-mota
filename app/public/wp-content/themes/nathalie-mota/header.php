@@ -6,7 +6,7 @@
 
     <meta name="keywords" content="nathalie mota, photographe professionnelle, événementiel, réception, concert, mariage, télévision, photo argentique, photo numérique"/>
     <meta name="description" content="Nathalie Mota – photographe professionnelle pour vos événements, réception, concert, mariage, télévision, photo argentique, photo numérique."/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <title>Nathalie Mota - Photographe</title>
     <?php wp_head(); ?>
 </head>
