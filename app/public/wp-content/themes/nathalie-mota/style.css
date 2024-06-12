@@ -178,7 +178,7 @@ padding: 0 50px;
 
 
 /* Galerie de photos */
-/* .photo-gallery {
+.photo-gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -209,7 +209,7 @@ padding: 0 50px;
   font-size: 16px;
   text-align: center;
   margin: 10px 0 0;
-} */
+}
 
 
 /*MODALE */

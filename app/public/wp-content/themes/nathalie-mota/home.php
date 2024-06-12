@@ -47,13 +47,13 @@
   <button class="open-contact-modal">Ouvrir la modale</button>
 
   <!-- Galerie de photos -->
-  <div id="photo-gallery" class="photo-gallery">
+  <div class="photo-gallery">
     <?php
-    // Query to get the 16 latest photos
-    $query = new WP_Query(array(
-        'post_type' => 'mes_photographies',
-        'posts_per_page' => 16
-    ));
+    $args = array(
+        'post_type' => 'photographies',
+        'posts_per_page' => -1, // display all photos
+    );
+    $query = new WP_Query($args);
 
     if ($query->have_posts()) {
         while ($query->have_posts()) {
@@ -73,6 +73,7 @@
     }
     ?>
   </div>
+
 </div>
 
 

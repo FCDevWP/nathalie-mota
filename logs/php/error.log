@@ -153,3 +153,31 @@ Stack trace:
 [11-Jun-2024 11:26:31 UTC] PHP Fatal error:  Cannot redeclare register_my_menus() (previously declared in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php:40) in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 295
 [11-Jun-2024 11:33:16 UTC] PHP Parse error:  Unclosed '(' on line 183 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 184
 [11-Jun-2024 11:33:16 UTC] PHP Parse error:  Unclosed '(' on line 183 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 184
+[12-Jun-2024 07:52:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nathaliemota_get_icon_svg() in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php:36
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#3 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 36
+[12-Jun-2024 07:53:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nathaliemota_get_icon_svg() in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php:36
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#3 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 36
+[12-Jun-2024 08:12:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nathaliemota_get_icon_svg() in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php:36
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#3 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 36
+[12-Jun-2024 08:13:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function nathaliemota_get_icon_svg() in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php:36
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#3 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 36
