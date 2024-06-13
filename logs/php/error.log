@@ -305,3 +305,7 @@ Stack trace:
 [13-Jun-2024 07:37:23 UTC] PHP Parse error:  syntax error, unexpected end of file in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 51
 [13-Jun-2024 07:37:58 UTC] PHP Warning:  Undefined variable $nathaliemota_next in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 44
 [13-Jun-2024 07:37:58 UTC] PHP Warning:  Undefined variable $nathaliemota_prev in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php on line 45
+[13-Jun-2024 09:30:40 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 44
+[13-Jun-2024 09:35:44 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 50
+[13-Jun-2024 09:41:08 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 52
+[13-Jun-2024 09:45:22 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 53

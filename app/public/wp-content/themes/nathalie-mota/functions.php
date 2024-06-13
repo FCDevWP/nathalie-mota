@@ -225,3 +225,11 @@ function nathaliemota_request_photos() {
 
 add_action('wp_ajax_request_photos', 'nathaliemota_request_photos');
 add_action('wp_ajax_nopriv_request_photos', 'nathaliemota_request_photos');
+
+// Inclure le fichier CSS pour la page de détail des photographies
+function nathaliemota_enqueue_single_photo_styles() {
+    if ( is_singular( 'photographies' ) ) {
+        wp_enqueue_style( 'nathaliemota-single-photo', get_template_directory_uri() . '/css/single-photo.css', array(), filemtime( get_template_directory() . '/css/single-photo.css' ) );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'nathaliemota_enqueue_single_photo_styles' );
