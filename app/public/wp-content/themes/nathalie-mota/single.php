@@ -33,18 +33,18 @@ while ( have_posts() ) :
     }
  
     // Previous/next post navigation.
-    $nathaliemota_next = is_rtl() ? nathaliemota_get_icon_svg( 'ui', 'arrow_left' ) : nathaliemota_get_icon_svg( 'ui', 'arrow_right' );
-    $nathaliemota_prev = is_rtl() ? nathaliemota_get_icon_svg( 'ui', 'arrow_right' ) : nathaliemota_get_icon_svg( 'ui', 'arrow_left' );
+    // $nathaliemota_next = is_rtl() ? nathaliemota_get_icon_svg( 'ui', 'arrow_left' ) : nathaliemota_get_icon_svg( 'ui', 'arrow_right' );
+    // $nathaliemota_prev = is_rtl() ? nathaliemota_get_icon_svg( 'ui', 'arrow_right' ) : nathaliemota_get_icon_svg( 'ui', 'arrow_left' );
  
     $nathaliemota_next_label     = esc_html__( 'Next post', 'nathaliemota' );
     $nathaliemota_previous_label = esc_html__( 'Previous post', 'nathaliemota' );
  
-    the_post_navigation(
-        array(
-            'next_text' => '<p class="meta-nav">' . $nathaliemota_next_label . $nathaliemota_next . '</p><p class="post-title">%title</p>',
-            'prev_text' => '<p class="meta-nav">' . $nathaliemota_prev . $nathaliemota_previous_label . '</p><p class="post-title">%title</p>',
-        )
-    );
+    // the_post_navigation(
+    //     array(
+    //         'next_text' => '<p class="meta-nav">' . $nathaliemota_next_label . $nathaliemota_next . '</p><p class="post-title">%title</p>',
+    //         'prev_text' => '<p class="meta-nav">' . $nathaliemota_prev . $nathaliemota_previous_label . '</p><p class="post-title">%title</p>',
+    //     )
+    // );
 endwhile; // End of the loop.
  
 get_footer();

@@ -9,16 +9,25 @@
  * @since nathaliemota 1.0
  */
 ?>
- 
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header">
-        <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-        <?php nathaliemota_posted_on(); ?>
+        <!-- <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+        <?php nathaliemota_posted_on(); ?> -->
     </header><!-- .entry-header -->
- 
-    <?php nathaliemota_post_thumbnail(); ?>
- 
+
+    <!-- <?php nathaliemota_post_thumbnail(); ?> -->
+
     <div class="entry-content">
+        <div class="photo-categories">
+            <?php
+            $taxonomy = 'categories'; // Remplacez par le nom de votre taxonomie
+            $terms = get_the_term_list( get_the_ID(), $taxonomy, '', ', ', '' );
+            if ( ! empty( $terms ) ) {
+                printf( '<span class="categories-label">%s</span> %s', esc_html__( 'Categories: ', 'nathaliemota' ), $terms );
+            }
+            ?>
+        </div>
         <?php
             the_content(
                 sprintf(
@@ -34,7 +43,7 @@
                     wp_kses_post( get_the_title() )
                 )
             );
- 
+
             wp_link_pages(
                 array(
                     'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nathaliemota' ),
@@ -43,8 +52,9 @@
             );
         ?>
     </div><!-- .entry-content -->
- 
+
     <footer class="entry-footer">
         <?php nathaliemota_entry_footer(); ?>
     </footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
+
