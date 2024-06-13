@@ -7,14 +7,37 @@
  * @since nathaliemota 1.0
  */
 ?>
+<pre> 
+<?php 
+/* récupération taxonomie Catégorie */
+    $terms= wp_get_post_terms(get_the_ID(), 'categorie');
+    $categorie='';
+    foreach ( $terms as $term ) {
+        $categorie=$term->name;
+    }
+
+
+/* récupération taxonomie Format */
+                
+    $terms= wp_get_post_terms(get_the_ID(), 'format');
+    $format='';
+    foreach ( $terms as $term ) {
+        $format=$term->name;
+    }
+                
+?>
+</pre>
+
 
 <div class="photo-content">
     <section class="section-1">
         <div class="left-column">
             <h1 class="photo-title"><?php the_title(); ?></h1>
             <div class="photo-meta">
-                <p><strong>Référence :</strong> <?php echo get_the_term_list(get_the_ID(), 'categories', '', ', ', ''); ?></p>
-                <p><strong>Format :</strong> <?php /* Ajouter ici le code pour afficher le format */ ?></p>
+
+                <p><strong>Référence :</strong>   </p>
+                <p><strong>Catégories :</strong> <?php echo $categorie; ?></p>
+                <p><strong>Format :</strong> <?php echo $format; ?></p>
                 <p><strong>Type :</strong> <?php /* Ajouter ici le code pour afficher le type */ ?></p>
                 <p><strong>Année :</strong> <?php /* Ajouter ici le code pour afficher l'année */ ?></p>
             </div>
