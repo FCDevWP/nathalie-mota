@@ -1,11 +1,23 @@
 <?php get_header(); ?>
 
+
+<?php
+$images = get_images_from_directory(get_template_directory() . '/assets/images');
+$random_image = $images[array_rand($images)];
+$random_image_url = get_template_directory_uri() . '/assets/images/' . basename($random_image);
+?>
+
+
+
+
+
 <div class="container">
     <!-- Hero header avec une image et un texte en surimpression -->
-    <div class="hero-header">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/images/nathalie-9.webp" alt="Image héroïque" class="hero-image">
+
+    <!-- Hero header avec une image aléatoire et un texte en surimpression -->
+    <div class="hero-header" style="background-image: url('<?php echo $random_image_url; ?>');">
         <div class="hero-overlay">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/images/Titre-header.png" alt="Titre en-tête" class="hero-text">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/images/Titre-header.png" alt="Titre en-tête" class="hero-text">
         </div>
     </div>
 

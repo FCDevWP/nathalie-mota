@@ -198,6 +198,14 @@ function nathaliemota_entry_footer() {
     );
 }
 
+// Fonction pour choiux aléatoire des photos hero header
+function get_images_from_directory($directory) {
+    $images = glob($directory . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
+    return $images;
+}
+
+
+
 // Ajout fonction AJAX pour photos
 function nathaliemota_request_photos() {
     $query = new WP_Query([

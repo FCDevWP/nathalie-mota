@@ -79,11 +79,11 @@ nav {
 /* HERO HEADER */
 .hero-header {
   position: relative;
-  height: 100vh; /* Faites de l'en-tête héroïque plein écran */
-  max-width: 100%; 
-  margin: 0 auto;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 20px;
 }
