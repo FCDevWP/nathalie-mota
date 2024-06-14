@@ -32,9 +32,8 @@
 <div class="photo-content">
     <section class="section-1">
         <div class="left-column">
-            <h1 class="photo-title"><?php the_title(); ?></h1>
             <div class="photo-meta">
-
+                <h1 class="photo-title-new"><?php the_title(); ?></h1>
                 <p><strong>Référence :</strong>   </p>
                 <p><strong>Catégories :</strong> <?php echo $categorie; ?></p>
                 <p><strong>Format :</strong> <?php echo $format; ?></p>
@@ -43,7 +42,7 @@
             </div>
         </div>
         <div class="right-column">
-            <?php the_post_thumbnail('full'); ?>
+            <?php the_post_thumbnail('full', array('class' => 'photo-img')); ?>
         </div>
     </section>
 

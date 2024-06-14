@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-09-25 10:13:35+0000\n"
+"PO-Revision-Date: 2024-06-13 12:44:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,46 @@ msgstr ""
 "X-Generator: GlotPress/4.0.1\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
+
+#: modules/constant-contact/service.php:371
+msgid "This feature is deprecated. You are not recommended to use it."
+msgstr "Cette fonctionnalité est dépréciée. Il n’est pas recommandé de l’utiliser."
+
+#: modules/constant-contact/service.php:370
+msgid "https://contactform7.com/2024/02/02/we-end-the-constant-contact-integration/"
+msgstr "https://contactform7.com/2024/02/02/we-end-the-constant-contact-integration/"
+
+#: modules/constant-contact/service.php:368
+msgid "Warning:"
+msgstr "Attention : "
+
+#: modules/checkbox.php:285 modules/select.php:217
+msgid "Undefined value was submitted through this field."
+msgstr "Une valeur non définie a été envoyée dans ce champ."
+
+#: admin/admin.php:693
+msgid "The Constant Contact integration is deprecated. It is not recommended to continue using the feature."
+msgstr "L’intégration de Constant Contact est obsolète. Il n’est pas recommandé de continuer à l’utiliser."
+
+#: modules/sendinblue/contact-form-properties.php:99
+#: modules/sendinblue/service.php:154
+msgid "Brevo integration"
+msgstr "Intégration de Brevo"
+
+#. translators: 1: blog name, 2: blog URL
+#: includes/contact-form-template.php:111
+msgid "This email is a receipt for your contact form submission on our website (%1$s %2$s) in which your email address was used. If that was not you, please ignore this message."
+msgstr "Cet e-mail est un accusé de réception du formulaire de contact que vous avez envoyé sur notre site web (%1$s %2$s) et dans lequel votre adresse e-mail a été utilisée. Si ce n’est pas vous, veuillez ignorer ce message."
+
+#. translators: 1: blog name, 2: blog URL
+#: includes/contact-form-template.php:77
+msgid "This is a notification that a contact form was submitted on your website (%1$s %2$s)."
+msgstr "Ceci est une notification qu’un formulaire de contact a été envoyé sur votre site web (%1$s %2$s)."
+
+#: includes/config-validator/mail.php:234
+#: includes/config-validator/mail.php:324
+msgid "Unsafe email config is used without sufficient protection."
+msgstr "Une configuration de courrier électronique non sûre est utilisée sans protection suffisante."
 
 #: includes/config-validator/validator.php:229
 msgid "Configuration error is detected."

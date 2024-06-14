@@ -10,15 +10,47 @@
 
 .section-1 .content h2 {
     font-size: 1.5rem;
-    font-weight: bold;
     text-transform: uppercase;
+    font-family: 'Space Mono';
 }
 
 .section-1 .content p {
     font-size: 1.25rem;
 }
 
+.photo-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-title-new {
+    color: black;
+    font-family: 'Space Mono';
+}
+
+.left-column,
+.right-column,
+.related-photo {
+    width: 50%;
+}
+
+.photo-img {
+    max-width: 50%;
+    height: auto;
+}
+
+.small-photo {
+    width: 50%;
+    height: auto;
+}
+
 /* Section 2 */
+.section-2 {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
 .section-2 .field-wrap {
     display: flex;
     justify-content: center;
@@ -38,8 +70,11 @@
 }
 
 /* Section 3 */
-
 .entry-content .section-3 .wrap {
     max-width: 800px;
     padding: 40px;
+}
+
+.section-3 {
+    display: flex;
 }
