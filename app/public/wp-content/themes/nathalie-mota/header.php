@@ -15,7 +15,7 @@
   <nav>
     <div class="logo">
       <a href="<?php echo home_url(); ?>">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Logo.png" alt="Logo Nathalie Mota">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/Logo.png" alt="Logo Nathalie Mota">
       </a>
     </div>
     <?php 
