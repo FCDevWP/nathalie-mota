@@ -48,3 +48,19 @@
         }
     });
 });
+
+
+jQuery(document).ready(function($) {
+  $('.fancybox').fancybox({
+      // Options de Fancybox
+      loop: true,
+      infobar: true,
+      caption: function( instance, item ) {
+          var caption = $(this).data('caption') || '';
+          if (item.type === 'image') {
+              caption = (caption.length ? caption + '<br />' : '') + '<small>Image ' + (item.index + 1) + ' of ' + instance.group.length + (item.title.length ? ' - ' + item.title : '') + '</small>';
+          }
+          return caption;
+      }
+  });
+});
