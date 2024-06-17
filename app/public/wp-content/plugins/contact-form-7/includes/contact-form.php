@@ -105,23 +105,23 @@ class WPCF7_ContactForm {
 	/**
 	 * Returns a contact form data filled by default template contents.
 	 *
-	 * @param string|array $options Optional. Contact form options.
+	 * @param string|array $args Optional. Contact form options.
 	 * @return WPCF7_ContactForm A new contact form object.
 	 */
-	public static function get_template( $options = '' ) {
-		$options = wp_parse_args( $options, array(
+	public static function get_template( $args = '' ) {
+		$args = wp_parse_args( $args, array(
 			'locale' => null,
 			'title' => __( 'Untitled', 'contact-form-7' ),
 		) );
 
-		if ( ! isset( $options['locale'] ) ) {
-			$options['locale'] = determine_locale();
+		if ( ! isset( $args['locale'] ) ) {
+			$args['locale'] = determine_locale();
 		}
 
-		$callback = static function ( $options ) {
+		$callback = static function ( $args ) {
 			$contact_form = new self;
-			$contact_form->title = $options['title'];
-			$contact_form->locale = $options['locale'];
+			$contact_form->title = $args['title'];
+			$contact_form->locale = $args['locale'];
 
 			$properties = $contact_form->get_properties();
 
@@ -139,13 +139,13 @@ class WPCF7_ContactForm {
 		};
 
 		$contact_form = wpcf7_switch_locale(
-			$options['locale'],
+			$args['locale'],
 			$callback,
-			$options
+			$args
 		);
 
 		self::$current = apply_filters( 'wpcf7_contact_form_default_pack',
-			$contact_form, $options
+			$contact_form, $args
 		);
 
 		return self::$current;
@@ -517,11 +517,11 @@ class WPCF7_ContactForm {
 	/**
 	 * Generates HTML that represents a form.
 	 *
-	 * @param string|array $options Optional. Form options.
+	 * @param string|array $args Optional. Form options.
 	 * @return string HTML output.
 	 */
-	public function form_html( $options = '' ) {
-		$options = wp_parse_args( $options, array(
+	public function form_html( $args = '' ) {
+		$args = wp_parse_args( $args, array(
 			'html_id' => '',
 			'html_name' => '',
 			'html_title' => '',
@@ -529,9 +529,9 @@ class WPCF7_ContactForm {
 			'output' => 'form',
 		) );
 
-		$this->shortcode_atts = $options;
+		$this->shortcode_atts = $args;
 
-		if ( 'raw_form' == $options['output'] ) {
+		if ( 'raw_form' == $args['output'] ) {
 			return sprintf(
 				'<pre class="wpcf7-raw-form"><code>%s</code></pre>',
 				esc_html( $this->prop( 'form' ) )
@@ -596,14 +596,14 @@ class WPCF7_ContactForm {
 		$html .= "\n" . $this->screen_reader_response() . "\n";
 
 		$id_attr = apply_filters( 'wpcf7_form_id_attr',
-			preg_replace( '/[^A-Za-z0-9:._-]/', '', $options['html_id'] )
+			preg_replace( '/[^A-Za-z0-9:._-]/', '', $args['html_id'] )
 		);
 
 		$name_attr = apply_filters( 'wpcf7_form_name_attr',
-			preg_replace( '/[^A-Za-z0-9:._-]/', '', $options['html_name'] )
+			preg_replace( '/[^A-Za-z0-9:._-]/', '', $args['html_name'] )
 		);
 
-		$title_attr = apply_filters( 'wpcf7_form_title_attr', $options['html_title'] );
+		$title_attr = apply_filters( 'wpcf7_form_title_attr', $args['html_title'] );
 
 		$class = 'wpcf7-form';
 
@@ -620,8 +620,8 @@ class WPCF7_ContactForm {
 			$class .= ' init';
 		}
 
-		if ( $options['html_class'] ) {
-			$class .= ' ' . $options['html_class'];
+		if ( $args['html_class'] ) {
+			$class .= ' ' . $args['html_class'];
 		}
 
 		if ( $this->in_demo_mode() ) {
@@ -964,13 +964,13 @@ class WPCF7_ContactForm {
 	/**
 	 * Collects mail-tags available for this contact form.
 	 *
-	 * @param string|array $options Optional. Search options.
+	 * @param string|array $args Optional. Search options.
 	 * @return array Mail-tag names.
 	 */
-	public function collect_mail_tags( $options = '' ) {
+	public function collect_mail_tags( $args = '' ) {
 		$manager = WPCF7_FormTagsManager::get_instance();
 
-		$options = wp_parse_args( $options, array(
+		$args = wp_parse_args( $args, array(
 			'include' => array(),
 			'exclude' => $manager->collect_tag_types( 'not-for-mail' ),
 		) );
@@ -983,12 +983,12 @@ class WPCF7_ContactForm {
 
 			if ( empty( $type ) ) {
 				continue;
-			} elseif ( ! empty( $options['include'] ) ) {
-				if ( ! in_array( $type, $options['include'] ) ) {
+			} elseif ( ! empty( $args['include'] ) ) {
+				if ( ! in_array( $type, $args['include'] ) ) {
 					continue;
 				}
-			} elseif ( ! empty( $options['exclude'] ) ) {
-				if ( in_array( $type, $options['exclude'] ) ) {
+			} elseif ( ! empty( $args['exclude'] ) ) {
+				if ( in_array( $type, $args['exclude'] ) ) {
 					continue;
 				}
 			}
@@ -1000,7 +1000,7 @@ class WPCF7_ContactForm {
 		$mailtags = array_filter( $mailtags );
 		$mailtags = array_values( $mailtags );
 
-		return apply_filters( 'wpcf7_collect_mail_tags', $mailtags, $options, $this );
+		return apply_filters( 'wpcf7_collect_mail_tags', $mailtags, $args, $this );
 	}
 
 
@@ -1046,11 +1046,11 @@ class WPCF7_ContactForm {
 	/**
 	 * Submits this contact form.
 	 *
-	 * @param string|array $options Optional. Submission options. Default empty.
+	 * @param string|array $args Optional. Submission options. Default empty.
 	 * @return array Result of submission.
 	 */
-	public function submit( $options = '' ) {
-		$options = wp_parse_args( $options, array(
+	public function submit( $args = '' ) {
+		$args = wp_parse_args( $args, array(
 			'skip_mail' =>
 				( $this->in_demo_mode()
 				|| $this->is_true( 'skip_mail' )
@@ -1072,7 +1072,7 @@ class WPCF7_ContactForm {
 		}
 
 		$submission = WPCF7_Submission::get_instance( $this, array(
-			'skip_mail' => $options['skip_mail'],
+			'skip_mail' => $args['skip_mail'],
 		) );
 
 		$result = array(
@@ -1343,14 +1343,14 @@ class WPCF7_ContactForm {
 	/**
 	 * Returns a WordPress shortcode for this contact form.
 	 */
-	public function shortcode( $options = '' ) {
-		$options = wp_parse_args( $options, array(
+	public function shortcode( $args = '' ) {
+		$args = wp_parse_args( $args, array(
 			'use_old_format' => false
 		) );
 
 		$title = str_replace( array( '"', '[', ']' ), '', $this->title );
 
-		if ( $options['use_old_format'] ) {
+		if ( $args['use_old_format'] ) {
 			$old_unit_id = (int) get_post_meta( $this->id, '_old_cf7_unit_id', true );
 
 			if ( $old_unit_id ) {
@@ -1371,7 +1371,7 @@ class WPCF7_ContactForm {
 		}
 
 		return apply_filters( 'wpcf7_contact_form_shortcode',
-			$shortcode, $options, $this
+			$shortcode, $args, $this
 		);
 	}
 }

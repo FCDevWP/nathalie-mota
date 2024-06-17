@@ -234,9 +234,11 @@ padding: 0 50px;
 
 .photo-category {
   position: absolute;
-  bottom: 10px; /* réglez la distance entre le bas de l'image et la catégorie */
-  right: 10px; /* réglez la distance entre le côté droite de l'image et la catégorie */
-  font-size: 14px; /* réglez la taille de la police de la catégorie */
+  bottom: 15px; /* réglez la distance entre le bas de l'image et la catégorie */
+  right: 20px; /* réglez la distance entre le côté droite de l'image et la catégorie */
+  font-family: 'Space Mono', sans-serif; /* réglez la police d'écriture du titre à Space Mono */
+  font-size: 18px; /* réglez la taille de la police de la catégorie */
+  text-transform: uppercase; /* réglez la casse du titre à majuscule */
   color: white; /* réglez la couleur de la catégorie à blanc */
   z-index: 1; /* réglez l'ordre d'empilement de la catégorie à 1 pour qu'elle soit au-dessus de l'overlay */
 }

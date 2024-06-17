@@ -49,7 +49,7 @@
     });
 });
 
-
+//Initialisation & Ajout Fancybox
 jQuery(document).ready(function($) {
   $('.fancybox').fancybox({
       // Options de Fancybox

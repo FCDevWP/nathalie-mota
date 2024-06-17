@@ -331,17 +331,17 @@ class WPCF7_Mail {
 	/**
 	 * Replaces mail-tags within the given text.
 	 */
-	public function replace_tags( $content, $options = '' ) {
-		if ( true === $options ) {
-			$options = array( 'html' => true );
+	public function replace_tags( $content, $args = '' ) {
+		if ( true === $args ) {
+			$args = array( 'html' => true );
 		}
 
-		$options = wp_parse_args( $options, array(
+		$args = wp_parse_args( $args, array(
 			'html' => false,
 			'exclude_blank' => false,
 		) );
 
-		return wpcf7_mail_replace_tags( $content, $options );
+		return wpcf7_mail_replace_tags( $content, $args );
 	}
 
 
@@ -391,18 +391,18 @@ class WPCF7_Mail {
  * Replaces all mail-tags within the given text content.
  *
  * @param string $content Text including mail-tags.
- * @param string|array $options Optional. Output options.
+ * @param string|array $args Optional. Output options.
  * @return string Result of replacement.
  */
-function wpcf7_mail_replace_tags( $content, $options = '' ) {
-	$options = wp_parse_args( $options, array(
+function wpcf7_mail_replace_tags( $content, $args = '' ) {
+	$args = wp_parse_args( $args, array(
 		'html' => false,
 		'exclude_blank' => false,
 	) );
 
 	if ( is_array( $content ) ) {
 		foreach ( $content as $key => $value ) {
-			$content[$key] = wpcf7_mail_replace_tags( $value, $options );
+			$content[$key] = wpcf7_mail_replace_tags( $value, $args );
 		}
 
 		return $content;
@@ -411,10 +411,10 @@ function wpcf7_mail_replace_tags( $content, $options = '' ) {
 	$content = explode( "\n", $content );
 
 	foreach ( $content as $num => $line ) {
-		$line = new WPCF7_MailTaggedText( $line, $options );
+		$line = new WPCF7_MailTaggedText( $line, $args );
 		$replaced = $line->replace_tags();
 
-		if ( $options['exclude_blank'] ) {
+		if ( $args['exclude_blank'] ) {
 			$replaced_tags = $line->get_replaced_tags();
 
 			if ( empty( $replaced_tags )
@@ -477,17 +477,17 @@ class WPCF7_MailTaggedText {
 	/**
 	 * The constructor method.
 	 */
-	public function __construct( $content, $options = '' ) {
-		$options = wp_parse_args( $options, array(
+	public function __construct( $content, $args = '' ) {
+		$args = wp_parse_args( $args, array(
 			'html' => false,
 			'callback' => null,
 		) );
 
-		$this->html = (bool) $options['html'];
+		$this->html = (bool) $args['html'];
 
-		if ( null !== $options['callback']
-		and is_callable( $options['callback'] ) ) {
-			$this->callback = $options['callback'];
+		if ( null !== $args['callback']
+		and is_callable( $args['callback'] ) ) {
+			$this->callback = $args['callback'];
 		} elseif ( $this->html ) {
 			$this->callback = array( $this, 'replace_tags_callback_html' );
 		} else {

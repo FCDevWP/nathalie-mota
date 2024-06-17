@@ -4,11 +4,11 @@
  * Validates uploaded files and moves them to the temporary directory.
  *
  * @param array $file An item of `$_FILES`.
- * @param string|array $options Optional. Options to control behavior.
+ * @param string|array $args Optional. Arguments to control behavior.
  * @return array|WP_Error Array of file paths, or WP_Error if validation fails.
  */
-function wpcf7_unship_uploaded_file( $file, $options = '' ) {
-	$options = wp_parse_args( $options, array(
+function wpcf7_unship_uploaded_file( $file, $args = '' ) {
+	$args = wp_parse_args( $args, array(
 		'required' => false,
 		'filetypes' => '',
 		'limit' => MB_IN_BYTES,
@@ -33,13 +33,13 @@ function wpcf7_unship_uploaded_file( $file, $options = '' ) {
 		}
 	}
 
-	if ( isset( $options['schema'] ) and isset( $options['name'] ) ) {
+	if ( isset( $args['schema'] ) and isset( $args['name'] ) ) {
 		$context = array(
 			'file' => true,
-			'field' => $options['name'],
+			'field' => $args['name'],
 		);
 
-		foreach ( $options['schema']->validate( $context ) as $result ) {
+		foreach ( $args['schema']->validate( $context ) as $result ) {
 			if ( is_wp_error( $result ) ) {
 				return $result;
 			}
@@ -64,7 +64,7 @@ function wpcf7_unship_uploaded_file( $file, $options = '' ) {
 		$filename = wpcf7_antiscript_file_name( $filename );
 
 		$filename = apply_filters( 'wpcf7_upload_file_name',
-			$filename, $name, $options
+			$filename, $name, $args
 		);
 
 		$filename = wp_unique_filename( $uploads_dir, $filename );

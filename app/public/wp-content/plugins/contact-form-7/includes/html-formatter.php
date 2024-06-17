@@ -95,8 +95,8 @@ class WPCF7_HTMLFormatter {
 	/**
 	 * Constructor.
 	 */
-	public function __construct( $options = '' ) {
-		$this->options = wp_parse_args( $options, array(
+	public function __construct( $args = '' ) {
+		$this->options = wp_parse_args( $args, array(
 			'auto_br' => true,
 			'auto_indent' => true,
 		) );

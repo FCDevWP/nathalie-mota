@@ -65,16 +65,15 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
                     $query->the_post();
                     ?>
                     <div class="photo-item">
-                        <a href="<?php the_permalink(); ?>" class="photo-link-eye">
-                            <?php echo wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'full', false, array( 'class' => 'photo-img' ) ); ?>
-                            <div class="photo-overlay">
-                                <div class="photo-title"><?php the_title(); ?></div>
-                                <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
-                                <a href="<?php echo wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' )[0]; ?>" class="fancybox photo-link-expand">
-                                    <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
-                                </a>
-                                <div class="photo-category"><?php echo get_the_term_list( $post->ID, 'categorie', '', ', ', '' ); ?></div>
-                            </div>
+                        <a href="<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>" class="fancybox">
+                        <?php echo wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'full', false, array( 'class' => 'photo-img' ) ); ?>
+                        <div class="photo-overlay">
+                            <div class="photo-title"><?php the_title(); ?></div>
+                            <div class="photo-eye"><i class="fa-regular fa-eye"></i></div>
+                            <div class="photo-expand"><i class="fa-solid fa-expand"></i></div>
+                            <div class="photo-category"><?php echo get_the_term_list( $post->ID, 'categorie', '', ', ', '' ); ?></div>
+                        </div>
+                        <div class="photo-icon"><i class="fas fa-eye"></i></div>
                         </a>
                     </div>
                     <?php
