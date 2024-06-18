@@ -23,7 +23,7 @@ add_action('wp_enqueue_scripts', 'nathaliemota_custom_fonts');
 function nathalie_mota_enqueue_scripts() {
     wp_enqueue_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
     wp_enqueue_style('jquery-ui-css', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
-    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'jquery-ui'), null, true);
+    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'fancybox'), null, true);
     
     wp_localize_script('nathalie-mota-scripts', 'nathaliemotaAjax', [
         'ajaxurl' => admin_url('admin-ajax.php')
@@ -245,8 +245,14 @@ add_action( 'wp_enqueue_scripts', 'nathaliemota_enqueue_single_photo_styles' );
 
 // Ajout FancyBox pour lightbox
 function nathaliemota_enqueue_fancybox_scripts() {
-    wp_enqueue_style( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css', array(), '5.0' );
-    wp_enqueue_script( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array( 'jquery' ), '5.0', true );
+    wp_enqueue_style('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css', array(), '5.0');
+    wp_enqueue_script('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array('jquery'), '5.0', true);
 }
-add_action( 'wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_scripts' );
+add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_scripts');
+
+// Ajout FancyBox CCS
+function nathaliemota_enqueue_fancybox_custom_styles() {
+    wp_enqueue_style('fancybox-custom', get_template_directory_uri() . '/assets/css/fancybox-custom.css', array(), '1.0');
+}
+add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_custom_styles');
 

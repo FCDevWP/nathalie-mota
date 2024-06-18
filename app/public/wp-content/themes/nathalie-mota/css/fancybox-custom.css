@@ -1,0 +1,30 @@
+.fancybox-container {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.fancybox-slide--current img {
+    max-width: 720px;
+    max-height: 720px;
+    width: auto;
+    height: auto;
+}
+
+.fancybox-arrow--left,
+.fancybox-arrow--right {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.fancybox-arrow--left:hover,
+.fancybox-arrow--right:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.fancybox-slide--image .fancybox-content img {
+    max-width: 720px;
+    max-height: 720px;
+    width: auto;
+    height: auto;
+}
