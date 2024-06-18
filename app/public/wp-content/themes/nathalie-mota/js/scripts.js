@@ -50,17 +50,85 @@
 });
 
 //Initialisation & Ajout Fancybox
-jQuery(document).ready(function($) {
-  $('.fancybox').fancybox({
-      // Options de Fancybox
-      loop: true,
-      infobar: true,
-      caption: function( instance, item ) {
-          var caption = $(this).data('caption') || '';
-          if (item.type === 'image') {
-              caption = (caption.length ? caption + '<br />' : '') + '<small>Image ' + (item.index + 1) + ' of ' + instance.group.length + (item.title.length ? ' - ' + item.title : '') + '</small>';
-          }
-          return caption;
+jQuery(document).ready(function ($) {
+  Fancybox.bind("[data-fancybox]", {
+    loop: true,
+    infobar: true,
+    caption: function (fancybox, carousel, slide) {
+      var caption = $(this).data('caption') || '';
+      if (slide.type === 'image') {
+        caption = (caption.length ? caption + '<br />' : '') + '<small>Image ' + (slide.index + 1) + ' of ' + carousel.slides.length + (slide.title.length ? ' - ' + slide.title : '') + '</small>';
       }
+      return caption;
+    },
   });
 });
+
+
+
+jQuery(document).ready(function($) {
+  Fancybox.bind("[data-fancybox]", {
+    // Options de Fancybox
+    backFocus: false,
+    clickContent: false,
+    clickSlide: false,
+    clickOutside: false,
+    dragToClose: false,
+    escape: false,
+    keyboard: false,
+    rightClick: false,
+    scrollOutside: false,
+    touch: false,
+    animationDuration: 300,
+    backdrop: {
+      opacity: 0.5,
+      color: "#000"
+    },
+    arrows: true,
+    infobar: false,
+    toolbar: false,
+    buttons: [],
+    loop: true,
+    slideShow: {
+      autoStart: false,
+      speed: 3000
+    },
+    fullScreen: {
+      autoStart: false
+    },
+    image: {
+      zoom: false,
+      protect: true
+    },
+    thumb: {
+      autoStart: false
+    },
+    iframe: {
+      preload: false
+    },
+    a11y: {
+      enabled: true,
+      hideShowInterstitial: true,
+      hideShowInterstitialDelay: 500,
+      keyboardNavigationInterstitial: true
+    },
+    on: {
+      init: function(instance) {
+        // Code à exécuter lors de l'initialisation de Fancybox
+      },
+      ready: function(instance) {
+        // Code à exécuter lorsque Fancybox est prêt
+      },
+      show: function(instance) {
+        // Code à exécuter lorsque Fancybox est affiché
+      },
+      hide: function(instance) {
+        // Code à exécuter lorsque Fancybox est caché
+      },
+      destroy: function(instance) {
+        // Code à exécuter lorsque Fancybox est détruit
+      }
+    }
+  });
+});
+
