@@ -49,7 +49,8 @@
     });
 });
 
-// Initialisation & Ajout Fancybox
+
+//Initialisation & Ajout Fancybox
 jQuery(document).ready(function ($) {
   Fancybox.bind("[data-fancybox]", {
     loop: true,
@@ -127,6 +128,19 @@ jQuery(document).ready(function($) {
       },
       destroy: function(instance) {
        
+        // Code à exécuter lors de l'initialisation de Fancybox
+      },
+      ready: function(instance) {
+        // Code à exécuter lorsque Fancybox est prêt
+      },
+      show: function(instance) {
+        // Code à exécuter lorsque Fancybox est affiché
+      },
+      hide: function(instance) {
+        // Code à exécuter lorsque Fancybox est caché
+      },
+      destroy: function(instance) {
+        // Code à exécuter lorsque Fancybox est détruit
       }
     }
   });
@@ -145,5 +159,6 @@ document.addEventListener('click', function(event) {
       event.preventDefault();
   }
 });
+
 
 
