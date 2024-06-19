@@ -1,78 +1,103 @@
-<div class="container">
-    <!-- Hero header avec une image et un texte en surimpression -->
-    <div class="hero-header">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/images/nathalie-9.webp" alt="Image héroïque" class="hero-image">
-        <div class="hero-overlay">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/images/Titre-header.png" alt="Titre en-tête" class="hero-text">
-        </div>
-    </div>
+(function($) {
+$(document).ready(function() {
+// Ouvre la modale lors du clic sur le lien "Contact"
+$('.open-contact-modal').on('click', function(e) {
+e.preventDefault();
+$('#contact-modal').fadeIn();
+});
 
-    <!-- Menus déroulants -->
-    <div class="menu-container">
-        <div class="left-side">
-            <section class="category-general">
-                <select name="category" id="category" class="category">
-                    <option value="" disabled selected>CATÉGORIES</option>
-                    <option value="reception" class="reception custom-option">Réception</option>
-                    <option value="concert" class="concert custom-option">Concert</option>
-                    <option value="mariage" class="mariage custom-option">Mariage</option>
-                    <option value="television" class="television custom-option">Télévision</option>
-                </select>
-            </section>
-            <section class="format-general">
-                <select name="format" id="format" class="format">
-                    <option value="" disabled selected>FORMAT</option>
-                    <option value="paysage" class="paysage custom-option">Paysage</option>
-                    <option value="portrait" class="portrait custom-option">Portrait</option>
-                </select>
-            </section>
-        </div>
-        <div class="right-side">
-            <section class="tri-general">
-                <select name="tri" id="tri" class="tri">
-                    <option value="" disabled selected>TRIER PAR</option>
-                    <option value="new" class="new custom-option">Nouveautés</option>
-                    <option value="old" class="old custom-option">Oeuvres anciennes</option>
-                </select>
-            </section>
-        </div>
-    </div>    
-    <!-- Galerie de photos -->
-    <div class="photo-gallery">
-        <?php
-            $args = array(
-              'post_type' => 'photographies',
-              'posts_per_page' => -1, // display all photos
-            );
-            $query = new WP_Query($args);
+// Ferme la modale lors du clic en dehors de celle-ci
+$(document).on('click', function(e) {
+if ($(e.target).closest('.modal-content').length === 0 && !$(e.target).hasClass('open-contact-modal')) {
+$('#contact-modal').fadeOut();
+}
+});
 
-            if ($query->have_posts()) {
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    ?>
-                    <div class="photo-item">
-                        <a href="<?php the_permalink(); ?>">
-                        <?php echo wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'full', false, array( 'class' => 'photo-img' ) ); ?>
-                        <div class="photo-overlay">
-                            <div class="photo-title"><?php the_title(); ?></div>
-                            <div class="photo-eye"><i class="fa-regular fa-eye"></i></div>
-                            <div class="photo-expand"><i class="fa-solid fa-expand"></i></div>
-                            <div class="photo-category"><?php echo get_the_term_list( $post->ID, 'category', '', ', ', '' ); ?></div>
-                        </div>
-                        <div class="photo-icon"><i class="fas fa-eye"></i></div>
-                        </a>
-                    </div>
-                    <?php
-                }
-                    wp_reset_postdata();
-            } else {
-                echo '<p>No photos found</p>';
-            }
-        ?>
-    </div>
-</div>  
+// Ferme la modale lorsque le formulaire est envoyé
+$('#contact-modal form').on('submit', function() {
+$('#contact-modal').fadeOut();
+});
 
+// Ouvrir single.php lorsque l'icône de l'œil est cliquée
+$('.photo-eye-icon').on('click', function(e) {
+e.stopPropagation();
+var photoLink = $(this).closest('.photo-item').find('a').data('single-url');
+window.location.href = photoLink;
+});
 
-  
+// Ouvrir la lightbox lorsque l'icône du carré est cliquée
+$('.photo-expand-icon').on('click', function(e) {
+e.stopPropagation();
+var photoId = $(this).closest('.photo-item').data('photo-id');
+$('#photo-title-' + photoId).trigger('click');
+});
 
+$('.photo-title').on('click', function(e) {
+e.stopPropagation();
+var photoSrc = (this).closest(′.photo−item′).find(′img′).attr(′src′);varphotoAlt=(this).closest(′.photo−item′).find(′img′).attr(′src′);varphotoAlt=(this).closest('.photo-item').find('img').attr('alt');
+var photoTitle = $(this).text();
 
+// Créez un objet avec les attributs de l'image pour la lightbox
+var photoObject = {
+    src: photoSrc,
+    alt: photoAlt,
+    title: photoTitle
+};
+
+// Ouvrez la lightbox avec l'objet d'image
+$.fancybox.open([photoObject]);
+
+});
+
+// Empêcher le titre d'être cliquable
+$('.photo-title').on('click', function(e) {
+e.preventDefault();
+});
+
+//Initialisation & Ajout Fancybox
+Fancybox.bind("[data-fancybox]", {
+loop: true,
+infobar: true,
+caption: function (fancybox, carousel, slide) {
+var caption = $(this).data('caption') || '';
+if (slide.type === 'image') {
+caption = (caption.length ? caption + '
+' : '') + 'Image ' + (slide.index + 1) + ' of ' + carousel.slides.length + (slide.title.length ? ' - ' + slide.title : '') + '';
+}
+return caption;
+},
+});
+});
+})(jQuery);
+
+/* Ajout requete jQuery */
+jQuery(document).ready(function($) {
+$.ajax({
+url: nathaliemotaAjax.ajaxurl,
+type: 'post',
+data: {
+action: 'request_photos'
+},
+success: function(response) {
+if(response) {
+let output = '';
+$.each(response, function(index, photo) {
+output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
+output += '<a href="' + photo.link + '" data-single-url="' + photo.link + '">';
+output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
+output += '<div class="photo-overlay">';
+output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
+output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
+output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
+output += '<div class="photo-category">' + photo.category + '</div>';
+output += '</div>';
+output += '</a>';
+output += '</div>';
+});
+$('#photo-gallery').html(output);
+} else {
+$('#photo-gallery').html('<p>No photos found</p>');
+}
+}
+});
+});
