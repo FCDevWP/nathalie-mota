@@ -257,3 +257,8 @@ function nathaliemota_enqueue_fancybox_custom_styles() {
 }
 add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_custom_styles');
 
+// Ajout Fontawesome
+function nathaliemota_enqueue_fontawesome() {
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+}
+add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fontawesome');
