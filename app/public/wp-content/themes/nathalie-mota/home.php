@@ -65,7 +65,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
                     $query->the_post();
                     ?>
                     <div class="photo-item">
-                    <a href="<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>" data-single-url="<?php echo get_permalink($post->ID); ?>" class="fancybox" data-fancybox="gallery">
+                        <a href="<?php echo get_the_post_thumbnail_url( $post->ID, 'full' ); ?>" data-single-url="<?php echo get_permalink($post->ID); ?>" class="fancybox" data-fancybox="gallery" data-fancybox-group="gallery" data-caption="<?php echo esc_attr(get_the_title($post->ID)); ?>">
                         <?php echo wp_get_attachment_image( get_post_thumbnail_id( $post->ID ), 'full', false, array( 'class' => 'photo-img' ) ); ?>
                         <div class="photo-overlay">
                             <div class="photo-title"><?php the_title(); ?></div>
