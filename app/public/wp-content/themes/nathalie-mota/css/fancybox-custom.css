@@ -1,14 +1,71 @@
+/* Fond noir avec opacité de 50% */
+.fancybox-bg {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+  
+/* Centrage de l'image dans la lightbox */
+.fancybox-slide--image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+  
+.fancybox-slide--image .fancybox-content {
+    max-width: 100%;
+    max-height: 100%;
+}
+  
+.fancybox-image {
+    max-width: none;
+    max-height: none;
+}
+
+.fancybox-button{
+    width: 250px;
+}
+
+/* Changer la flèche gauche */
+.fancybox-button--arrow_left svg {
+    display: none;
+}
+
+.fancybox-button--arrow_left {
+    width: 150px; /* Ajuster la largeur de l'image */
+    height: 150px; /* Ajuster la hauteur de l'image */
+    padding: 0; /* Réinitialiser le remplissage */
+    background-image: url('../assets/images/images/nav-arrow-left.png'); /* Chemin vers votre image de flèche de gauche */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Changer la flèche droite */
+.fancybox-button--arrow_right svg {
+    display: none;
+}
+
+.fancybox-button--arrow_right {
+    width: 150px; /* Ajuster la largeur de l'image */
+    height: 150px; /* Ajuster la hauteur de l'image */
+    padding: 0; /* Réinitialiser le remplissage */
+    background-image: url('../assets/images/images/nav-arrow-right.png'); /* Chemin vers votre image de flèche de droite */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+  /* Autres styles personnalisés */
 .fancybox-container {
-    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    outline: none;
 }
-
-.fancybox-slide--current img {
-    max-width: 720px;
-    max-height: 720px;
-    width: auto;
-    height: auto;
-}
-
+   
 .fancybox-arrow--left,
 .fancybox-arrow--right {
     background-color: rgba(255, 255, 255, 0.8);
@@ -16,15 +73,16 @@
     width: 50px;
     height: 50px;
 }
-
+  
 .fancybox-arrow--left:hover,
 .fancybox-arrow--right:hover {
     background-color: rgba(255, 255, 255, 1);
 }
-
+  
 .fancybox-slide--image .fancybox-content img {
     max-width: 720px;
     max-height: 720px;
     width: auto;
     height: auto;
 }
+  
