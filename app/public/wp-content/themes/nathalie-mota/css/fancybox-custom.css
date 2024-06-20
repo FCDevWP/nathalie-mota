@@ -1,8 +1,8 @@
-/* Fond noir avec opacité de 50% */
+/* Fond noir avec opacité de 80% */
 .fancybox-bg {
     background-color: rgba(0, 0, 0, 0.8);
 }
-  
+
 /* Centrage de l'image dans la lightbox */
 .fancybox-slide--image {
     display: flex;
@@ -10,52 +10,87 @@
     justify-content: center;
     height: 100%;
 }
-  
+
 .fancybox-slide--image .fancybox-content {
     max-width: 100%;
     max-height: 100%;
 }
-  
+
 .fancybox-image {
     max-width: none;
     max-height: none;
 }
 
-.fancybox-button{
-    width: 250px;
+/* Ajustement du conteneur des boutons de navigation*/
+.fancybox-navigation .fancybox-button {
+    width: auto;
+    height: auto;
+    background: none;
+    padding: 0;
 }
 
-/* Changer la flèche gauche */
-.fancybox-button--arrow_left svg {
-    display: none;
-}
-
-.fancybox-button--arrow_left {
-    width: 150px; /* Ajuster la largeur de l'image */
-    height: 150px; /* Ajuster la hauteur de l'image */
-    padding: 0; /* Réinitialiser le remplissage */
-    background-image: url('../assets/images/images/nav-arrow-left.png'); /* Chemin vers votre image de flèche de gauche */
+/* Style commun pour les deux flèches */
+/* .fancybox-button--arrow_left,
+.fancybox-button--arrow_right {
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    background-color: rgba(255, 0, 0, 0.5);
+    z-index: 99999;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-}
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+} */
 
-/* Changer la flèche droite */
+/* Flèche gauche */
+/* .fancybox-button--arrow_left {
+    left: 10px;
+    background-image: url('../assets/images/images/nav-arrow-left.png');
+} */
+
+/* Flèche droite */
+/* .fancybox-button--arrow_right {
+    right: 10px;
+    background-image: url('../assets/images/images/nav-arrow-right.png');
+} */
+
+/* Masquer les SVG par défaut */
+.fancybox-button--arrow_left svg,
 .fancybox-button--arrow_right svg {
     display: none;
 }
 
-.fancybox-button--arrow_right {
-    width: 150px; /* Ajuster la largeur de l'image */
-    height: 150px; /* Ajuster la hauteur de l'image */
-    padding: 0; /* Réinitialiser le remplissage */
-    background-image: url('../assets/images/images/nav-arrow-right.png'); /* Chemin vers votre image de flèche de droite */
+.fancybox-button--arrow_left::before,
+.fancybox-button--arrow_right::before {
+    display: block;
+    font-family: 'Space mono';
+    font-size: 24px;
+    width: 150px;
+    height: 150px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-  /* Autres styles personnalisés */
+.fancybox-button--arrow_left::before {
+    content: 'Précédente';
+    padding-left: 100px;
+}
+
+.fancybox-button--arrow_right::before {
+    content: 'Suivante';
+    padding-right: 100px;
+}
+
+/* Ajuster l'espace pour les flèches */
+/* .fancybox-slide {
+    padding: 44px 150px;
+} */
+
+/* Autres styles personnalisés */
 .fancybox-container {
     position: fixed;
     top: 0;
@@ -65,24 +100,10 @@
     z-index: 99999;
     outline: none;
 }
-   
-.fancybox-arrow--left,
-.fancybox-arrow--right {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
-  
-.fancybox-arrow--left:hover,
-.fancybox-arrow--right:hover {
-    background-color: rgba(255, 255, 255, 1);
-}
-  
+
 .fancybox-slide--image .fancybox-content img {
     max-width: 720px;
     max-height: 720px;
     width: auto;
     height: auto;
 }
-  
