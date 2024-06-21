@@ -1,29 +1,38 @@
 /* Fond noir avec opacité de 50% */
 .fancybox-bg {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Centrage de l'image dans la lightbox */
-.fancybox-slide--image {
+/* Ajustement fancybox slide container  */
+.fancybox-slide {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100vh; /* totalité hauteur écran */
+    padding: 0; 
 }
 
+/* Centrage de l'image dna le fancybox content */
 .fancybox-slide--image .fancybox-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     max-width: 100%;
     max-height: 100%;
-    margin: auto;
+    margin: 0 auto; /* assure le centrage */
+    text-align: center; /* centre texte */
 }
 
+/* Style Image  */
 .fancybox-image {
-    max-width: 720px;
-    max-height: 720px;
-    width: auto;
-    height: auto;
+    max-width: 100%; /* Assure que l'image ne dépasse pas la largeur de l'écran */
+    max-height: 100%; /* Assure que l'image ne dépasse pas l'hauteur de l'écran */
+    width: auto; /* Maintien du ratio image */
+    height: auto; /* Maintien du ratio image */
 }
 
-/* Style des boutons de navigation */
+/* Style des flèches */
 .fancybox-button--arrow_left,
 .fancybox-button--arrow_right {
     width: 150px;
@@ -31,39 +40,25 @@
     padding: 0;
     background: none;
     opacity: 1;
-}
-
-.fancybox-button--arrow_left::before,
-.fancybox-button--arrow_right::before {
     display: flex;
     align-items: center;
+    justify-content: center;
     font-family: 'Space Mono', monospace;
     font-size: 18px;
-    width: 150px;
-    height: 150px;
     color: white;
 }
 
-/* Flèche gauche avec texte "Précédent" */
 .fancybox-button--arrow_left::before {
-    content: '\00f104 Précédent'; /* Utilisation de l'icône Font Awesome pour la flèche gauche */
-    justify-content: flex-start;
-    padding-left: 200px;
+    content: '\00f104 Précédent'; /* flèche gauche avec texte */
+    padding-left: 100px;
 }
 
-/* Flèche droite avec texte "Suivant" */
 .fancybox-button--arrow_right::before {
-    content: 'Suivant \00f61'; /* Utilisation de l'icône Font Awesome pour la flèche droite */
-    justify-content: flex-end;
-    padding-right: 200px;
+    content: 'Suivant \00f061'; /* flèche droite avec texte */
+    padding-right: 100px;
 }
 
-/* Ajuster l'espace pour les flèches */
-.fancybox-slide {
-    padding: 44px 150px;
-}
-
-/* Masquer les SVG par défaut */
+/* Masquer les SVG par défaut  */
 .fancybox-button--arrow_left svg,
 .fancybox-button--arrow_right svg {
     display: none;
