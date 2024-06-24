@@ -28,47 +28,77 @@
 }
 
 .lightbox__container img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 800px;
+    max-height: 800px;
+    width: auto;
+    height: auto;
     object-fit: contain;
 }
 
-.lightbox__close,
-.lightbox__next,
-.lightbox__prev {
+.lightbox__close {
     background: none;
     border: none;
     color: white;
-    font-size: 2rem;
+    font-size: 1rem;
     position: absolute;
     cursor: pointer;
     opacity: 0.5;
     transition: opacity 0.3s;
+    top: 2rem;
+    right: 2rem;
 }
 
-.lightbox__close:hover,
-.lightbox__next:hover,
-.lightbox__prev:hover {
+.lightbox__close:hover {
     opacity: 1;
-}
-
-.lightbox__close {
-    top: 1rem;
-    right: 1rem;
 }
 
 .lightbox__next,
 .lightbox__prev {
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    cursor: pointer;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
     top: 50%;
     transform: translateY(-50%);
 }
 
+.lightbox__next:hover,
+.lightbox__prev:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 .lightbox__next {
-    right: 1rem;
+    right: 20px;
 }
 
 .lightbox__prev {
-    left: 1rem;
+    left: 20px;
+}
+
+.button-icon {
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.lightbox__prev .button-icon {
+    background-image: url('../assets/images/images/arrow-left.png');
+}
+
+.lightbox__next .button-icon {
+    background-image: url('../assets/images/images/arrow-right.png');
+    margin-left: 10px;
+    margin-right: 0;
+    order: 1;
 }
 
 .lightbox__loader {

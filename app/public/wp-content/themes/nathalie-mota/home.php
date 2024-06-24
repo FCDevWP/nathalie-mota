@@ -67,7 +67,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
                 ?>
                 <div class="photo-item">
                     <a href="<?php echo esc_url($full_image_url); ?>" class="fancybox" data-fancybox="gallery" data-single-url="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('thumbnail', array('class' => 'photo-img')); ?>
+                        <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
                         <div class="photo-overlay">
                             <div class="photo-title"><?php the_title(); ?></div>
                             <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
