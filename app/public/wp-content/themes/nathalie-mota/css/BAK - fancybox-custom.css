@@ -1,0 +1,104 @@
+/* Réinitialisation générale des styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fond de la lightbox */
+.fancybox-bg {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Centrage de la lightbox */
+.fancybox-slide--image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Conteneur de l'image */
+.fancybox-slide--image .fancybox-content {
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+/* Image */
+.fancybox-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+/* Images en orientation paysage */
+@media (min-aspect-ratio: 4/3) {
+    .fancybox-image {
+        max-width: 800px;
+        width: auto;
+        height: auto;
+    }
+}
+
+/* Images en orientation portrait */
+@media (max-aspect-ratio: 3/4) {
+    .fancybox-image {
+        max-height: 800px;
+        width: auto;
+        height: auto;
+    }
+}
+
+/* Style des boutons de navigation */
+.fancybox-button--arrow_left,
+.fancybox-button--arrow_right {
+    width: 150px;
+    height: 150px;
+    background: none;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 18px;
+    color: white;
+    border: 2px solid yellow;
+}
+
+.fancybox-button--arrow_left::before {
+    content: '\00f104 Précédent';
+    padding-left: 10px;
+}
+
+.fancybox-button--arrow_right::before {
+    content: 'Suivant \00f061';
+    padding-right: 10px;
+}
+
+/* Masquer les icônes SVG par défaut */
+.fancybox-button--arrow_left svg,
+.fancybox-button--arrow_right svg {
+    display: none;
+}
+
+
+/* Pour aider à visualiser les bordures */
+.fancybox-slide--image {
+    border: 2px solid red;
+}
+
+.fancybox-slide--image .fancybox-content {
+    border: 2px solid green;
+}
+
+.fancybox-image {
+    border: 2px solid blue;
+}

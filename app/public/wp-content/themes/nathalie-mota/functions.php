@@ -262,3 +262,10 @@ function nathaliemota_enqueue_fontawesome() {
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 }
 add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fontawesome');
+
+// Ajout nouveaux fihciers lightbox
+function nathaliemota_enqueue_lightbox_scripts() {
+    wp_enqueue_script('nathaliemota-lightbox', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), '1.0', true);
+    wp_enqueue_style('nathaliemota-lightbox', get_template_directory_uri() . '/css/lightbox.css');
+}
+add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_lightbox_scripts');

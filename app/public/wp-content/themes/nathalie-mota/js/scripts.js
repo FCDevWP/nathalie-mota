@@ -18,38 +18,6 @@
       $('#contact-modal').fadeOut();
     });
 
-    // Initialisation de Fancybox
-    $("[data-fancybox]").fancybox({
-      loop: true,
-      infobar: true,
-      caption: function (instance, current) {
-        var caption = $(current.$content).data('caption') || '';
-        if (current.type === 'image') {
-          caption = (caption.length ? caption + '<br />' : '') + 'Image ' + (instance.index + 1) + ' of ' + instance.group.length;
-        }
-        return caption;
-      },
-    });
-
-    // Ouvre la page single.php lorsque l'icône de l'œil est cliquée
-    $('.photo-eye-icon').on('click', function(e) {
-      e.preventDefault();
-      var photoLink = $(this).closest('.photo-item').find('a').attr('data-single-url');
-      window.location.href = photoLink;
-    });
-
-    // Ouvre la lightbox lorsque l'icône du carré est cliquée
-    $('.photo-expand-icon').on('click', function(e) {
-      e.preventDefault();
-      $(this).closest('a').trigger('click');
-    });
-
-
-    // Empêcher le titre d'être cliquable
-    $('.photo-title').on('click', function(e) {
-      e.preventDefault();
-    });
-
     // Requête AJAX pour récupérer les données des photos
     $.ajax({
       url: nathaliemotaAjax.ajaxurl,
@@ -62,7 +30,7 @@
           let output = '';
           $.each(response, function(index, photo) {
             output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
-            output += '<a href="' + photo.link + '" data-single-url="' + photo.link + '" class="fancybox" data-fancybox="gallery">';
+            output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
             output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
             output += '<div class="photo-overlay">';
             output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
@@ -74,6 +42,30 @@
             output += '</div>';
           });
           $('#photo-gallery').html(output);
+
+          // Initialiser la nouvelle lightbox après avoir ajouté les photos
+          Lightbox.init();
+
+          // Gestionnaire d'événements pour l'icône de l'œil
+          $('.photo-eye-icon').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var photoLink = $(this).closest('.photo-item').find('a').attr('data-single-url');
+            window.location.href = photoLink;
+          });
+
+          // Gestionnaire d'événements pour l'icône d'expansion
+          $('.photo-expand-icon').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).closest('a.fancybox').click();
+          });
+
+          // Empêcher le titre d'être cliquable
+          $('.photo-title').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+          });
         } else {
           $('#photo-gallery').html('<p>No photos found</p>');
         }
@@ -81,6 +73,3 @@
     });
   });
 })(jQuery);
-
-
-
