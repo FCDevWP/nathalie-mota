@@ -61,7 +61,7 @@ class Lightbox {
         if (i === this.images.length - 1) {
             i = -1;
         }
-        this.loadImage(this.images[i + 1]);
+        this.loadImage(this.images[(i + 1)]);
     }
 
     prev(e) {

@@ -54,8 +54,8 @@
 
 .lightbox__next,
 .lightbox__prev {
-    background: rgba(255, 255, 255, 0.5);
     border: none;
+    background: none;
     color: white;
     font-size: 1rem;
     position: absolute;
@@ -66,11 +66,13 @@
     transition: background-color 0.3s;
     top: 50%;
     transform: translateY(-50%);
+    opacity: 0.5;
 }
 
 .lightbox__next:hover,
 .lightbox__prev:hover {
     background-color: rgba(0, 0, 0, 0.7);
+    opacity: 1;
 }
 
 .lightbox__next {
@@ -82,7 +84,7 @@
 }
 
 .button-icon {
-    width: 24px;
+    width: 100px;
     height: 24px;
     background-repeat: no-repeat;
     background-position: center;
