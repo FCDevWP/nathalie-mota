@@ -113,9 +113,12 @@
 }
 
 .lightbox__info {
+    display: flex;
     color: white;
     text-align: center;
     padding: 10px;
+    justify-content: space-between;
+    
 }
 
 .lightbox__title {

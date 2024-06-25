@@ -34,8 +34,8 @@ class Lightbox {
         img.onload = () => {
             container.removeChild(loader);
             container.appendChild(img);
-            this.element.querySelector('.lightbox__category').textContent = `Catégorie : ${imageInfo.category}`;
-            this.element.querySelector('.lightbox__reference').textContent = `Référence : ${imageInfo.reference}`;
+            this.element.querySelector('.lightbox__category').textContent = `${imageInfo.category}`;
+            this.element.querySelector('.lightbox__reference').textContent = `${imageInfo.reference}`;
             this.element.classList.add('lightbox--open');
         }
         img.src = url;
@@ -85,11 +85,14 @@ class Lightbox {
             <button class="lightbox__close">X</button>
             <button class="lightbox__next"><span class="button-icon"></span>Suivante</button>
             <button class="lightbox__prev"><span class="button-icon"></span>Précédente</button>
-            <div class="lightbox__container"></div>
-            <div class="lightbox__info">
-                <p class="lightbox__category"></p>
-                <p class="lightbox__reference"></p>
+            <div class="lightbox__content">
+                <div class="lightbox__container"></div>
+                <div class="lightbox__info">
+                    <p class="lightbox__reference"></p>
+                    <p class="lightbox__category"></p>
+                </div>
             </div>
+
         `;
         dom.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this));
         dom.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this));
