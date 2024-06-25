@@ -1,14 +1,16 @@
 class Lightbox {
     static init() {
-        const links = document.querySelectorAll('.photo-gallery .photo-item a.fancybox');
-        links.forEach((link) => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = link.getAttribute('href');
-                const images = Array.from(links).map(link => link.getAttribute('href'));
-                new Lightbox(url, images);
-            });
-        });
+        const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".webp"]'));
+        const gallery = links.map(link => ({
+            href: link.getAttribute('href'),
+            title: link.getAttribute('data-title'),
+            category: link.getAttribute('data-category'),
+            reference: link.getAttribute('data-reference')
+        }));
+        links.forEach(link => link.addEventListener('click', e => {
+            e.preventDefault();
+            new Lightbox(e.currentTarget.getAttribute('href'), gallery);
+        }));
     }
 
     constructor(url, images) {
@@ -21,6 +23,7 @@ class Lightbox {
     }
 
     loadImage(url) {
+        const imageInfo = this.images.find(img => img.href === url);
         this.url = url;
         const container = this.element.querySelector('.lightbox__container');
         const loader = document.createElement('div');
@@ -31,6 +34,9 @@ class Lightbox {
         img.onload = () => {
             container.removeChild(loader);
             container.appendChild(img);
+            this.element.querySelector('.lightbox__title').textContent = imageInfo.title;
+            this.element.querySelector('.lightbox__category').textContent = `Catégorie : ${imageInfo.category}`;
+            this.element.querySelector('.lightbox__reference').textContent = `Référence : ${imageInfo.reference}`;
             this.element.classList.add('lightbox--open');
         }
         img.src = url;
@@ -57,20 +63,20 @@ class Lightbox {
 
     next(e) {
         e.preventDefault();
-        let i = this.images.findIndex(image => image === this.url);
+        let i = this.images.findIndex(image => image.href === this.url);
         if (i === this.images.length - 1) {
             i = -1;
         }
-        this.loadImage(this.images[(i + 1)]);
+        this.loadImage(this.images[i + 1].href);
     }
 
     prev(e) {
         e.preventDefault();
-        let i = this.images.findIndex(image => image === this.url);
+        let i = this.images.findIndex(image => image.href === this.url);
         if (i === 0) {
             i = this.images.length;
         }
-        this.loadImage(this.images[i - 1]);
+        this.loadImage(this.images[i - 1].href);
     }
 
     buildDOM() {
@@ -81,6 +87,11 @@ class Lightbox {
             <button class="lightbox__next"><span class="button-icon"></span>Suivante</button>
             <button class="lightbox__prev"><span class="button-icon"></span>Précédente</button>
             <div class="lightbox__container"></div>
+            <div class="lightbox__info">
+                <p class="lightbox__title"></p>
+                <p class="lightbox__category"></p>
+                <p class="lightbox__reference"></p>
+            </div>
         `;
         dom.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this));
         dom.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this));
@@ -100,11 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         eyeIcon.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             window.location.href = link.getAttribute('data-single-url');
         });
 
         expandIcon.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             link.click();
         });
     });

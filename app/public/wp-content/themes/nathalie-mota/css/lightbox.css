@@ -112,6 +112,26 @@
     animation: spin 1s linear infinite;
 }
 
+.lightbox__info {
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.lightbox__title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.lightbox__category,
+.lightbox__reference {
+    font-size: 0.9em;
+    margin: 2px 0;
+}
+
+
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

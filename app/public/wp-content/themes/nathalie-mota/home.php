@@ -64,21 +64,31 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
             while ($query->have_posts()) {
                 $query->the_post();
                 $full_image_url = get_the_post_thumbnail_url($post->ID, 'full');
+                $categories = get_the_terms($post->ID, 'categorie');
+                $category = $categories ? $categories[0]->name : '';
+                $reference = get_field('reference'); // Assurez-vous que 'reference' est le nom correct du champ ACF
                 ?>
                 <div class="photo-item">
-                    <a href="<?php echo esc_url($full_image_url); ?>" class="fancybox" data-fancybox="gallery" data-single-url="<?php the_permalink(); ?>">
+                    <a href="<?php echo esc_url($full_image_url); ?>" 
+                       class="fancybox" 
+                       data-fancybox="gallery" 
+                       data-single-url="<?php the_permalink(); ?>"
+                       data-title="<?php the_title(); ?>"
+                       data-category="<?php echo esc_attr($category); ?>"
+                       data-reference="<?php echo esc_attr($reference); ?>">
                         <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
                         <div class="photo-overlay">
                             <div class="photo-title"><?php the_title(); ?></div>
                             <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
                             <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
-                            <div class="photo-category"><?php echo get_the_term_list($post->ID, 'categorie', '', ', ', ''); ?></div>
+                            <div class="photo-category"><?php echo $category; ?></div>
                         </div>
                     </a>
                 </div>
                 <?php
             }
             wp_reset_postdata();
+    
         } else {
             echo '<p>No photos found</p>';
         }
