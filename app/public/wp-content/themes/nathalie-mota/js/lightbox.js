@@ -34,7 +34,6 @@ class Lightbox {
         img.onload = () => {
             container.removeChild(loader);
             container.appendChild(img);
-            this.element.querySelector('.lightbox__title').textContent = imageInfo.title;
             this.element.querySelector('.lightbox__category').textContent = `Catégorie : ${imageInfo.category}`;
             this.element.querySelector('.lightbox__reference').textContent = `Référence : ${imageInfo.reference}`;
             this.element.classList.add('lightbox--open');
@@ -88,7 +87,6 @@ class Lightbox {
             <button class="lightbox__prev"><span class="button-icon"></span>Précédente</button>
             <div class="lightbox__container"></div>
             <div class="lightbox__info">
-                <p class="lightbox__title"></p>
                 <p class="lightbox__category"></p>
                 <p class="lightbox__reference"></p>
             </div>

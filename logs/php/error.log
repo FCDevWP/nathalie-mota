@@ -310,3 +310,35 @@ Stack trace:
 [13-Jun-2024 09:41:08 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 52
 [13-Jun-2024 09:45:22 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 53
 [21-Jun-2024 13:09:39 UTC] PHP Warning:  filemtime(): stat failed for /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/css/single-photo.css in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 240
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 77
+[25-Jun-2024 09:41:50 UTC] PHP Warning:  Undefined variable $category in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 84
