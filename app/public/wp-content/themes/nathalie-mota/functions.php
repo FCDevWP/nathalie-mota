@@ -205,22 +205,27 @@ function get_images_from_directory($directory) {
 }
 
 
-
 // Ajout fonction AJAX pour photos
 function nathaliemota_request_photos() {
+    $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
     $query = new WP_Query([
-        'post_type' => 'Mes photographies',
-        'posts_per_page' => 2
+        'post_type' => 'photographies',
+        'posts_per_page' => 8,
+        'offset' => $offset
     ]);
 
     if ($query->have_posts()) {
         $photos = [];
         while ($query->have_posts()) {
             $query->the_post();
+            $categories = get_the_terms(get_the_ID(), 'categorie');
+            $category = $categories ? $categories[0]->name : '';
             $photos[] = [
+                'id' => get_the_ID(),
                 'title' => get_the_title(),
                 'link' => get_permalink(),
-                'image' => get_the_post_thumbnail_url(get_the_ID(), 'full')
+                'image' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                'category' => $category
             ];
         }
         wp_send_json($photos);
@@ -230,6 +235,7 @@ function nathaliemota_request_photos() {
 
     wp_die();
 }
+
 
 add_action('wp_ajax_request_photos', 'nathaliemota_request_photos');
 add_action('wp_ajax_nopriv_request_photos', 'nathaliemota_request_photos');
@@ -242,14 +248,12 @@ function nathaliemota_enqueue_single_photo_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'nathaliemota_enqueue_single_photo_styles' );
 
-
 // Ajout FancyBox pour lightbox
 function nathaliemota_enqueue_fancybox_scripts() {
     wp_enqueue_style('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css', array(), '3.5.7');
     wp_enqueue_script('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', array('jquery'), '3.5.7', true);
 }
 add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_scripts');
-
 
 // Ajout FancyBox CCS
 function nathaliemota_enqueue_fancybox_custom_styles() {
@@ -269,3 +273,53 @@ function nathaliemota_enqueue_lightbox_scripts() {
     wp_enqueue_style('nathaliemota-lightbox', get_template_directory_uri() . '/css/lightbox.css');
 }
 add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_lightbox_scripts');
+
+function load_more_photos() {
+    $paged = $_POST['paged'];
+    $args = array(
+        'post_type' => 'photographies',
+        'posts_per_page' => 8,
+        'paged' => $paged
+    );
+    
+    $query = new WP_Query($args);
+    
+    ob_start();
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $full_image_url = get_the_post_thumbnail_url($post->ID, 'full');
+            $categories = get_the_terms($post->ID, 'categorie');
+            $category = $categories ? $categories[0]->name : '';
+            $reference = get_field('reference');
+            ?>
+            <div class="photo-item">
+                <a href="<?php echo esc_url($full_image_url); ?>" 
+                   class="fancybox" 
+                   data-fancybox="gallery" 
+                   data-single-url="<?php the_permalink(); ?>"
+                   data-title="<?php the_title(); ?>"
+                   data-category="<?php echo esc_attr($category); ?>"
+                   data-reference="<?php echo esc_attr($reference); ?>">
+                    <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
+                    <div class="photo-overlay">
+                        <div class="photo-title"><?php the_title(); ?></div>
+                        <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
+                        <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
+                        <div class="photo-category"><?php echo $category; ?></div>
+                    </div>
+                </a>
+            </div>
+            <?php
+        }
+    }
+    $output = ob_get_clean();
+    wp_reset_postdata();
+    
+    wp_send_json_success($output);
+    
+    wp_die();
+}
+
+add_action('wp_ajax_load_more_photos', 'load_more_photos');
+add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');

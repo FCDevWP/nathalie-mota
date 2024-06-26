@@ -73,3 +73,56 @@
     });
   });
 })(jQuery);
+
+(function($) {
+  $(document).ready(function() {
+    // ... Votre code existant ...
+
+    let offset = 8; // Commencez à partir de 8 car nous avons déjà chargé les 8 premières photos
+
+    $('#load-more').on('click', function() {
+      $.ajax({
+        url: nathaliemotaAjax.ajaxurl,
+        type: 'post',
+        data: {
+          action: 'request_photos',
+          offset: offset
+        },
+        success: function(response) {
+          if(response) {
+            let output = '';
+            $.each(response, function(index, photo) {
+              output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
+              output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
+              output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
+              output += '<div class="photo-overlay">';
+              output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
+              output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
+              output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
+              output += '<div class="photo-category">' + photo.category + '</div>';
+              output += '</div>';
+              output += '</a>';
+              output += '</div>';
+            });
+            $('#photo-gallery').append(output);
+
+            offset += response.length; // Augmentez l'offset pour le prochain chargement
+
+            // Si nous avons chargé toutes les photos, masquez le bouton
+            if(response.length < 8) {
+              $('#load-more').hide();
+            }
+
+            // Réinitialisez la lightbox après avoir ajouté les nouvelles photos
+            Lightbox.init();
+          } else {
+            $('#load-more').hide();
+          }
+        }
+      });
+    });
+
+    // ... Votre code existant ...
+  });
+})(jQuery);
+

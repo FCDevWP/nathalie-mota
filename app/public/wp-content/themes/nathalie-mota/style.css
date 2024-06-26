@@ -289,6 +289,33 @@ padding: 20px 50px;
 .photo-expand:hover {
   cursor: pointer;
 }
+
+/*BOUTON CHARGER */
+.load-more-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.load-more-btn {
+  background-color: #d8d8d8;
+  color: black;
+  border: none;
+  padding: 20px 60px;
+  margin-bottom: 30px;
+  font-size: 12px;
+  font-family: 'Space Mono';
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.load-more-btn:hover {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+
 /*MODALE */
 
 .modal {
