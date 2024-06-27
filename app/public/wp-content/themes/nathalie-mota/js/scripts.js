@@ -75,54 +75,38 @@
 })(jQuery);
 
 (function($) {
-  $(document).ready(function() {
-    // ... Votre code existant ...
+    $(document).ready(function() {
+        // Votre code existant ici
 
-    let offset = 8; // Commencez à partir de 8 car nous avons déjà chargé les 8 premières photos
-
-    $('#load-more').on('click', function() {
-      $.ajax({
-        url: nathaliemotaAjax.ajaxurl,
-        type: 'post',
-        data: {
-          action: 'request_photos',
-          offset: offset
-        },
-        success: function(response) {
-          if(response) {
-            let output = '';
-            $.each(response, function(index, photo) {
-              output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
-              output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
-              output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
-              output += '<div class="photo-overlay">';
-              output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
-              output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
-              output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
-              output += '<div class="photo-category">' + photo.category + '</div>';
-              output += '</div>';
-              output += '</a>';
-              output += '</div>';
+        // Gestion du bouton "Charger plus"
+        var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
+        $('#load-more').on('click', function() {
+            $.ajax({
+                url: nathaliemotaAjax.ajaxurl,
+                type: 'post',
+                data: {
+                    action: 'load_more_photos',
+                    paged: paged
+                },
+                success: function(response) {
+                    console.log ("succes")
+                    if(response.success) {
+                      console.log (response.data)
+                        $('.photo-gallery').append(response.data);
+                        paged++;
+                        
+                        // Réinitialisez Lightbox pour les nouvelles photos
+                        Lightbox.init();
+                        
+                        // Si toutes les photos sont chargées, masquez le bouton
+                        if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
+                            $('#load-more').hide();
+                        }
+                    } else {
+                        $('#load-more').hide();
+                    }
+                }
             });
-            $('#photo-gallery').append(output);
-
-            offset += response.length; // Augmentez l'offset pour le prochain chargement
-
-            // Si nous avons chargé toutes les photos, masquez le bouton
-            if(response.length < 8) {
-              $('#load-more').hide();
-            }
-
-            // Réinitialisez la lightbox après avoir ajouté les nouvelles photos
-            Lightbox.init();
-          } else {
-            $('#load-more').hide();
-          }
-        }
-      });
+        });
     });
-
-    // ... Votre code existant ...
-  });
 })(jQuery);
-

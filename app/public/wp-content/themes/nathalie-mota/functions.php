@@ -31,79 +31,6 @@ function nathalie_mota_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_scripts');
 
-// Ajout page administration thème
-function nathaliemota_add_admin_pages() {
-    add_menu_page('Paramètres du thème Nathalie Mota', 'Nathalie-Mota', 'manage_options', 'nathaliemota-settings', 'nathaliemota_theme_settings', 'dashicons-admin-settings', 60);
-}
-
-function nathaliemota_theme_settings() {
-    ?>
-    <div class="wrap">
-        <h1><?php echo get_admin_page_title(); ?></h1>
-        <form action="options.php" method="post">
-            <?php settings_fields('nathaliemota_settings_fields'); ?>
-            <?php do_settings_sections('nathaliemota_settings_section'); ?>
-            <?php submit_button(); ?>
-        </form>
-    </div>
-    <?php
-}
-
-// Enregistrement des champs et des sections
-function nathaliemota_settings_register() {
-    register_setting('nathaliemota_settings_fields', 'nathaliemota_settings_fields', 'nathaliemota_settings_fields_validate');
-    add_settings_section('nathaliemota_settings_section', __('Section 1', 'nathaliemota'), 'nathaliemota_settings_section_introduction', 'nathaliemota_settings_section');
-    add_settings_field('nathaliemota_settings_field_title', 'Titre du site', 'nathaliemota_settings_field_title_output', 'nathaliemota_settings_section', 'nathaliemota_settings_section');
-    add_settings_field('nathaliemota_settings_field_slogan', 'Slogan du site', 'nathaliemota_settings_field_slogan_output', 'nathaliemota_settings_section', 'nathaliemota_settings_section');
-    add_settings_field('nathaliemota_settings_field_phone_number', 'Numéro de téléphone', 'nathaliemota_settings_field_phone_number_output', 'nathaliemota_settings_section', 'nathaliemota_settings_section');
-    add_settings_field('nathaliemota_settings_field_email', 'Courriel', 'nathaliemota_settings_field_email_output', 'nathaliemota_settings_section', 'nathaliemota_settings_section');
-}
-
-function nathaliemota_settings_section_introduction() {
-    echo __('Paramétrez les différentes options du thème Nathalie Mota.', 'nathaliemota');
-}
-
-function nathaliemota_settings_field_title_output() {
-    $value = get_option('nathaliemota_settings_field_title');
-    echo '<input type="text" name="nathaliemota_settings_field_title" value="'. $value .'" />';
-}
-
-function nathaliemota_settings_field_slogan_output() {
-    $value = get_option('nathaliemota_settings_field_slogan');
-    echo '<input type="text" name="nathaliemota_settings_field_slogan" value="'. $value .'" />';
-}
-
-function nathaliemota_settings_field_phone_number_output() {
-    $value = get_option('nathaliemota_settings_field_phone_number');
-    echo '<input type="text" name="nathaliemota_settings_field_phone_number" value="'. $value .'" />';
-}
-
-function nathaliemota_settings_field_email_output() {
-    $value = get_option('nathaliemota_settings_field_email');
-    echo '<input type="text" name="nathaliemota_settings_field_email" value="'. $value .'" />';
-}
-
-function nathaliemota_settings_fields_validate($inputs) {
-    if (!empty($_POST)) {
-        if (!empty($_POST['nathaliemota_settings_field_title'])) {
-            update_option('nathaliemota_settings_field_title', $_POST['nathaliemota_settings_field_title']);
-        }
-        if (!empty($_POST['nathaliemota_settings_field_slogan'])) {
-            update_option('nathaliemota_settings_field_slogan', $_POST['nathaliemota_settings_field_slogan']);
-        }
-        if (!empty($_POST['nathaliemota_settings_field_phone_number'])) {
-            update_option('nathaliemota_settings_field_phone_number', $_POST['nathaliemota_settings_field_phone_number']);
-        }
-        if (!empty($_POST['nathaliemota_settings_field_email'])) {
-            update_option('nathaliemota_settings_field_email', $_POST['nathaliemota_settings_field_email']);
-        }
-    }
-    return $inputs;
-}
-
-add_action('admin_menu', 'nathaliemota_add_admin_pages', 10);
-add_action('admin_init', 'nathaliemota_settings_register');
-
 /**
  * Displays the post thumbnail.
  */
@@ -207,25 +134,19 @@ function get_images_from_directory($directory) {
 
 // Ajout fonction AJAX pour photos
 function nathaliemota_request_photos() {
-    $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 0;
     $query = new WP_Query([
-        'post_type' => 'photographies',
-        'posts_per_page' => 8,
-        'offset' => $offset
+        'post_type' => 'Mes photographies',
+        'posts_per_page' => 2
     ]);
 
     if ($query->have_posts()) {
         $photos = [];
         while ($query->have_posts()) {
             $query->the_post();
-            $categories = get_the_terms(get_the_ID(), 'categorie');
-            $category = $categories ? $categories[0]->name : '';
             $photos[] = [
-                'id' => get_the_ID(),
                 'title' => get_the_title(),
                 'link' => get_permalink(),
-                'image' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
-                'category' => $category
+                'image' => get_the_post_thumbnail_url(get_the_ID(), 'full')
             ];
         }
         wp_send_json($photos);
@@ -235,7 +156,6 @@ function nathaliemota_request_photos() {
 
     wp_die();
 }
-
 
 add_action('wp_ajax_request_photos', 'nathaliemota_request_photos');
 add_action('wp_ajax_nopriv_request_photos', 'nathaliemota_request_photos');
@@ -284,8 +204,8 @@ function load_more_photos() {
     
     $query = new WP_Query($args);
     
-    ob_start();
     if ($query->have_posts()) {
+        ob_start();
         while ($query->have_posts()) {
             $query->the_post();
             $full_image_url = get_the_post_thumbnail_url($post->ID, 'full');
@@ -294,29 +214,30 @@ function load_more_photos() {
             $reference = get_field('reference');
             ?>
             <div class="photo-item">
-                <a href="<?php echo esc_url($full_image_url); ?>" 
-                   class="fancybox" 
-                   data-fancybox="gallery" 
-                   data-single-url="<?php the_permalink(); ?>"
-                   data-title="<?php the_title(); ?>"
-                   data-category="<?php echo esc_attr($category); ?>"
-                   data-reference="<?php echo esc_attr($reference); ?>">
-                    <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
-                    <div class="photo-overlay">
-                        <div class="photo-title"><?php the_title(); ?></div>
-                        <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
-                        <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
-                        <div class="photo-category"><?php echo $category; ?></div>
-                    </div>
-                </a>
+                    <a href="<?php echo esc_url($full_image_url); ?>" 
+                       class="fancybox" 
+                       data-fancybox="gallery" 
+                       data-single-url="<?php the_permalink(); ?>"
+                       data-title="<?php the_title(); ?>"
+                       data-category="<?php echo esc_attr($category); ?>"
+                       data-reference="<?php echo esc_attr($reference); ?>">
+                        <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
+                        <div class="photo-overlay">
+                            <div class="photo-title"><?php the_title(); ?></div>
+                            <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
+                            <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
+                            <div class="photo-category"><?php echo $category; ?></div>
+                        </div>
+                    </a>
             </div>
             <?php
         }
+        $output = ob_get_clean();
+        wp_reset_postdata();
+        wp_send_json_success($output);
+    } else {
+        wp_send_json_error('No more photos');
     }
-    $output = ob_get_clean();
-    wp_reset_postdata();
-    
-    wp_send_json_success($output);
     
     wp_die();
 }

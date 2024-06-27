@@ -1,110 +1,103 @@
 (function($) {
-  $(document).ready(function() {
-    // Ouvre la modale lors du clic sur le lien "Contact"
-    $('.open-contact-modal').on('click', function(e) {
-      e.preventDefault();
-      $('#contact-modal').fadeIn();
-    });
+$(document).ready(function() {
+// Ouvre la modale lors du clic sur le lien "Contact"
+$('.open-contact-modal').on('click', function(e) {
+e.preventDefault();
+$('#contact-modal').fadeIn();
+});
 
-    // Ferme la modale lors du clic en dehors de celle-ci
-    $(document).on('click', function(e) {
-      if ($(e.target).closest('.modal-content').length === 0 && !$(e.target).hasClass('open-contact-modal')) {
-        $('#contact-modal').fadeOut();
-      }
-    });
+// Ferme la modale lors du clic en dehors de celle-ci
+$(document).on('click', function(e) {
+if ($(e.target).closest('.modal-content').length === 0 && !$(e.target).hasClass('open-contact-modal')) {
+$('#contact-modal').fadeOut();
+}
+});
 
-    // Ferme la modale lorsque le formulaire est envoyé
-    $('#contact-modal form').on('submit', function() {
-      $('#contact-modal').fadeOut();
-    });
+// Ferme la modale lorsque le formulaire est envoyé
+$('#contact-modal form').on('submit', function() {
+$('#contact-modal').fadeOut();
+});
 
-    // Requête AJAX pour récupérer les données des photos
-    $.ajax({
-      url: nathaliemotaAjax.ajaxurl,
-      type: 'post',
-      data: {
-        action: 'request_photos'
-      },
-      success: function(response) {
-        if(response) {
-          let output = '';
-          $.each(response, function(index, photo) {
-            output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
-            output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
-            output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
-            output += '<div class="photo-overlay">';
-            output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
-            output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
-            output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
-            output += '<div class="photo-category">' + photo.category + '</div>';
-            output += '</div>';
-            output += '</a>';
-            output += '</div>';
-          });
-          $('#photo-gallery').html(output);
+// Ouvrir single.php lorsque l'icône de l'œil est cliquée
+$('.photo-eye-icon').on('click', function(e) {
+e.stopPropagation();
+var photoLink = $(this).closest('.photo-item').find('a').data('single-url');
+window.location.href = photoLink;
+});
 
-          // Initialiser la nouvelle lightbox après avoir ajouté les photos
-          Lightbox.init();
+// Ouvrir la lightbox lorsque l'icône du carré est cliquée
+$('.photo-expand-icon').on('click', function(e) {
+e.stopPropagation();
+var photoId = $(this).closest('.photo-item').data('photo-id');
+$('#photo-title-' + photoId).trigger('click');
+});
 
-          // Gestionnaire d'événements pour l'icône de l'œil
-          $('.photo-eye-icon').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var photoLink = $(this).closest('.photo-item').find('a').attr('data-single-url');
-            window.location.href = photoLink;
-          });
+$('.photo-title').on('click', function(e) {
+e.stopPropagation();
+var photoSrc = (this).closest(′.photo−item′).find(′img′).attr(′src′);varphotoAlt=(this).closest(′.photo−item′).find(′img′).attr(′src′);varphotoAlt=(this).closest('.photo-item').find('img').attr('alt');
+var photoTitle = $(this).text();
 
-          // Gestionnaire d'événements pour l'icône d'expansion
-          $('.photo-expand-icon').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).closest('a.fancybox').click();
-          });
+// Créez un objet avec les attributs de l'image pour la lightbox
+var photoObject = {
+    src: photoSrc,
+    alt: photoAlt,
+    title: photoTitle
+};
 
-          // Empêcher le titre d'être cliquable
-          $('.photo-title').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-          });
-        } else {
-          $('#photo-gallery').html('<p>No photos found</p>');
-        }
-      }
-    });
-  });
+// Ouvrez la lightbox avec l'objet d'image
+$.fancybox.open([photoObject]);
+
+});
+
+// Empêcher le titre d'être cliquable
+$('.photo-title').on('click', function(e) {
+e.preventDefault();
+});
+
+//Initialisation & Ajout Fancybox
+Fancybox.bind("[data-fancybox]", {
+loop: true,
+infobar: true,
+caption: function (fancybox, carousel, slide) {
+var caption = $(this).data('caption') || '';
+if (slide.type === 'image') {
+caption = (caption.length ? caption + '
+' : '') + 'Image ' + (slide.index + 1) + ' of ' + carousel.slides.length + (slide.title.length ? ' - ' + slide.title : '') + '';
+}
+return caption;
+},
+});
+});
 })(jQuery);
 
-(function($) {
-    $(document).ready(function() {
-        // Votre code existant ici
-
-        // Gestion du bouton "Charger plus"
-        var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
-        $('#load-more').on('click', function() {
-            $.ajax({
-                url: nathaliemotaAjax.ajaxurl,
-                type: 'post',
-                data: {
-                    action: 'load_more_photos',
-                    paged: paged
-                },
-                success: function(response) {
-                    if(response.success && response.data) {
-                        $('#photo-gallery').append(response.data);
-                        paged++;
-                        
-                        // Réinitialisez Lightbox pour les nouvelles photos
-                        if(typeof Lightbox !== 'undefined' && Lightbox.init) {
-                            Lightbox.init();
-                        }
-                        
-                        // Si toutes les photos sont chargées (16 au total), cachez le bouton
-                        if(paged > 3) {
-                            $('#load-more').hide();
-                        }
-                    }
-                }
-            });
-        });
-    });
-})(jQuery);
+/* Ajout requete jQuery */
+jQuery(document).ready(function($) {
+$.ajax({
+url: nathaliemotaAjax.ajaxurl,
+type: 'post',
+data: {
+action: 'request_photos'
+},
+success: function(response) {
+if(response) {
+let output = '';
+$.each(response, function(index, photo) {
+output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
+output += '<a href="' + photo.link + '" data-single-url="' + photo.link + '">';
+output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
+output += '<div class="photo-overlay">';
+output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
+output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
+output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
+output += '<div class="photo-category">' + photo.category + '</div>';
+output += '</div>';
+output += '</a>';
+output += '</div>';
+});
+$('#photo-gallery').html(output);
+} else {
+$('#photo-gallery').html('<p>No photos found</p>');
+}
+}
+});
+});
