@@ -76,8 +76,7 @@
 
 (function($) {
     $(document).ready(function() {
-        // Votre code existant ici
-
+        
         // Gestion du bouton "Charger plus"
         var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
         $('#load-more').on('click', function() {
@@ -95,10 +94,10 @@
                         $('.photo-gallery').append(response.data);
                         paged++;
                         
-                        // Réinitialisez Lightbox pour les nouvelles photos
+                        // Réinitialise Lightbox pour les nouvelles photos
                         Lightbox.init();
                         
-                        // Si toutes les photos sont chargées, masquez le bouton
+                        // Si toutes les photos sont chargées, masque le bouton
                         if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
                             $('#load-more').hide();
                         }
