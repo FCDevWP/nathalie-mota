@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-06-13 12:44:04+0000\n"
+"PO-Revision-Date: 2024-06-28 09:28:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/4.0.1\n"
 "Language: fr\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
+
+#: includes/contact-form.php:576
+msgid "Invalid action URL is detected."
+msgstr "Une URL d’action invalide a été détectée."
 
 #: modules/constant-contact/service.php:371
 msgid "This feature is deprecated. You are not recommended to use it."
@@ -21,7 +25,7 @@ msgstr "https://contactform7.com/2024/02/02/we-end-the-constant-contact-integrat
 
 #: modules/constant-contact/service.php:368
 msgid "Warning:"
-msgstr "Attention : "
+msgstr "Avertissement : "
 
 #: modules/checkbox.php:285 modules/select.php:217
 msgid "Undefined value was submitted through this field."
@@ -30,6 +34,10 @@ msgstr "Une valeur non définie a été envoyée dans ce champ."
 #: admin/admin.php:693
 msgid "The Constant Contact integration is deprecated. It is not recommended to continue using the feature."
 msgstr "L’intégration de Constant Contact est obsolète. Il n’est pas recommandé de continuer à l’utiliser."
+
+#: includes/rest-api.php:360
+msgid "There is no valid unit tag."
+msgstr "Il n’y a aucune balise d’unité valide."
 
 #: modules/sendinblue/contact-form-properties.php:99
 #: modules/sendinblue/service.php:154
@@ -166,7 +174,7 @@ msgid "The request payload format is not supported."
 msgstr "Le format de fichier téléversé n’est pas pris en charge."
 
 #. translators: 1: WordPress hook name, 2: version number
-#: includes/functions.php:577
+#: includes/functions.php:575
 msgid "Hook %1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s with no alternative available."
 msgstr "Le crochet %1$s est <strong>obsolète</strong> depuis la version %2$s de Contact Form 7, sans aucune alternative disponible."
 
@@ -188,7 +196,7 @@ msgstr "Veuillez renseigner ce champ."
 
 #. translators: 1: PHP function name, 2: version number, 3: alternative
 #. function name
-#: includes/functions.php:528
+#: includes/functions.php:526
 msgid "Function %1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead."
 msgstr "La fonction %1$s est <strong>dépréciée</strong> depuis Contact Form 7 version %2$s ! Veuillez utiliser %3$s à la place."
 
@@ -198,7 +206,7 @@ msgstr "Protection contre le contenu indésirable"
 
 #. translators: Developer debugging message. 1: PHP function name, 2:
 #. Explanatory message, 3: Contact Form 7 version number.
-#: includes/functions.php:612
+#: includes/functions.php:610
 msgid "Function %1$s was called incorrectly. %2$s %3$s"
 msgstr "La fonction %1$s a été appelée de façon incorrecte. %2$s %3$s"
 
@@ -310,6 +318,11 @@ msgstr "https://contactform7.com/stripe-integration/"
 #: admin/includes/welcome-panel.php:158
 msgid "With help from cloud-based machine learning, anti-spam services will protect your forms (%1$s). Even payment services are natively supported (%2$s)."
 msgstr "Grâce à l’apprentissage automatique basé sur le cloud, les services anti-spam protégeront vos formulaires (%1$s). Même les services de paiement sont pris en charge de manière native (%2$s)."
+
+#. translators: 1: link labeled 'Brevo'
+#: admin/includes/welcome-panel.php:150
+msgid "Your contact forms will become more powerful and versatile by integrating them with external APIs. With CRM and email marketing services, you can build your own contact lists (%1$s)."
+msgstr "Vos formulaires de contact deviendront plus puissants et polyvalents en les intégrant avec des API externes. Grâce aux services de CRM et de marketing par e-mail, vous pouvez construire vos propres listes de contacts (%1$s)."
 
 #: admin/includes/welcome-panel.php:142
 msgid "You have strong allies to back you up."
@@ -460,7 +473,7 @@ msgid "Disallowed words are used."
 msgstr "Les mots interdits sont utilisés."
 
 #. translators: %s: Contact Form 7 version number.
-#: includes/functions.php:604
+#: includes/functions.php:602
 msgid "(This message was added in Contact Form 7 version %s.)"
 msgstr "(Ce message a été ajouté dans Contact Form 7 version %s.)"
 
@@ -493,7 +506,7 @@ msgstr "%1$s et %2$s"
 msgid "Additional settings"
 msgstr "Réglages aditionnels"
 
-#: modules/constant-contact/service.php:352 modules/recaptcha/service.php:256
+#: modules/constant-contact/service.php:352 modules/recaptcha/service.php:260
 #: modules/sendinblue/service.php:123 modules/sendinblue/service.php:131
 #: modules/stripe/service.php:141
 msgid "Error"
@@ -507,7 +520,7 @@ msgstr "La taille totale des fichiers joints est trop grande."
 msgid "Unavailable HTML elements are used in the form template."
 msgstr "Des éléments HTML indisponibles sont utilisés dans le modèle du formulaire."
 
-#: modules/recaptcha/service.php:284
+#: modules/recaptcha/service.php:288
 msgid "reCAPTCHA is active on this site."
 msgstr "reCAPTCHA est activé sur ce site."
 
@@ -553,19 +566,19 @@ msgid "Connection established."
 msgstr "Connexion établie."
 
 #. translators: 1: response code, 2: message, 3: body, 4: URL
-#: includes/functions.php:651
+#: includes/functions.php:649
 msgid "HTTP Response: %1$s %2$s %3$s from %4$s"
 msgstr "Réponse HTTP : %1$s %2$s %3$s de %4$s"
 
-#: modules/recaptcha/service.php:356 modules/stripe/service.php:253
+#: modules/recaptcha/service.php:360 modules/stripe/service.php:253
 msgid "Save Changes"
 msgstr "Enregistrer les changements"
 
-#: modules/recaptcha/service.php:270
+#: modules/recaptcha/service.php:274
 msgid "reCAPTCHA protects you against spam and other types of automated abuse. With Contact Form 7&#8217;s reCAPTCHA integration module, you can block abusive form submissions by spam bots."
 msgstr "reCAPTCHA vous protège contre les indésirables et autres types d’abus automatisés. Avec le module d’intégration reCAPTCHA de Contact Form 7, vous pouvez bloquer les envois abusifs de formulaires par des robots  spammeurs."
 
-#: modules/recaptcha/recaptcha.php:261 modules/recaptcha/service.php:277
+#: modules/recaptcha/recaptcha.php:261 modules/recaptcha/service.php:281
 msgid "reCAPTCHA (v3)"
 msgstr "reCAPTCHA (v3)"
 
@@ -577,7 +590,7 @@ msgstr "Les clés d’API reCAPTCHA v3 sont différentes de celles de v2 ; Les 
 msgid "Connect to the Constant Contact API"
 msgstr "Connexion à l’API Constant Contact"
 
-#: modules/recaptcha/service.php:351 modules/stripe/service.php:249
+#: modules/recaptcha/service.php:355 modules/stripe/service.php:249
 msgctxt "API keys"
 msgid "Remove Keys"
 msgstr "Retirer les clés"
@@ -598,7 +611,7 @@ msgstr "Clé secrète"
 msgid "API Key"
 msgstr "Clé de l’API"
 
-#: modules/constant-contact/service.php:401 modules/recaptcha/service.php:294
+#: modules/constant-contact/service.php:401 modules/recaptcha/service.php:298
 #: modules/stripe/service.php:183
 msgid "Setup Integration"
 msgstr "Configuration de l’intégration"
@@ -848,7 +861,7 @@ msgstr "Une erreur de configuration a été détectée"
 
 #. translators: 1: WordPress hook name, 2: version number, 3: alternative hook
 #. name
-#: includes/functions.php:566
+#: includes/functions.php:564
 msgid "Hook %1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead."
 msgstr "%1$s est <strong>obsolète</strong> depuis la version %2$s de Contact Form 7 ! À la place, veuillez utiliser %3$s."
 
@@ -977,24 +990,24 @@ msgid "You are not allowed to validate configuration."
 msgstr "Vous n’avez pas les droits nécessaires pour valider la configuration."
 
 #: admin/includes/welcome-panel.php:64 admin/includes/welcome-panel.php:160
-#: modules/recaptcha/recaptcha.php:260 modules/recaptcha/service.php:276
+#: modules/recaptcha/recaptcha.php:260 modules/recaptcha/service.php:280
 msgid "https://contactform7.com/recaptcha/"
 msgstr "https://contactform7.com/recaptcha/"
 
-#: modules/recaptcha/service.php:327 modules/stripe/service.php:228
+#: modules/recaptcha/service.php:331 modules/stripe/service.php:228
 msgid "Secret Key"
 msgstr "Clé secrète"
 
-#: modules/recaptcha/service.php:310
+#: modules/recaptcha/service.php:314
 msgid "Site Key"
 msgstr "Clé du site"
 
-#: modules/recaptcha/service.php:262 modules/sendinblue/service.php:139
+#: modules/recaptcha/service.php:266 modules/sendinblue/service.php:139
 #: modules/stripe/service.php:149
 msgid "Settings saved."
 msgstr "Réglages enregistrés."
 
-#: modules/recaptcha/service.php:257 modules/sendinblue/service.php:132
+#: modules/recaptcha/service.php:261 modules/sendinblue/service.php:132
 #: modules/stripe/service.php:142
 msgid "Invalid key values."
 msgstr "La valeur de la clé est invalide."

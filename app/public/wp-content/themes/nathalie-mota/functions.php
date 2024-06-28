@@ -131,7 +131,6 @@ function get_images_from_directory($directory) {
     return $images;
 }
 
-
 // Ajout fonction AJAX pour photos
 function nathaliemota_request_photos() {
     $query = new WP_Query([
@@ -244,3 +243,5 @@ function load_more_photos() {
 
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
+
+
