@@ -91,10 +91,12 @@
             }
             ?>
         </div>
+        
+    
     </section>
-
+    <hr id="line" / >
     <section class="section-3">
-        <h2>Vous aimerez aussi</h2>
+        <p>Vous aimerez aussi</p>
         <div class="related-photos">
             <?php
             // Récupérer les photos liées (même catégorie par exemple)
