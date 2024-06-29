@@ -66,10 +66,9 @@
             // Récupérer le répertoire des images
             $image_dir = get_template_directory() . '/assets/images/';
 
-            if (is_dir($image_dir)) {
-                
-            } else {
-                
+            if (!is_dir($image_dir)) {
+                echo '<p>Le répertoire des images n\'existe pas.</p>';
+                return;
             }
 
             // Récupérer les fichiers d'image dans le répertoire
@@ -110,12 +109,14 @@
                     echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
 
                     // Afficher les flèches de navigation
+                    echo '<div class="navigation-arrows">';
                     if ($current_index > 0) {
-                        echo '<a href="#" class="prev-arrow"><i class="fas fa-arrow-left"></i></a>';
+                        echo '<a href="#" class="prev-arrow"><i class="fa-solid fa-arrow-left-long"></i></a>';
                     }
                     if ($current_index < count($images) - 1) {
-                        echo '<a href="#" class="next-arrow"><i class="fas fa-arrow-right"></i></a>';
+                        echo '<a href="#" class="next-arrow"><i class="fa-solid fa-arrow-right-long"></i></a>';
                     }
+                    echo '</div>';
                 } else {
                     echo '<p>Image mise en avant non trouvée dans le répertoire.</p>';
                     echo '<p>Nom de fichier de l\'image mise en avant : ' . $featured_image_file . '</p>';

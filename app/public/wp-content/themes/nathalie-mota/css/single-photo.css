@@ -72,10 +72,14 @@ p, h1 {
 
 /* Section 2 */
 .section-2 {
-    height: 100px;
     display: flex;
-    align-items: center;
+    justify-content: space-between; 
+    /* align-items: flex-start;  */
+    align-items: stretch; 
+    height: auto; 
+    padding: 20px 0; 
 }
+
 
 .section-2 p {
     padding-bottom: 0px;
@@ -94,8 +98,10 @@ p, h1 {
     height: 50px;
     font-size: 14px;
     align-content: center;
+    /* display: flex;
+    justify-content: center; */
     text-align: center;
-    margin-right: 15px;
+    /* margin-right: 15px; */
 }
 
 
@@ -119,6 +125,34 @@ p, h1 {
 
 #line {
     margin-left: 15px;
+}
+
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligne les éléments à droite */
+    width: 100%; 
+}
+
+.small-photo {
+    width: 15%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.navigation-arrows {
+    display: flex;
+    justify-content: flex-end; /* Aligne les flèches à droite */
+    gap: 20px;
+    width: 30%; /* Fait correspondre la largeur avec celle de l'image */
+}
+
+.prev-arrow,
+.next-arrow {
+    font-size: 20px; /* Taille des icônes de flèche */
+    color: #000; /* Couleur des flèches */
+    text-decoration: none;
 }
 
 /* Section 3 */
