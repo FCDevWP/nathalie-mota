@@ -32,13 +32,14 @@
 <div class="photo-content">
     <section class="section-1">
         <div class="left-column">
-            <div class="photo-meta">
+            <div class="photo-meta column">
                 <h1 class="photo-title-new"><?php the_title(); ?></h1>
-                <p><strong>Référence :</strong>   </p>
-                <p><strong>Catégories :</strong> <?php echo $categorie; ?></p>
-                <p><strong>Format :</strong> <?php echo $format; ?></p>
-                <p><strong>Type :</strong> <?php /* Ajouter ici le code pour afficher le type */ ?></p>
-                <p><strong>Année :</strong> <?php /* Ajouter ici le code pour afficher l'année */ ?></p>
+                <p>Référence :   </p>
+                <p>Catégories : <?php echo $categorie; ?></p>
+                <p>Format : <?php echo $format; ?></p>
+                <p>Type : <?php /* Ajouter ici le code pour afficher le type */ ?></p>
+                <p>Année : <?php /* Ajouter ici le code pour afficher l'année */ ?></p>
+                <hr />
             </div>
         </div>
         <div class="right-column">
@@ -93,7 +94,7 @@
     </section>
 
     <section class="section-3">
-        <h2>VOUS AIMEREZ AUSSI</h2>
+        <h2>Vous aimerez aussi</h2>
         <div class="related-photos">
             <?php
             // Récupérer les photos liées (même catégorie par exemple)
