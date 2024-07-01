@@ -75,7 +75,6 @@ p, h1 {
     display: flex;
     justify-content: space-between; 
     align-items: center; /* Centre verticalement les éléments */
-    align-items: stretch; 
     height: auto; 
     padding: 20px 0; 
 }
