@@ -125,27 +125,23 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   function updateArrows(currentImage) {
-      // Utiliser la variable globale photoImages définie dans le PHP
-      const images = window.photoImages || [];
-      const currentIndex = images.indexOf(currentImage);
-      
-      const prevArrow = document.querySelector('.prev-arrow');
-      const nextArrow = document.querySelector('.next-arrow');
-      
-      if (currentIndex > 0) {
-          prevArrow.style.display = 'inline-block';
-          prevArrow.setAttribute('data-image', images[currentIndex - 1]);
-      } else {
-          prevArrow.style.display = 'none';
-      }
-      
-      if (currentIndex < images.length - 1) {
-          nextArrow.style.display = 'inline-block';
-          nextArrow.setAttribute('data-image', images[currentIndex + 1]);
-      } else {
-          nextArrow.style.display = 'none';
-      }
+    const images = window.photoImages || [];
+    let currentIndex = images.indexOf(currentImage);
+    
+    const prevArrow = document.querySelector('.prev-arrow');
+    const nextArrow = document.querySelector('.next-arrow');
+    
+    // Navigation infinie
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    const nextIndex = (currentIndex + 1) % images.length;
+    
+    prevArrow.style.display = 'inline-block';
+    prevArrow.setAttribute('data-image', images[prevIndex]);
+    
+    nextArrow.style.display = 'inline-block';
+    nextArrow.setAttribute('data-image', images[nextIndex]);
   }
+
 });
 
 document.addEventListener('DOMContentLoaded', function() {
