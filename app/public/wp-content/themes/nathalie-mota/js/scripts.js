@@ -148,4 +148,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var myModal = new bootstrap.Modal(document.getElementById('contact-modal'), {
+      keyboard: false
+  });
+
+  document.querySelectorAll('.btn-contact').forEach(function(button) {
+      button.addEventListener('click', function(event) {
+          event.preventDefault();
+          myModal.show();
+      });
+  });
+});
+
+
 
