@@ -148,10 +148,12 @@ p, h1 {
 }
 
 .small-photo {
-    width: 15%;
-    height: auto;
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Cela garantit que l'image couvre bien le carré sans être déformée */
     margin-bottom: 10px;
 }
+
 
 .navigation-arrows {
     display: flex;
