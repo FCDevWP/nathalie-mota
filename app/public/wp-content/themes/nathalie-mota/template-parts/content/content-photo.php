@@ -81,51 +81,52 @@
             return strcasecmp($filename1, $filename2) === 0;
         }
 
-        // Vérifier si le tableau $images n'est pas vide et que l'image mise en avant existe
-        if (!empty($images)) {
-            $current_index = -1; // Initialiser à -1 pour détecter si l'image n'est pas trouvée
-            foreach ($images as $index => $image) {
-                if (compare_filenames($featured_image_file, $image)) {
-                    $current_index = $index;
-                    break;
-                }
+    // Vérifier si le tableau $images n'est pas vide et que l'image mise en avant existe
+    if (!empty($images)) {
+        $current_index = -1;
+        foreach ($images as $index => $image) {
+            if (compare_filenames($featured_image_file, $image)) {
+                $current_index = $index;
+                break;
             }
-
-            if ($current_index !== -1) {
-                // Assurer que l'index est dans les limites valides
-                $current_index = array_search($images[$current_index], array_values($images));
-
-                // Déterminer l'index de la miniature à afficher (précédente ou suivante)
-                $thumbnail_index = ($current_index > 0) ? $current_index - 1 : $current_index + 1;
-                $thumbnail_index = max(0, min($thumbnail_index, count($images) - 1));
-
-                // Obtenir le nom de fichier de la miniature
-                $thumbnail_file = $images[$thumbnail_index];
-
-                // Construire l'URL de la miniature
-                $thumbnail_url = get_template_directory_uri() . '/assets/images/' . $thumbnail_file;
-
-                // Afficher la miniature
-                echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
-
-                // Afficher les flèches de navigation
-                echo '<div class="navigation-arrows">';
-                if ($current_index > 0) {
-                    $prev_image = array_values($images)[$current_index - 1];
-                    echo '<a href="#" class="prev-arrow" data-image="' . esc_attr($prev_image) . '"><i class="fa-solid fa-arrow-left-long"></i></a>';
-                }
-                if ($current_index < count($images) - 1) {
-                    $next_image = array_values($images)[$current_index + 1];
-                    echo '<a href="#" class="next-arrow" data-image="' . esc_attr($next_image) . '"><i class="fa-solid fa-arrow-right-long"></i></a>';
-                }
-                echo '</div>';
-            } else {
-                echo '<p>Image mise en avant non trouvée dans le répertoire.</p>';
-            }
-        } else {
-            echo '<p>Aucune image trouvée dans le répertoire.</p>';
         }
-        ?>
+
+        if ($current_index !== -1) {
+            // Assurer que l'index est dans les limites valides
+            $current_index = array_search($images[$current_index], array_values($images));
+
+            // Déterminer l'index de la miniature à afficher (précédente ou suivante)
+            $thumbnail_index = ($current_index > 0) ? $current_index - 1 : $current_index + 1;
+            $thumbnail_index = max(0, min($thumbnail_index, count($images) - 1));
+
+            // Obtenir le nom de fichier de la miniature
+            $thumbnail_file = $images[$thumbnail_index];
+
+            // Construire l'URL de la miniature
+            $thumbnail_url = get_template_directory_uri() . '/assets/images/' . $thumbnail_file;
+
+            // Afficher la miniature et les flèches dans la nouvelle structure
+            echo '<div class="image-container">';
+            echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
+            echo '<div class="navigation-arrows">';
+            if ($current_index > 0) {
+                $prev_image = array_values($images)[$current_index - 1];
+                echo '<a href="#" class="prev-arrow" data-image="' . esc_attr($prev_image) . '"><i class="fa-solid fa-arrow-left-long"></i></a>';
+            }
+            if ($current_index < count($images) - 1) {
+                $next_image = array_values($images)[$current_index + 1];
+                echo '<a href="#" class="next-arrow" data-image="' . esc_attr($next_image) . '"><i class="fa-solid fa-arrow-right-long"></i></a>';
+            }
+            echo '</div>'; // Fermeture de navigation-arrows
+            echo '</div>'; // Fermeture de image-container
+        } else {
+            echo '<p>Image mise en avant non trouvée dans le répertoire.</p>';
+        }
+    } else {
+        echo '<p>Aucune image trouvée dans le répertoire.</p>';
+    }
+    ?>
+
         <script>
         var photoImages = <?php echo json_encode(array_values($images)); ?>;
         </script>
