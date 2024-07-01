@@ -136,7 +136,8 @@
 
     <hr id="line" />
     <section class="section-3">
-        <p>Vous aimerez aussi</p>
+    <p style="text-align: justify;">Vous aimerez aussi</p>
+    <div class="photo-grid">
         <?php
         // Récupérer les photos liées (même catégorie par exemple)
         $related_args = array(
@@ -157,10 +158,9 @@
             while ($related_query->have_posts()) {
                 $related_query->the_post();
                 ?>
-                <div class="related-photo">
+                <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
                     <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('thumbnail'); ?>
-                        <h3><?php the_title(); ?></h3>
+                        <?php the_post_thumbnail('large'); ?>
                     </a>
                 </div>
                 <?php
@@ -170,6 +170,8 @@
             echo '<p>Il n\'y a aucune photo supplémentaire de cette catégorie</p>';
         }
         ?>
-    </section>
+    </div>
+</section>
+
 
 </div>
