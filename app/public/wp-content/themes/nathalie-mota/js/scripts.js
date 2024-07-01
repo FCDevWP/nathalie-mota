@@ -110,4 +110,42 @@
     });
 })(jQuery);
 
+document.addEventListener('DOMContentLoaded', function() {
+  const arrows = document.querySelectorAll('.prev-arrow, .next-arrow');
+  arrows.forEach(arrow => {
+      arrow.addEventListener('click', function(e) {
+          e.preventDefault();
+          const imageName = this.getAttribute('data-image');
+          const imageUrl = '/wp-content/themes/nathalie-mota/assets/images/' + imageName;
+          document.querySelector('.small-photo').src = imageUrl;
+          
+          // Mettre à jour les flèches
+          updateArrows(imageName);
+      });
+  });
+
+  function updateArrows(currentImage) {
+      // Utiliser la variable globale photoImages définie dans le PHP
+      const images = window.photoImages || [];
+      const currentIndex = images.indexOf(currentImage);
+      
+      const prevArrow = document.querySelector('.prev-arrow');
+      const nextArrow = document.querySelector('.next-arrow');
+      
+      if (currentIndex > 0) {
+          prevArrow.style.display = 'inline-block';
+          prevArrow.setAttribute('data-image', images[currentIndex - 1]);
+      } else {
+          prevArrow.style.display = 'none';
+      }
+      
+      if (currentIndex < images.length - 1) {
+          nextArrow.style.display = 'inline-block';
+          nextArrow.setAttribute('data-image', images[currentIndex + 1]);
+      } else {
+          nextArrow.style.display = 'none';
+      }
+  }
+});
+
 

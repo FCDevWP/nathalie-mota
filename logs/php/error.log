@@ -991,3 +991,35 @@ Stack trace:
 #7 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
 #8 {main}
   thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 68
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[01-Jul-2024 05:33:49 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
