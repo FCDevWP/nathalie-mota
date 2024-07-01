@@ -136,42 +136,43 @@
 
     <hr id="line" />
     <section class="section-3">
-    <p style="text-align: justify;">Vous aimerez aussi</p>
-    <div class="photo-grid">
-        <?php
-        // Récupérer les photos liées (même catégorie par exemple)
-        $related_args = array(
-            'post_type' => 'photographies',
-            'posts_per_page' => 2,
-            'post__not_in' => array(get_the_ID()),
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'categorie',
-                    'field' => 'slug',
-                    'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'slugs')),
+    <div class="section-3-container">
+        <p style="text-align: justify;">Vous aimerez aussi</p>
+        <div class="photo-grid">
+            <?php
+            // Récupérer les photos liées (même catégorie par exemple)
+            $related_args = array(
+                'post_type' => 'photographies',
+                'posts_per_page' => 2,
+                'post__not_in' => array(get_the_ID()),
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'categorie',
+                        'field' => 'slug',
+                        'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'slugs')),
+                    ),
                 ),
-            ),
-        );
-        $related_query = new WP_Query($related_args);
+            );
+            $related_query = new WP_Query($related_args);
 
-        if ($related_query->have_posts()) {
-            while ($related_query->have_posts()) {
-                $related_query->the_post();
-                ?>
-                <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('large'); ?>
-                    </a>
-                </div>
-                <?php
+            if ($related_query->have_posts()) {
+                while ($related_query->have_posts()) {
+                    $related_query->the_post();
+                    ?>
+                    <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
+                        <a href="<?php the_permalink(); ?>">
+                            <?php the_post_thumbnail('large'); ?>
+                        </a>
+                    </div>
+                    <?php
+                }
+                wp_reset_postdata();
+            } else {
+                echo '<p>Il n\'y a aucune photo supplémentaire dans cette catégorie</p>';
             }
-            wp_reset_postdata();
-        } else {
-            echo '<p>Il n\'y a aucune photo supplémentaire de cette catégorie</p>';
-        }
-        ?>
+            ?>
+        </div>
     </div>
-</section>
-
+    </section>
 
 </div>
