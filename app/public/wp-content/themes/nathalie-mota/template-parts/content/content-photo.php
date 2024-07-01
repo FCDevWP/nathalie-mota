@@ -137,38 +137,39 @@
     <hr id="line" />
     <section class="section-3">
         <p>Vous aimerez aussi</p>
-        <div class="related-photos">
-            <?php
-            // Récupérer les photos liées (même catégorie par exemple)
-            $related_args = array(
-                'post_type' => 'photographies',
-                'posts_per_page' => 2,
-                'post__not_in' => array(get_the_ID()),
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'categories',
-                        'field' => 'slug',
-                        'terms' => wp_get_post_terms(get_the_ID(), 'categories', array('fields' => 'slugs')),
-                    ),
+        <?php
+        // Récupérer les photos liées (même catégorie par exemple)
+        $related_args = array(
+            'post_type' => 'photographies',
+            'posts_per_page' => 2,
+            'post__not_in' => array(get_the_ID()),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'categorie',
+                    'field' => 'slug',
+                    'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'slugs')),
                 ),
-            );
-            $related_query = new WP_Query($related_args);
+            ),
+        );
+        $related_query = new WP_Query($related_args);
 
-            if ($related_query->have_posts()) {
-                while ($related_query->have_posts()) {
-                    $related_query->the_post();
-                    ?>
-                    <div class="related-photo">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail('thumbnail'); ?>
-                            <h3><?php the_title(); ?></h3>
-                        </a>
-                    </div>
-                    <?php
-                }
-                wp_reset_postdata();
+        if ($related_query->have_posts()) {
+            while ($related_query->have_posts()) {
+                $related_query->the_post();
+                ?>
+                <div class="related-photo">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail('thumbnail'); ?>
+                        <h3><?php the_title(); ?></h3>
+                    </a>
+                </div>
+                <?php
             }
-            ?>
-        </div>
+            wp_reset_postdata();
+        } else {
+            echo '<p>Il n\'y a aucune photo supplémentaire de cette catégorie</p>';
+        }
+        ?>
     </section>
+
 </div>
