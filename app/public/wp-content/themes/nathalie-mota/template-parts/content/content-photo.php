@@ -72,43 +72,53 @@
         }
 
         // Récupérer les fichiers d'image dans le répertoire
+        $current_index = -1;
         $images = preg_grep('~\.(jpeg|jpg|png|gif|webp)$~', scandir($image_dir));
+        // var_dump($images); 
+        // echo "Featured image file: " . $featured_image_file . "<br>";
+        // echo "Current index: " . $current_index . "<br>";
+
 
         // Fonction pour comparer les noms de fichiers en ignorant "-scaled"
         function compare_filenames($filename1, $filename2) {
-            $filename1 = preg_replace('/-scaled|-\d+x\d+/', '', pathinfo($filename1, PATHINFO_FILENAME));
-            $filename2 = preg_replace('/-scaled|-\d+x\d+/', '', pathinfo($filename2, PATHINFO_FILENAME));
-            return strcasecmp($filename1, $filename2) === 0;
+            $filename1 = preg_replace('/\.[^.]+$/', '', $filename1);
+            $filename2 = preg_replace('/\.[^.]+$/', '', $filename2);
+            $filename1 = preg_replace('/-scaled|-\d+x\d+/', '', $filename1);
+            $filename2 = preg_replace('/-scaled|-\d+x\d+/', '', $filename2);
+            return stripos($filename1, $filename2) !== false || stripos($filename2, $filename1) !== false;
         }
+        
+
 
     // Vérifier si le tableau $images n'est pas vide et que l'image mise en avant existe
     if (!empty($images)) {
         $current_index = -1;
         foreach ($images as $index => $image) {
+            // echo "Comparing: " . $featured_image_file . " with " . $image . "<br>";
             if (compare_filenames($featured_image_file, $image)) {
                 $current_index = $index;
+                // echo "Match found at index: " . $current_index . "<br>";
                 break;
             }
         }
-
-        if ($current_index !== -1) {
-            // Assurer que l'index est dans les limites valides
-            $current_index = array_search($images[$current_index], array_values($images));
-
-            // Déterminer l'index de la miniature à afficher (précédente ou suivante)
-            $thumbnail_index = ($current_index > 0) ? $current_index - 1 : $current_index + 1;
-            $thumbnail_index = max(0, min($thumbnail_index, count($images) - 1));
-
-            // Obtenir le nom de fichier de la miniature
+        
+        // Pas besoin de rechercher à nouveau l'index
+        $thumbnail_index = ($current_index > 0) ? $current_index - 1 : $current_index + 1;
+        $thumbnail_index = max(0, min($thumbnail_index, count($images) - 1));
+    
+        
+        // echo "Thumbnail index: " . $thumbnail_index . "<br>";
+        // echo "Images count: " . count($images) . "<br>";
+        
+        if ($current_index !== -1 && isset($images[$thumbnail_index])) {
             $thumbnail_file = $images[$thumbnail_index];
-
-            // Construire l'URL de la miniature
             $thumbnail_url = get_template_directory_uri() . '/assets/images/' . $thumbnail_file;
-
-            // Afficher la miniature et les flèches dans la nouvelle structure
+        
             echo '<div class="image-container">';
             echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
-            echo '<div class="navigation-arrows">';
+            // echo "Chemin de l'image : " . $thumbnail_url . "<br>";
+            
+            // Affichage des flèches
             if ($current_index > 0) {
                 $prev_image = array_values($images)[$current_index - 1];
                 echo '<a href="#" class="prev-arrow" data-image="' . esc_attr($prev_image) . '"><i class="fa-solid fa-arrow-left-long"></i></a>';
@@ -117,14 +127,13 @@
                 $next_image = array_values($images)[$current_index + 1];
                 echo '<a href="#" class="next-arrow" data-image="' . esc_attr($next_image) . '"><i class="fa-solid fa-arrow-right-long"></i></a>';
             }
-            echo '</div>'; // Fermeture de navigation-arrows
-            echo '</div>'; // Fermeture de image-container
+            echo '</div>';
         } else {
-            echo '<p>Image mise en avant non trouvée dans le répertoire.</p>';
+            echo '<p>Aucune miniature disponible. Current index: ' . $current_index . ', Thumbnail index: ' . $thumbnail_index . '</p>';
         }
-    } else {
-        echo '<p>Aucune image trouvée dans le répertoire.</p>';
-    }
+        
+        
+    }            
     ?>
 
         <script>
