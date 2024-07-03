@@ -1,173 +1,191 @@
-p {
-    font-size: 14px;
-}
 
-hr {
-    width: 100%;
-    margin: auto;
-    height: 1px;
-    padding-right: 15px;
-}
+<!-- Ancien code content-photo.php -->
 
-/* Section 1 */
-.section-1 {
-    display: flex;
-    align-items: end;
-    text-transform: uppercase;
-    font-weight: 400;
-}
+<?php
+/**
+ * Template part for displaying photo content
+ *
+ * @package WordPress
+ * @subpackage nathaliemota
+ * @since nathaliemota 1.0
+ */
+?>
 
-.section-1 .content {
-    flex: 1;
-}
+<div class="photo-content">
+    <section class="section-1">
+        <div class="left-column">
+            <div class="photo-meta column">
+                <h1 class="photo-title-new"><?php the_title(); ?></h1>
+                <?php 
+                /* récupération taxonomie Catégorie */
+                $terms = wp_get_post_terms(get_the_ID(), 'categorie');
+                $categorie = '';
+                foreach ($terms as $term) {
+                    $categorie = $term->name;
+                }
 
-.section-1 h1 {
-    font-size: 50px;
-}
+                /* récupération taxonomie Format */
+                $terms = wp_get_post_terms(get_the_ID(), 'format');
+                $format = '';
+                foreach ($terms as $term) {
+                    $format = $term->name;
+                }
+                ?>
+                <p>Référence : <?php echo get_field('reference'); ?></p>
+                <p>Catégories : <?php echo $categorie; ?></p>
+                <p>Format : <?php echo $format; ?></p>
+                <p>Type : <?php echo get_field('type'); ?></p>
+                <p>Année : <?php echo get_field('annee'); ?></p>
+                <hr />
+            </div>
+        </div>
+        <div class="right-column">
+            <?php the_post_thumbnail('full', array('class' => 'photo-img')); ?>
+        </div>
+    </section>
 
+    <section class="section-2">
+    <div class="left-side">
+        <p>Cette photo vous intéresse ?</p>
+        <a href="#" class="btn-contact" data-bs-toggle="modal" data-bs-target="#contact-modal">Contact</a>
+    </div>
+    <div class="right-side">
+        <?php
+        // Récupérer l'ID de l'image mise en avant
+        $featured_image_id = get_post_thumbnail_id(get_the_ID());
+        
+        // Vérifier si une image mise en avant existe
+        if (!$featured_image_id) {
+            echo '<p>Pas d\'image mise en avant pour cet article.</p>';
+            return;
+        }
 
-.photo-content {
-    display: flex;
-    flex-direction: column;
-    margin: 50px;
-}
+        // Récupérer l'URL de l'image mise en avant
+        $featured_image_url = wp_get_attachment_image_url($featured_image_id, 'full');
 
-.photo-title-new {
-    color: black;
-    font-family: 'Space Mono';
-}
+        // Récupérer le nom de fichier de l'image mise en avant
+        $featured_image_file = basename($featured_image_url);
 
+        // Récupérer le répertoire des images
+        $image_dir = get_template_directory() . '/assets/images/';
 
-.photo-meta {
-    padding-bottom: 10px;
-}
+        if (!is_dir($image_dir)) {
+            echo '<p>Le répertoire des images n\'existe pas.</p>';
+            return;
+        }
 
-
-p, h1 {
-    padding-bottom: 20px;
-}
-
-
-.left-column {
-    margin-left: 15px;
-}
-
-.left-column,
-.right-column,
-.related-photo {
-    width: 50%;
-}
-
-.photo-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.small-photo {
-    width: 50%;
-    height: auto;
-}
-
-
-
-/* Section 2 */
-.section-2 {
-    display: flex;
-    justify-content: space-between; /* Espace les éléments de gauche et de droite */
-    align-items: flex-start; /* Aligne les éléments en haut */
-    height: auto; /* Ajustez la hauteur selon vos besoins */
-    padding: 20px 0; /* Ajoutez du padding vertical si nécessaire */
-}
-
-
-.section-2 p {
-    padding-bottom: 0px;
-    align-content: center;
-    margin-left: 15px;
-}
+        // Récupérer les fichiers d'image dans le répertoire
+        $current_index = -1;
+        $images = preg_grep('~\.(jpeg|jpg|png|gif|webp)$~', scandir($image_dir));
+        // var_dump($images); 
+        // echo "Featured image file: " . $featured_image_file . "<br>";
+        // echo "Current index: " . $current_index . "<br>";
 
 
-.btn-contact {
-    background-color: #D8D8D8;
-    border-radius: 2px;
-    font-family: 'Space Mono';
-    color: black;
-    text-decoration: none;
-    width: 272px;
-    height: 50px;
-    font-size: 14px;
-    align-content: center;
-    text-align: center;
-    margin-right: 15px;
-}
+        // Fonction pour comparer les noms de fichiers en ignorant "-scaled"
+        function compare_filenames($filename1, $filename2) {
+            $filename1 = preg_replace('/\.[^.]+$/', '', $filename1);
+            $filename2 = preg_replace('/\.[^.]+$/', '', $filename2);
+            $filename1 = preg_replace('/-scaled|-\d+x\d+/', '', $filename1);
+            $filename2 = preg_replace('/-scaled|-\d+x\d+/', '', $filename2);
+            return stripos($filename1, $filename2) !== false || stripos($filename2, $filename1) !== false;
+        }
+        
 
 
-.section-2 .field-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    // Vérifier si le tableau $images n'est pas vide et que l'image mise en avant existe
+    if (!empty($images)) {
+        $current_index = -1;
+        foreach ($images as $index => $image) {
+            // echo "Comparing: " . $featured_image_file . " with " . $image . "<br>";
+            if (compare_filenames($featured_image_file, $image)) {
+                $current_index = $index;
+                // echo "Match found at index: " . $current_index . "<br>";
+                break;
+            }
+        }
+        
+        // Pas besoin de rechercher à nouveau l'index
+        $thumbnail_index = ($current_index > 0) ? $current_index - 1 : $current_index + 1;
+        $thumbnail_index = max(0, min($thumbnail_index, count($images) - 1));
+    
+        
+        // echo "Thumbnail index: " . $thumbnail_index . "<br>";
+        // echo "Images count: " . count($images) . "<br>";
+        
+        if ($current_index !== -1 && isset($images[$thumbnail_index])) {
+            $thumbnail_file = $images[$thumbnail_index];
+            $thumbnail_url = get_template_directory_uri() . '/assets/images/' . $thumbnail_file;
+        
+            echo '<div class="image-container">';
+            echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
+            // echo "Chemin de l'image : " . $thumbnail_url . "<br>";
+            
+            // Affichage des flèches
+            if ($current_index > 0) {
+                $prev_image = array_values($images)[$current_index - 1];
+                echo '<a href="#" class="prev-arrow" data-image="' . esc_attr($prev_image) . '"><i class="fa-solid fa-arrow-left-long"></i></a>';
+            }
+            if ($current_index < count($images) - 1) {
+                $next_image = array_values($images)[$current_index + 1];
+                echo '<a href="#" class="next-arrow" data-image="' . esc_attr($next_image) . '"><i class="fa-solid fa-arrow-right-long"></i></a>';
+            }
+            echo '</div>';
+        } else {
+            echo '<p>Aucune miniature disponible. Current index: ' . $current_index . ', Thumbnail index: ' . $thumbnail_index . '</p>';
+        }
+        
+        
+    }            
+    ?>
 
-.section-2 .instructions {
-    max-width: 600px;
-}
+        <script>
+        var photoImages = <?php echo json_encode(array_values($images)); ?>;
+        </script>
+    </div>
+    </section>
 
-.section-2 .instructions .wrap {
-    border: 1px solid #ccc;
-    -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.07);
-    -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.07);
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.07);
-    padding: 20px 25px;
-}
 
-#line {
-    margin-left: 15px;
-}
+    <hr id="line" />
+    <section class="section-3">
+    <div class="section-3-container">
+        <p style="text-align: justify;">Vous aimerez aussi</p>
+        <div class="photo-grid">
+            <?php
+            // Récupérer les photos liées (même catégorie par exemple)
+            $related_args = array(
+                'post_type' => 'photographies',
+                'posts_per_page' => 2,
+                'post__not_in' => array(get_the_ID()),
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'categorie',
+                        'field' => 'slug',
+                        'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'slugs')),
+                    ),
+                ),
+            );
+            $related_query = new WP_Query($related_args);
 
-.right-side {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Aligne les éléments à droite */
-    width: 100%; /* Assurez-vous que le conteneur occupe toute la largeur */
-}
+            if ($related_query->have_posts()) {
+                while ($related_query->have_posts()) {
+                    $related_query->the_post();
+                    ?>
+                    <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
+                        <a href="<?php the_permalink(); ?>">
+                            <?php the_post_thumbnail('large'); ?>
+                        </a>
+                    </div>
+                    <?php
+                }
+                wp_reset_postdata();
+            } else {
+                echo '<p>Il n\'y a aucune photo supplémentaire dans cette catégorie</p>';
+            }
+            ?>
+        </div>
+    </div>
+    </section>
 
-.small-photo {
-    width: 15%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.navigation-arrows {
-    display: flex;
-    justify-content: flex-end; /* Aligne les flèches à droite */
-    gap: 20px;
-    width: 30%; /* Fait correspondre la largeur avec celle de l'image */
-}
-
-.prev-arrow,
-.next-arrow {
-    font-size: 24px; /* Taille des icônes de flèche */
-    color: #000; /* Couleur des flèches */
-    text-decoration: none;
-    margin-bottom: 20px;
-}
-
-/* Section 3 */
-.entry-content .section-3 .wrap {
-    max-width: 800px;
-    padding: 40px;
-}
-
-.section-3 {
-    display: flex;
-    text-transform: uppercase;
-    font-family: 'Space Mono';
-    text-decoration: none;
-    margin-left: 15px;
-}
-
-.section-3 p {
-    font-size: 18px;
-    margin-top: 100px;
-}
+</div>
 

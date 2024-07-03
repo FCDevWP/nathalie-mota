@@ -13,7 +13,7 @@
         <div class="left-column">
             <div class="photo-meta column">
                 <h1 class="photo-title-new"><?php the_title(); ?></h1>
-                <?php 
+                <?php
                 /* récupération taxonomie Catégorie */
                 $terms = wp_get_post_terms(get_the_ID(), 'categorie');
                 $categorie = '';
@@ -47,94 +47,126 @@
         <a href="#" class="btn-contact" data-bs-toggle="modal" data-bs-target="#contact-modal">Contact</a>
     </div>
     <div class="right-side">
-        <?php
-        // Récupérer l'ID de l'image mise en avant
-        $featured_image_id = get_post_thumbnail_id(get_the_ID());
-        
-        // Vérifier si une image mise en avant existe
-        if (!$featured_image_id) {
-            echo '<p>Pas d\'image mise en avant pour cet article.</p>';
-            return;
+    <?php
+// Vérifier si une image en vedette est définie pour le message en cours
+if (has_post_thumbnail()) {
+    // Récupérer l'ID de l'image mise en avant
+    $featured_image_id = get_post_thumbnail_id(get_the_ID());
+
+    // Vérifier si une image mise en avant existe
+    if (!$featured_image_id) {
+        echo '<p>Pas d&#039;image mise en avant pour cet article.</p>';
+        return;
+    }
+
+    // Récupérer l'URL de l'image mise en avant
+    $featured_image_url = wp_get_attachment_image_url($featured_image_id, 'full');
+
+    // Récupérer le nom de fichier de l'image mise en avant
+    $featured_image_file = basename($featured_image_url);
+
+    // Récupérer le répertoire des images
+    $image_dir = get_template_directory() . '/assets/images/';
+
+    if (!is_dir($image_dir)) {
+        echo '<p>Le répertoire des images n&#039;existe pas.</p>';
+        return;
+    }
+
+// Récupérer les fichiers d'image dans le répertoire
+$images = preg_grep('~\.(jpeg|jpg|png|gif|webp)$~', scandir($image_dir));
+
+// Réindexer le tableau $images
+$images = array_values($images);
+
+// Fonction pour comparer les noms de fichiers en ignorant "-scaled"
+function compare_filenames($filename1, $filename2) {
+    $filename1_base = pathinfo($filename1, PATHINFO_FILENAME);
+    $filename2_base = pathinfo($filename2, PATHINFO_FILENAME);
+
+    // Ignorer "-scaled" dans les noms de fichiers
+    $filename1_base = str_replace('-scaled', '', $filename1_base);
+    $filename2_base = str_replace('-scaled', '', $filename2_base);
+
+    return $filename1_base === $filename2_base;
+}
+
+// Récupérer l'index de l'image en vedette dans le tableau $images
+$current_index = array_search($featured_image_file, $images);
+
+// Vérifier si l'image en vedette est dans le tableau $images
+if ($current_index !== false) {
+    // Calculer l'index de la miniature
+    $thumbnail_index = ($current_index + 1) % count($images);
+
+    // Récupérer le nom de fichier de la miniature
+    $thumbnail_file = $images[$thumbnail_index];
+
+    // Récupérer l'index de l'image précédente
+    $prev_index = ($current_index - 1 + count($images)) % count($images);
+
+    // Récupérer le nom de fichier de l'image précédente
+    $prev_image = $images[$prev_index];
+
+    // Récupérer l'index de l'image suivante
+    $next_index = ($current_index + 1) % count($images);
+
+    // Récupérer le nom de fichier de l'image suivante
+    $next_image = $images[$next_index];
+} else {
+    // L'image en vedette n'est pas dans le tableau $images
+    $thumbnail_file = '';
+    $prev_image = '';
+    $next_image = '';
+}
+
+    echo '<pre>';
+echo compare_filenames('nathalie-0.webp', 'nathalie-0.webp');
+echo '</pre>';
+
+    echo '<pre>';
+print_r($featured_image_file);
+print_r($images);
+echo '</pre>';
+
+
+    $current_index = -1;
+    $thumbnail_index = -1;
+    foreach ($images as $index => $image) {
+        if (compare_filenames($featured_image_file, $image)) {
+            $current_index = $index;
+            break;
+        }
+    }
+
+    if ($current_index != -1) {
+        $thumbnail_index = ($current_index + 1) % count($images);
+        $thumbnail_file = $images[$thumbnail_index];
+        $thumbnail_url = get_template_directory_uri() . '/assets/images/' . $thumbnail_file;
+
+        echo '<div class="image-container">';
+        echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
+
+        $prev_index = ($current_index - 1 + count($images)) % count($images);
+        $next_index = ($current_index + 1) % count($images);
+
+        if ($prev_index != $current_index) {
+            $prev_image = $images[$prev_index];
+            echo '<a href="#" class="prev-arrow" data-image="' . esc_attr($prev_image) . '"><i class="fa-solid fa-arrow-left-long"></i></a>';
+        }
+        if ($next_index != $current_index) {
+            $next_image = $images[$next_index];
+            echo '<a href="#" class="next-arrow" data-image="' . esc_attr($next_image) . '"><i class="fa-solid fa-arrow-right-long"></i></a>';
         }
 
-        // Récupérer l'URL de l'image mise en avant
-        $featured_image_url = wp_get_attachment_image_url($featured_image_id, 'full');
-
-        // Récupérer le nom de fichier de l'image mise en avant
-        $featured_image_file = basename($featured_image_url);
-
-        // Récupérer le répertoire des images
-        $image_dir = get_template_directory() . '/assets/images/';
-
-        if (!is_dir($image_dir)) {
-            echo '<p>Le répertoire des images n\'existe pas.</p>';
-            return;
-        }
-
-        // Récupérer les fichiers d'image dans le répertoire
-        $current_index = -1;
-        $images = preg_grep('~\.(jpeg|jpg|png|gif|webp)$~', scandir($image_dir));
-        // var_dump($images); 
-        // echo "Featured image file: " . $featured_image_file . "<br>";
-        // echo "Current index: " . $current_index . "<br>";
-
-
-        // Fonction pour comparer les noms de fichiers en ignorant "-scaled"
-        function compare_filenames($filename1, $filename2) {
-            $filename1 = preg_replace('/\.[^.]+$/', '', $filename1);
-            $filename2 = preg_replace('/\.[^.]+$/', '', $filename2);
-            $filename1 = preg_replace('/-scaled|-\d+x\d+/', '', $filename1);
-            $filename2 = preg_replace('/-scaled|-\d+x\d+/', '', $filename2);
-            return stripos($filename1, $filename2) !== false || stripos($filename2, $filename1) !== false;
-        }
-        
-
-
-    // Vérifier si le tableau $images n'est pas vide et que l'image mise en avant existe
-    if (!empty($images)) {
-        $current_index = -1;
-        foreach ($images as $index => $image) {
-            // echo "Comparing: " . $featured_image_file . " with " . $image . "<br>";
-            if (compare_filenames($featured_image_file, $image)) {
-                $current_index = $index;
-                // echo "Match found at index: " . $current_index . "<br>";
-                break;
-            }
-        }
-        
-        // Pas besoin de rechercher à nouveau l'index
-        $thumbnail_index = ($current_index > 0) ? $current_index - 1 : $current_index + 1;
-        $thumbnail_index = max(0, min($thumbnail_index, count($images) - 1));
-    
-        
-        // echo "Thumbnail index: " . $thumbnail_index . "<br>";
-        // echo "Images count: " . count($images) . "<br>";
-        
-        if ($current_index !== -1 && isset($images[$thumbnail_index])) {
-            $thumbnail_file = $images[$thumbnail_index];
-            $thumbnail_url = get_template_directory_uri() . '/assets/images/' . $thumbnail_file;
-        
-            echo '<div class="image-container">';
-            echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
-            // echo "Chemin de l'image : " . $thumbnail_url . "<br>";
-            
-            // Affichage des flèches
-            if ($current_index > 0) {
-                $prev_image = array_values($images)[$current_index - 1];
-                echo '<a href="#" class="prev-arrow" data-image="' . esc_attr($prev_image) . '"><i class="fa-solid fa-arrow-left-long"></i></a>';
-            }
-            if ($current_index < count($images) - 1) {
-                $next_image = array_values($images)[$current_index + 1];
-                echo '<a href="#" class="next-arrow" data-image="' . esc_attr($next_image) . '"><i class="fa-solid fa-arrow-right-long"></i></a>';
-            }
-            echo '</div>';
-        } else {
-            echo '<p>Aucune miniature disponible. Current index: ' . $current_index . ', Thumbnail index: ' . $thumbnail_index . '</p>';
-        }
-        
-        
-    }            
-    ?>
+        echo '</div>';
+    } else {
+        echo '<p>Aucune miniature disponible. Current index: ' . $current_index . ', Thumbnail index: ' . $thumbnail_index . '</p>';
+    }
+} else {
+    echo '<p>Aucune image en vedette n&#039;est définie pour ce message.</p>';
+}
+?>
 
         <script>
         var photoImages = <?php echo json_encode(array_values($images)); ?>;
@@ -145,43 +177,43 @@
 
     <hr id="line" />
     <section class="section-3">
-    <div class="section-3-container">
-        <p style="text-align: justify;">Vous aimerez aussi</p>
-        <div class="photo-grid">
-            <?php
-            // Récupérer les photos liées (même catégorie par exemple)
-            $related_args = array(
-                'post_type' => 'photographies',
-                'posts_per_page' => 2,
-                'post__not_in' => array(get_the_ID()),
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'categorie',
-                        'field' => 'slug',
-                        'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'slugs')),
+        <div class="section-3-container">
+            <p style="text-align: justify;">Vous aimerez aussi</p>
+            <div class="photo-grid">
+                <?php
+                // Récupérer les photos liées (même catégorie par exemple)
+                $related_args = array(
+                    'post_type' => 'photographies',
+                    'posts_per_page' => 2,
+                    'post__not_in' => array(get_the_ID()),
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'categorie',
+                            'field' => 'slug',
+                            'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'slugs')),
+                        ),
                     ),
-                ),
-            );
-            $related_query = new WP_Query($related_args);
+                );
+                $related_query = new WP_Query($related_args);
 
-            if ($related_query->have_posts()) {
-                while ($related_query->have_posts()) {
-                    $related_query->the_post();
-                    ?>
-                    <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail('large'); ?>
-                        </a>
-                    </div>
-                    <?php
+                if ($related_query->have_posts()) {
+                    while ($related_query->have_posts()) {
+                        $related_query->the_post();
+                        ?>
+                        <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php the_post_thumbnail('large'); ?>
+                            </a>
+                        </div>
+                        <?php
+                    }
+                    wp_reset_postdata();
+                } else {
+                    echo '<p>Il n\'y a aucune photo supplémentaire dans cette catégorie</p>';
                 }
-                wp_reset_postdata();
-            } else {
-                echo '<p>Il n\'y a aucune photo supplémentaire dans cette catégorie</p>';
-            }
-            ?>
+                ?>
+            </div>
         </div>
-    </div>
     </section>
 
 </div>

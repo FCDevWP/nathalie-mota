@@ -1076,3 +1076,643 @@ Stack trace:
 [02-Jul-2024 14:39:00 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
 [02-Jul-2024 14:39:00 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
 [02-Jul-2024 14:39:00 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[02-Jul-2024 16:46:12 UTC] PHP Warning:  Undefined array key 17 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[02-Jul-2024 16:46:34 UTC] PHP Warning:  Undefined array key 18 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 210
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Undefined variable $post in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:14:44 UTC] PHP Warning:  Attempt to read property "ID" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/functions.php on line 211
+[03-Jul-2024 06:21:31 UTC] PHP Warning:  Undefined array key 18 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:24:53 UTC] PHP Warning:  Undefined array key 18 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:25:01 UTC] PHP Warning:  Undefined array key 17 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:25:11 UTC] PHP Warning:  Undefined array key 16 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:25:27 UTC] PHP Warning:  Undefined array key 16 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:31:46 UTC] PHP Warning:  Undefined array key 16 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:32:36 UTC] PHP Warning:  Undefined array key 17 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:32:42 UTC] PHP Warning:  Undefined array key 17 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:33:19 UTC] PHP Warning:  Undefined array key 16 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 06:33:34 UTC] PHP Warning:  Undefined array key 18 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 07:37:32 UTC] PHP Fatal error:  Uncaught DivisionByZeroError: Modulo by zero in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php:58
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template.php(812): require()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template.php(745): load_template('/Users/frederic...', false, Array)
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/general-template.php(206): locate_template(Array, true, false, Array)
+#3 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php(17): get_template_part('template-parts/...')
+#4 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include('/Users/frederic...')
+#5 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#6 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#7 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 58
+[03-Jul-2024 07:46:23 UTC] PHP Fatal error:  Uncaught DivisionByZeroError: Modulo by zero in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php:58
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template.php(812): require()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template.php(745): load_template('/Users/frederic...', false, Array)
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/general-template.php(206): locate_template(Array, true, false, Array)
+#3 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php(17): get_template_part('template-parts/...')
+#4 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include('/Users/frederic...')
+#5 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#6 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#7 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 58
+[03-Jul-2024 07:46:29 UTC] PHP Fatal error:  Uncaught DivisionByZeroError: Modulo by zero in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php:58
+Stack trace:
+#0 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template.php(812): require()
+#1 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template.php(745): load_template('/Users/frederic...', false, Array)
+#2 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/general-template.php(206): locate_template(Array, true, false, Array)
+#3 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/single.php(17): get_template_part('template-parts/...')
+#4 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-includes/template-loader.php(106): include('/Users/frederic...')
+#5 /Users/frederic/Local Sites/nathalie-mota/app/public/wp-blog-header.php(19): require_once('/Users/frederic...')
+#6 /Users/frederic/Local Sites/nathalie-mota/app/public/index.php(17): require('/Users/frederic...')
+#7 {main}
+  thrown in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 58
+[03-Jul-2024 08:17:45 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:17:45 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:17:56 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:17:56 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:18:17 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:18:17 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:18:22 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:18:22 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:23:21 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:23:21 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:23:28 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:23:28 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:28:09 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:28:09 UTC] Début de la section 2
+[03-Jul-2024 08:28:09 UTC] Total images : 0
+[03-Jul-2024 08:28:09 UTC] Current index : 
+[03-Jul-2024 08:28:09 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:28:09 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:28:17 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:28:17 UTC] Début de la section 2
+[03-Jul-2024 08:28:17 UTC] Total images : 0
+[03-Jul-2024 08:28:17 UTC] Current index : 
+[03-Jul-2024 08:28:17 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:28:17 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:28:19 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:28:19 UTC] Début de la section 2
+[03-Jul-2024 08:28:19 UTC] Total images : 0
+[03-Jul-2024 08:28:19 UTC] Current index : 
+[03-Jul-2024 08:28:19 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:28:19 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:28:26 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:28:26 UTC] Début de la section 2
+[03-Jul-2024 08:28:26 UTC] Total images : 0
+[03-Jul-2024 08:28:26 UTC] Current index : 
+[03-Jul-2024 08:28:26 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:28:26 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:28:26 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:28:26 UTC] Début de la section 2
+[03-Jul-2024 08:28:26 UTC] Total images : 0
+[03-Jul-2024 08:28:26 UTC] Current index : 
+[03-Jul-2024 08:28:26 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:28:26 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:29:37 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:29:37 UTC] Début de la section 2
+[03-Jul-2024 08:29:37 UTC] Total images : 0
+[03-Jul-2024 08:29:37 UTC] Current index : 
+[03-Jul-2024 08:29:37 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:29:37 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:30:01 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:30:01 UTC] Début de la section 2
+[03-Jul-2024 08:30:01 UTC] Total images : 0
+[03-Jul-2024 08:30:01 UTC] Current index : 
+[03-Jul-2024 08:30:01 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:30:01 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:30:48 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:30:48 UTC] Début de la section 2
+[03-Jul-2024 08:30:48 UTC] Total images : 0
+[03-Jul-2024 08:30:48 UTC] Current index : 
+[03-Jul-2024 08:30:48 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:30:48 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:30:55 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:30:55 UTC] Début de la section 2
+[03-Jul-2024 08:30:55 UTC] Total images : 0
+[03-Jul-2024 08:30:55 UTC] Current index : 
+[03-Jul-2024 08:30:55 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:30:55 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:30:56 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:30:56 UTC] Début de la section 2
+[03-Jul-2024 08:30:56 UTC] Total images : 0
+[03-Jul-2024 08:30:56 UTC] Current index : 
+[03-Jul-2024 08:30:56 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:30:56 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:31:07 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:31:07 UTC] Début de la section 2
+[03-Jul-2024 08:31:07 UTC] Total images : 0
+[03-Jul-2024 08:31:07 UTC] Current index : 
+[03-Jul-2024 08:31:07 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:31:07 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:31:17 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:31:17 UTC] Début de la section 2
+[03-Jul-2024 08:31:17 UTC] Total images : 0
+[03-Jul-2024 08:31:17 UTC] Current index : 
+[03-Jul-2024 08:31:17 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:31:17 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:31:20 UTC] Images trouvées : Array
+(
+    [0] => nathalie-0.webp
+    [1] => nathalie-1.webp
+    [2] => nathalie-10.webp
+    [3] => nathalie-11.webp
+    [4] => nathalie-12.webp
+    [5] => nathalie-13.webp
+    [6] => nathalie-14.webp
+    [7] => nathalie-15.webp
+    [8] => nathalie-2.webp
+    [9] => nathalie-3.webp
+    [10] => nathalie-4.webp
+    [11] => nathalie-5.webp
+    [12] => nathalie-6.webp
+    [13] => nathalie-7.webp
+    [14] => nathalie-8.webp
+    [15] => nathalie-9.webp
+)
+
+[03-Jul-2024 08:31:20 UTC] Début de la section 2
+[03-Jul-2024 08:31:20 UTC] Total images : 0
+[03-Jul-2024 08:31:20 UTC] Current index : 
+[03-Jul-2024 08:31:20 UTC] Images : Array
+(
+)
+
+[03-Jul-2024 08:31:20 UTC] Aucune image trouvée dans le répertoire.
+[03-Jul-2024 08:43:35 UTC] PHP Warning:  Undefined array key 17 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 10:22:05 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 10:22:59 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 10:33:48 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 10:34:03 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 10:36:44 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 123
+[03-Jul-2024 10:43:12 UTC] PHP Warning:  Undefined variable $prev_index in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 121
+[03-Jul-2024 10:43:12 UTC] PHP Warning:  Undefined variable $prev_index in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 122
+[03-Jul-2024 10:43:12 UTC] PHP Warning:  Undefined array key "" in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 122
+[03-Jul-2024 10:43:12 UTC] PHP Warning:  Undefined variable $next_index in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 125
+[03-Jul-2024 10:43:12 UTC] PHP Warning:  Undefined variable $next_index in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 126
+[03-Jul-2024 10:43:12 UTC] PHP Warning:  Undefined array key "" in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 126
+[03-Jul-2024 10:43:20 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 114
+[03-Jul-2024 10:43:20 UTC] PHP Warning:  Undefined variable $prev_index in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 121
+[03-Jul-2024 10:43:20 UTC] PHP Warning:  Undefined variable $prev_index in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 122
+[03-Jul-2024 10:43:20 UTC] PHP Warning:  Undefined array key "" in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 122
+[03-Jul-2024 10:43:20 UTC] PHP Warning:  Undefined variable $next_index in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 125
+[03-Jul-2024 10:43:20 UTC] PHP Warning:  Undefined variable $next_index in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 126
+[03-Jul-2024 10:43:20 UTC] PHP Warning:  Undefined array key "" in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 126
+[03-Jul-2024 10:47:57 UTC] PHP Parse error:  syntax error, unexpected identifier "current_index", expecting variable or "{" or "$" in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 102
+[03-Jul-2024 10:51:04 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 10:51:31 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 10:53:52 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 10:53:52 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 10:54:08 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 10:54:08 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 10:54:54 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 10:54:54 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 10:55:12 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 10:55:12 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 10:55:12 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 10:55:48 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 10:55:48 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 10:55:48 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 10:56:10 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 11:05:45 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 11:06:25 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 11:06:25 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 11:06:25 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 11:07:05 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 11:07:05 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 11:07:05 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 11:07:35 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 11:07:35 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 11:07:55 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 11:07:55 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 11:10:26 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 12:44:47 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 12:44:50 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 12:45:10 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 12:45:40 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 12:45:40 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 12:45:40 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 12:45:46 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 12:45:46 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 12:45:46 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 12:45:49 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 94
+[03-Jul-2024 12:45:49 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 104
+[03-Jul-2024 12:45:49 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 108
+[03-Jul-2024 14:35:23 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 127
+[03-Jul-2024 14:36:22 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 127
+[03-Jul-2024 14:37:33 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 117
+[03-Jul-2024 14:37:33 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 131
+[03-Jul-2024 14:37:57 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 117
+[03-Jul-2024 14:37:57 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 131
+[03-Jul-2024 14:38:34 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 117
+[03-Jul-2024 14:38:34 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 131
+[03-Jul-2024 14:39:18 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 117
+[03-Jul-2024 14:39:18 UTC] PHP Warning:  Undefined array key 0 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 127
+[03-Jul-2024 14:39:18 UTC] PHP Warning:  Undefined array key 2 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 131
+[03-Jul-2024 14:39:41 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 117
+[03-Jul-2024 14:39:41 UTC] PHP Warning:  Undefined array key 1 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 127
+[03-Jul-2024 14:39:41 UTC] PHP Warning:  Undefined array key 3 in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 131

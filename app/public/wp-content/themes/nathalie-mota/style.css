@@ -19,8 +19,9 @@ Text Domain: nathaliemota
 
 body{
     font-family: 'Poppins';
-    margin: 0;
+    margin: auto;
     padding: 0;
+    max-width: 1500px;
 }
 
 h1 {

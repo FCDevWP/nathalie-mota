@@ -56,7 +56,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
         <?php
         $args = array(
             'post_type' => 'photographies',
-            'posts_per_page' => 8,
+            'posts_per_page' => -1,
         );
         $query = new WP_Query($args);
 
