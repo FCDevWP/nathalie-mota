@@ -120,14 +120,14 @@ if ($current_index !== false) {
     $next_image = '';
 }
 
-    echo '<pre>';
-echo compare_filenames('nathalie-0.webp', 'nathalie-0.webp');
-echo '</pre>';
+//     echo '<pre>';
+// echo compare_filenames('nathalie-0.webp', 'nathalie-0.webp');
+// echo '</pre>';
 
-    echo '<pre>';
-print_r($featured_image_file);
-print_r($images);
-echo '</pre>';
+//     echo '<pre>';
+// print_r($featured_image_file);
+// print_r($images);
+// echo '</pre>';
 
 
     $current_index = -1;
