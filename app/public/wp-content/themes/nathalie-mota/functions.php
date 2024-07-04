@@ -6,9 +6,16 @@ add_theme_support('post-thumbnails');
 // Ajouter automatiquement le titre du site dans l'en-tête du site
 add_theme_support('title-tag');
 
-// Ajout style
+// Ajout de Select2
+function enqueue_select2_scripts() {
+    wp_enqueue_style('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
+    wp_enqueue_script('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_select2_scripts');
+
+// Ajout style (modifié pour charger après Select2)
 function nathalie_mota_enqueue_styles() {
-    wp_enqueue_style('nathalie-mota-style', get_stylesheet_uri());
+    wp_enqueue_style('nathalie-mota-style', get_stylesheet_uri(), array('select2'));
 }
 add_action('wp_enqueue_scripts', 'nathalie_mota_enqueue_styles');
 
@@ -23,7 +30,7 @@ add_action('wp_enqueue_scripts', 'nathaliemota_custom_fonts');
 function nathalie_mota_enqueue_scripts() {
     wp_enqueue_script('jquery-ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js', array('jquery'));
     wp_enqueue_style('jquery-ui-css', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
-    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'fancybox'), null, true);
+    wp_enqueue_script('nathalie-mota-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery', 'fancybox', 'select2'), null, true);
     
     wp_localize_script('nathalie-mota-scripts', 'nathaliemotaAjax', [
         'ajaxurl' => admin_url('admin-ajax.php')
@@ -125,7 +132,7 @@ function nathaliemota_entry_footer() {
     );
 }
 
-// Fonction pour choiux aléatoire des photos hero header
+// Fonction pour choix aléatoire des photos hero header
 function get_images_from_directory($directory) {
     $images = glob($directory . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
     return $images;
@@ -174,7 +181,7 @@ function nathaliemota_enqueue_fancybox_scripts() {
 }
 add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_scripts');
 
-// Ajout FancyBox CCS
+// Ajout FancyBox CSS
 function nathaliemota_enqueue_fancybox_custom_styles() {
     wp_enqueue_style('fancybox-custom', get_template_directory_uri() . '/css/fancybox-custom.css', array(), '1.0');
 }
@@ -243,5 +250,3 @@ function load_more_photos() {
 
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
-
-

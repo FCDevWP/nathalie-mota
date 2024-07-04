@@ -1,191 +1,157 @@
+(function($) {
+  $(document).ready(function() {
+    // Initialisation de Select2
+    $("#category").select2();
+    $("#format").select2();
+    $("#tri").select2();
 
-<!-- Ancien code content-photo.php -->
+    // Ouvre la modale lors du clic sur le lien "Contact" (existant)
+    $('.open-contact-modal, .btn-contact').on('click', function(e) {
+      e.preventDefault();
+      $('#contact-modal').fadeIn();
+    });
 
-<?php
-/**
- * Template part for displaying photo content
- *
- * @package WordPress
- * @subpackage nathaliemota
- * @since nathaliemota 1.0
- */
-?>
+    // Ferme la modale lors du clic en dehors de celle-ci
+    $(document).on('click', function(e) {
+      if ($(e.target).closest('.modal-content').length === 0 && !$(e.target).hasClass('open-contact-modal') && !$(e.target).hasClass('btn-contact')) {
+        $('#contact-modal').fadeOut();
+      }
+    });
 
-<div class="photo-content">
-    <section class="section-1">
-        <div class="left-column">
-            <div class="photo-meta column">
-                <h1 class="photo-title-new"><?php the_title(); ?></h1>
-                <?php 
-                /* récupération taxonomie Catégorie */
-                $terms = wp_get_post_terms(get_the_ID(), 'categorie');
-                $categorie = '';
-                foreach ($terms as $term) {
-                    $categorie = $term->name;
-                }
+    // Ferme la modale lorsque le formulaire est envoyé
+    $('#contact-modal form').on('submit', function() {
+      $('#contact-modal').fadeOut();
+    });
 
-                /* récupération taxonomie Format */
-                $terms = wp_get_post_terms(get_the_ID(), 'format');
-                $format = '';
-                foreach ($terms as $term) {
-                    $format = $term->name;
-                }
-                ?>
-                <p>Référence : <?php echo get_field('reference'); ?></p>
-                <p>Catégories : <?php echo $categorie; ?></p>
-                <p>Format : <?php echo $format; ?></p>
-                <p>Type : <?php echo get_field('type'); ?></p>
-                <p>Année : <?php echo get_field('annee'); ?></p>
-                <hr />
-            </div>
-        </div>
-        <div class="right-column">
-            <?php the_post_thumbnail('full', array('class' => 'photo-img')); ?>
-        </div>
-    </section>
+    // Requête AJAX pour récupérer les données des photos
+    $.ajax({
+      url: nathaliemotaAjax.ajaxurl,
+      type: 'post',
+      data: {
+        action: 'request_photos' 
+      },
+      success: function(response) {
+        if(response) {
+          let output = '';
+          $.each(response, function(index, photo) {
+            output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
+            output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
+            output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
+            output += '<div class="photo-overlay">';
+            output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
+            output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
+            output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
+            output += '<div class="photo-category">' + photo.category + '</div>';
+            output += '</div>';
+            output += '</a>';
+            output += '</div>';
+          });
+          $('#photo-gallery').html(output);
 
-    <section class="section-2">
-    <div class="left-side">
-        <p>Cette photo vous intéresse ?</p>
-        <a href="#" class="btn-contact" data-bs-toggle="modal" data-bs-target="#contact-modal">Contact</a>
-    </div>
-    <div class="right-side">
-        <?php
-        // Récupérer l'ID de l'image mise en avant
-        $featured_image_id = get_post_thumbnail_id(get_the_ID());
-        
-        // Vérifier si une image mise en avant existe
-        if (!$featured_image_id) {
-            echo '<p>Pas d\'image mise en avant pour cet article.</p>';
-            return;
-        }
+          // Initialiser la nouvelle lightbox après avoir ajouté les photos
+          Lightbox.init();
 
-        // Récupérer l'URL de l'image mise en avant
-        $featured_image_url = wp_get_attachment_image_url($featured_image_id, 'full');
+          // Gestionnaire d'événements pour l'icône de l'œil
+          $('.photo-eye-icon').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var photoLink = $(this).closest('.photo-item').find('a').attr('data-single-url');
+            window.location.href = photoLink;
+          });
 
-        // Récupérer le nom de fichier de l'image mise en avant
-        $featured_image_file = basename($featured_image_url);
+          // Gestionnaire d'événements pour l'icône d'expansion
+          $('.photo-expand-icon').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).closest('a.fancybox').click();
+          });
 
-        // Récupérer le répertoire des images
-        $image_dir = get_template_directory() . '/assets/images/';
-
-        if (!is_dir($image_dir)) {
-            echo '<p>Le répertoire des images n\'existe pas.</p>';
-            return;
-        }
-
-        // Récupérer les fichiers d'image dans le répertoire
-        $current_index = -1;
-        $images = preg_grep('~\.(jpeg|jpg|png|gif|webp)$~', scandir($image_dir));
-        // var_dump($images); 
-        // echo "Featured image file: " . $featured_image_file . "<br>";
-        // echo "Current index: " . $current_index . "<br>";
-
-
-        // Fonction pour comparer les noms de fichiers en ignorant "-scaled"
-        function compare_filenames($filename1, $filename2) {
-            $filename1 = preg_replace('/\.[^.]+$/', '', $filename1);
-            $filename2 = preg_replace('/\.[^.]+$/', '', $filename2);
-            $filename1 = preg_replace('/-scaled|-\d+x\d+/', '', $filename1);
-            $filename2 = preg_replace('/-scaled|-\d+x\d+/', '', $filename2);
-            return stripos($filename1, $filename2) !== false || stripos($filename2, $filename1) !== false;
-        }
-        
-
-
-    // Vérifier si le tableau $images n'est pas vide et que l'image mise en avant existe
-    if (!empty($images)) {
-        $current_index = -1;
-        foreach ($images as $index => $image) {
-            // echo "Comparing: " . $featured_image_file . " with " . $image . "<br>";
-            if (compare_filenames($featured_image_file, $image)) {
-                $current_index = $index;
-                // echo "Match found at index: " . $current_index . "<br>";
-                break;
-            }
-        }
-        
-        // Pas besoin de rechercher à nouveau l'index
-        $thumbnail_index = ($current_index > 0) ? $current_index - 1 : $current_index + 1;
-        $thumbnail_index = max(0, min($thumbnail_index, count($images) - 1));
-    
-        
-        // echo "Thumbnail index: " . $thumbnail_index . "<br>";
-        // echo "Images count: " . count($images) . "<br>";
-        
-        if ($current_index !== -1 && isset($images[$thumbnail_index])) {
-            $thumbnail_file = $images[$thumbnail_index];
-            $thumbnail_url = get_template_directory_uri() . '/assets/images/' . $thumbnail_file;
-        
-            echo '<div class="image-container">';
-            echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
-            // echo "Chemin de l'image : " . $thumbnail_url . "<br>";
-            
-            // Affichage des flèches
-            if ($current_index > 0) {
-                $prev_image = array_values($images)[$current_index - 1];
-                echo '<a href="#" class="prev-arrow" data-image="' . esc_attr($prev_image) . '"><i class="fa-solid fa-arrow-left-long"></i></a>';
-            }
-            if ($current_index < count($images) - 1) {
-                $next_image = array_values($images)[$current_index + 1];
-                echo '<a href="#" class="next-arrow" data-image="' . esc_attr($next_image) . '"><i class="fa-solid fa-arrow-right-long"></i></a>';
-            }
-            echo '</div>';
+          // Empêcher le titre d'être cliquable
+          $('.photo-title').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+          });
         } else {
-            echo '<p>Aucune miniature disponible. Current index: ' . $current_index . ', Thumbnail index: ' . $thumbnail_index . '</p>';
+          $('#photo-gallery').html('<p>No photos found</p>');
         }
-        
-        
-    }            
-    ?>
+      }
+    });
+  });
 
-        <script>
-        var photoImages = <?php echo json_encode(array_values($images)); ?>;
-        </script>
-    </div>
-    </section>
+  // Gestion du bouton "Charger plus"
+  var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
+  $('#load-more').on('click', function() {
+      $.ajax({
+          url: nathaliemotaAjax.ajaxurl,
+          type: 'post',
+          data: {
+              action: 'load_more_photos',
+              paged: paged
+          },
+          success: function(response) {
+              console.log ("succes")
+              if(response.success) {
+                console.log (response.data)
+                  $('.photo-gallery').append(response.data);
+                  paged++;
+                  
+                  // Réinitialise Lightbox pour les nouvelles photos
+                  Lightbox.init();
+                  
+                  // Si toutes les photos sont chargées, masque le bouton
+                  if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
+                      $('#load-more').hide();
+                  }
+              } else {
+                  $('#load-more').hide();
+              }
+          }
+      });
+  });
+})(jQuery);
 
+document.addEventListener('DOMContentLoaded', function() {
+  const arrows = document.querySelectorAll('.prev-arrow, .next-arrow');
+  arrows.forEach(arrow => {
+      arrow.addEventListener('click', function(e) {
+          e.preventDefault();
+          const imageName = this.getAttribute('data-image');
+          const imageUrl = '/wp-content/themes/nathalie-mota/assets/images/' + imageName;
+          document.querySelector('.small-photo').src = imageUrl;
+          
+          // Mettre à jour les flèches
+          updateArrows(imageName);
+      });
+  });
 
-    <hr id="line" />
-    <section class="section-3">
-    <div class="section-3-container">
-        <p style="text-align: justify;">Vous aimerez aussi</p>
-        <div class="photo-grid">
-            <?php
-            // Récupérer les photos liées (même catégorie par exemple)
-            $related_args = array(
-                'post_type' => 'photographies',
-                'posts_per_page' => 2,
-                'post__not_in' => array(get_the_ID()),
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'categorie',
-                        'field' => 'slug',
-                        'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'slugs')),
-                    ),
-                ),
-            );
-            $related_query = new WP_Query($related_args);
+  function updateArrows(currentImage) {
+    const images = window.photoImages || [];
+    let currentIndex = images.indexOf(currentImage);
+    
+    const prevArrow = document.querySelector('.prev-arrow');
+    const nextArrow = document.querySelector('.next-arrow');
+    
+    // Navigation infinie
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    const nextIndex = (currentIndex + 1) % images.length;
+    
+    prevArrow.style.display = 'inline-block';
+    prevArrow.setAttribute('data-image', images[prevIndex]);
+    
+    nextArrow.style.display = 'inline-block';
+    nextArrow.setAttribute('data-image', images[nextIndex]);
+  }
+});
 
-            if ($related_query->have_posts()) {
-                while ($related_query->have_posts()) {
-                    $related_query->the_post();
-                    ?>
-                    <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail('large'); ?>
-                        </a>
-                    </div>
-                    <?php
-                }
-                wp_reset_postdata();
-            } else {
-                echo '<p>Il n\'y a aucune photo supplémentaire dans cette catégorie</p>';
-            }
-            ?>
-        </div>
-    </div>
-    </section>
+document.addEventListener('DOMContentLoaded', function() {
+  var myModal = new bootstrap.Modal(document.getElementById('contact-modal'), {
+      keyboard: false
+  });
 
-</div>
-
+  document.querySelectorAll('.btn-contact').forEach(function(button) {
+      button.addEventListener('click', function(event) {
+          event.preventDefault();
+          myModal.show();
+      });
+  });
+});

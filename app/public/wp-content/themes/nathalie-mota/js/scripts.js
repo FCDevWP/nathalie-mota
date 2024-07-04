@@ -1,5 +1,10 @@
 (function($) {
   $(document).ready(function() {
+    // Initialisation de Select2
+    $("#category").select2();
+    $("#format").select2();
+    $("#tri").select2();
+
     // Ouvre la modale lors du clic sur le lien "Contact" (existant)
     $('.open-contact-modal, .btn-contact').on('click', function(e) {
       e.preventDefault();
@@ -72,42 +77,37 @@
       }
     });
   });
-})(jQuery);
 
-(function($) {
-    $(document).ready(function() {
-        
-        // Gestion du bouton "Charger plus"
-        var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
-        $('#load-more').on('click', function() {
-            $.ajax({
-                url: nathaliemotaAjax.ajaxurl,
-                type: 'post',
-                data: {
-                    action: 'load_more_photos',
-                    paged: paged
-                },
-                success: function(response) {
-                    console.log ("succes")
-                    if(response.success) {
-                      console.log (response.data)
-                        $('.photo-gallery').append(response.data);
-                        paged++;
-                        
-                        // Réinitialise Lightbox pour les nouvelles photos
-                        Lightbox.init();
-                        
-                        // Si toutes les photos sont chargées, masque le bouton
-                        if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
-                            $('#load-more').hide();
-                        }
-                    } else {
-                        $('#load-more').hide();
-                    }
-                }
-            });
-        });
-    });
+  // Gestion du bouton "Charger plus"
+  var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
+  $('#load-more').on('click', function() {
+      $.ajax({
+          url: nathaliemotaAjax.ajaxurl,
+          type: 'post',
+          data: {
+              action: 'load_more_photos',
+              paged: paged
+          },
+          success: function(response) {
+              console.log ("succes")
+              if(response.success) {
+                console.log (response.data)
+                  $('.photo-gallery').append(response.data);
+                  paged++;
+                  
+                  // Réinitialise Lightbox pour les nouvelles photos
+                  Lightbox.init();
+                  
+                  // Si toutes les photos sont chargées, masque le bouton
+                  if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
+                      $('#load-more').hide();
+                  }
+              } else {
+                  $('#load-more').hide();
+              }
+          }
+      });
+  });
 })(jQuery);
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
     nextArrow.style.display = 'inline-block';
     nextArrow.setAttribute('data-image', images[nextIndex]);
   }
-
 });
 
 document.addEventListener('DOMContentLoaded', function() {

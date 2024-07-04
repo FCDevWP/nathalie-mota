@@ -9,23 +9,25 @@ Tags: projet 11, photographe, cours
 Text Domain: nathaliemota
 */
 
-/* GENERALITES */
+/* -------------------------------- */
+/* GÉNÉRALITÉS                      */
+/* -------------------------------- */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family: 'Poppins';
-    margin: auto;
-    padding: 0;
-    max-width: 1500px;
+body {
+  font-family: 'Poppins';
+  margin: auto;
+  padding: 0;
+  max-width: 1500px;
 }
 
 h1 {
-    font-family: 'Space Mono';
+  font-family: 'Space Mono';
 }
 
 .container {
@@ -35,49 +37,55 @@ h1 {
   padding: 0 20px;
 }
 
-/*MENU HEADER*/
+/* -------------------------------- */
+/* HEADER ET NAVIGATION             */
+/* -------------------------------- */
+
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-    padding: 30px 50px;
-    font-family: 'Space Mono', monospace;
-    border-radius: 5px;
-    box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.05),
-    10px 10px 10px rgba(0, 0, 0, 0.05),
-    -10px 10px 10px rgba(0, 0, 0, 0.05),
-    10px -10px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  padding: 30px 50px;
+  font-family: 'Space Mono', monospace;
+  border-radius: 5px;
+  box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.05),
+              10px 10px 10px rgba(0, 0, 0, 0.05),
+              -10px 10px 10px rgba(0, 0, 0, 0.05),
+              10px -10px 10px rgba(0, 0, 0, 0.05);
 }
 
 .logo img {
-    height: 16px;
-    margin-left:30px;
+  height: 16px;
+  margin-left: 30px;
 }
 
 .main-menu {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .main-menu li {
-    display: inline-block;  /* Modifié */
-    margin-left: 50px;
+  display: inline-block;
+  margin-left: 50px;
 }
 
 .main-menu li:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .main-menu a {
-    color: black;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 16px;
-    letter-spacing: 2px;
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  letter-spacing: 2px;
 }
 
-/* HERO HEADER */
+/* -------------------------------- */
+/* HERO HEADER                      */
+/* -------------------------------- */
+
 .hero-header {
   position: relative;
   height: 100vh;
@@ -87,10 +95,6 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 20px;
-}
-
-.hero-header .category-general, .hero-header .format-general, .hero-header .tri-general {
-  margin-right: 20px;
 }
 
 .hero-image {
@@ -108,30 +112,20 @@ nav {
 }
 
 .hero-text {
-  width: 100%; /* Faites du texte en surimpression plein écran */
-  height: auto; /* Faites du texte en surimpression auto-hauteur */
+  width: 100%;
+  height: auto;
 }
 
-/* Menus déroulants*/
+/* -------------------------------- */
+/* MENUS DÉROULANTS ET SELECT2      */
+/* -------------------------------- */
 
-.category-general, .format-general, .tri-general {
-  display: inline-block;
-  margin-left: 12px;
-  margin-right: 12px;
-  margin-top: 40px;
-  width: 50%;
-}
-
-#category, #format, #tri {
-  padding: 20px 50px;
-}
-
-.category-general label, .format-general label, .tri-general label {
-  font-family: 'Space Mono';
-  text-transform: uppercase;
-  font-size: 16px;
-  letter-spacing: 2px;
-  display: block; 
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .left-side {
@@ -146,60 +140,108 @@ nav {
   justify-content: flex-end;
 }
 
+.category-general, .format-general, .tri-general {
+  display: inline-block;
+  margin: 40px 12px 0;
+  width: 50%;
+  height: auto;
+}
 
-.category-general select, .format-general select, .tri-general select {
+.category-general label, .format-general label, .tri-general label {
+  font-family: 'Space Mono';
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 2px;
+  display: block;
+}
+
+/* Styles pour Select2 */
+.select2-container {
+  width: 100% !important;
+}
+
+.select2-container .select2-selection--single {
+  font-family: 'Space Mono';
+  font-size: 16px;
+  padding: 15px 10px; 
+  height: auto; 
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #000000;
+  display: flex; 
+  align-items: center; 
+}
+
+/* .select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: normal;
+  padding: 0;
+  display: flex; 
+  align-items: center; 
+  height: 100%; 
+} */
+
+/* .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+  top: 0;
+  right: 10px;
+  display: flex; 
+  align-items: center; 
+} */
+
+
+/* .select2-dropdown {
+  border: 1px solid #000;
+  border-radius: 5px;
+} */
+
+/* .select2-results__option {
   font-family: 'Space Mono';
   font-size: 16px;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  border: 1px solid #000;
-  background-color: #ffffff; 
-  width: 100%; 
-  color: #000000;
+} */
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #ff0000 !important;
+  color: #000000 !important;
 }
 
-.category-general option,
-.format-general option,
-.tri-general option {
-  background-color: inherit;
-  color: inherit;
-}
+/* .select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: #ff0000 !important;
+  color: #000000 !important;
+} */
 
-.category-general option, .format-general option, .tri-general option {
-  padding: 10px;
-  background-color: #ffffff; /* Ajouter ce code pour que le fond des options soit blanc */
-  color: #000000; /* Ajouter ce code pour que le texte des options soit noir */
-}
 
-/* Règle CSS plus spécifique pour les options avec la classe "custom-option" au survol */
-.category-general option.custom-option:hover,
-.format-general option.custom-option:hover,
-.tri-general option.custom-option:hover {
-  background-color: red !important;
-  color: white !important;
-}
+/* .select2-results__options {
+  background-color: #ffffff;
+} */
 
-/* Règles pour conteneur parent des menus déroulants et galerie photo */
-.menu-container, .photo-gallery {
+/* .select2-search__field {
+  font-family: 'Space Mono';
+  background-color: #f0f0f0;
+  border: 1px solid #cccccc;
+} */
+
+/* .select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: normal;
+  padding: 0;
+} */
+
+/* -------------------------------- */
+/* GALERIE DE PHOTOS                */
+/* -------------------------------- */
+
+.photo-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   max-width: 80%;
-  margin: 0 auto;
-}
-
-
-/* Galerie de photos */
-.photo-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 50px;
+  margin: 50px auto 0;
 }
 
 .photo-item {
-  position: relative; /* nécessaire pour positionner l'overlay absolument */
-  overflow: hidden; /* nécessaire pour masquer les parties débordantes de l'overlay */
+  position: relative;
+  overflow: hidden;
   padding: 10px;
   transition: transform 0.3s;
   width: 50%;
@@ -208,7 +250,7 @@ nav {
 }
 
 .photo-item:hover .photo-overlay {
-  opacity: 0.7; /* réglez l'opacité de l'overlay à 70% */
+  opacity: 0.7;
 }
 
 .photo-overlay {
@@ -217,59 +259,59 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: black; /* réglez la couleur de fond de l'overlay à noir */
-  opacity: 0; /* réglez l'opacité de l'overlay à 0 par défaut */
-  transition: opacity 0.3s; /* ajoutez une transition pour l'opacité de l'overlay */
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .photo-title {
   position: absolute;
-  bottom: 15px; /* réglez la distance entre le bas de l'image et le titre */
-  left: 20px; /* réglez la distance entre le côté gauche de l'image et le titre */
-  font-family: 'Space Mono', sans-serif; /* réglez la police d'écriture du titre à Space Mono */
-  font-size: 18px; /* réglez la taille de la police du titre */
-  text-transform: uppercase; /* réglez la casse du titre à majuscule */
-  color: white; /* réglez la couleur du titre à blanc */
-  z-index: 1; /* réglez l'ordre d'empilement du titre à 1 pour qu'il soit au-dessus de l'overlay */
+  bottom: 15px;
+  left: 20px;
+  font-family: 'Space Mono', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
 }
 
 .photo-category {
   position: absolute;
-  bottom: 15px; /* réglez la distance entre le bas de l'image et la catégorie */
-  right: 20px; /* réglez la distance entre le côté droite de l'image et la catégorie */
-  font-family: 'Space Mono', sans-serif; /* réglez la police d'écriture du titre à Space Mono */
-  font-size: 18px; /* réglez la taille de la police de la catégorie */
-  text-transform: uppercase; /* réglez la casse du titre à majuscule */
-  color: white; /* réglez la couleur de la catégorie à blanc */
-  z-index: 1; /* réglez l'ordre d'empilement de la catégorie à 1 pour qu'elle soit au-dessus de l'overlay */
+  bottom: 15px;
+  right: 20px;
+  font-family: 'Space Mono', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  z-index: 1;
+}
+
+.photo-eye, .photo-expand {
+  position: absolute;
+  font-size: 24px;
+  color: white;
+  z-index: 1;
 }
 
 .photo-eye {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px;
-  color: white; /* réglez la couleur de l'icône à blanc */
-  z-index: 1; /* réglez l'ordre d'empilement de l'icône à 1 pour qu'elle soit au-dessus de l'overlay */
 }
 
 .photo-expand {
-  position: absolute;
   top: 20px;
   right: 30px;
-  font-size: 24px;
-  color: white; /* réglez la couleur de l'icône à blanc */
-  z-index: 1; /* réglez l'ordre d'empilement de l'icône à 1 pour qu'elle soit au-dessus de l'overlay */
 }
+
 .photo-icon {
-  display : none;
+  display: none;
   position: absolute;
-  top: 50px; /* réglez la distance entre le haut de l'image et l'icône */
-  right: 50px; /* réglez la distance entre le côté droit de l'image et l'icône */
-  font-size: 24px; /* réglez la taille de l'icône */
-  color: white; /* réglez la couleur de l'icône à blanc */
-  z-index: 1; /* réglez l'ordre d'empilement de l'icône à 1 pour qu'elle soit au-dessus de l'overlay */
+  top: 50px;
+  right: 50px;
+  font-size: 24px;
+  color: white;
+  z-index: 1;
 }
 
 .photo-item img {
@@ -286,12 +328,14 @@ nav {
   margin: 10px 0 0;
 }
 
-
 .photo-expand:hover {
   cursor: pointer;
 }
 
-/*BOUTON CHARGER */
+/* -------------------------------- */
+/* BOUTON CHARGER PLUS              */
+/* -------------------------------- */
+
 .load-more-container {
   text-align: center;
   margin-top: 20px;
@@ -320,7 +364,9 @@ nav {
   display: none;
 }
 
-/*MODALE */
+/* -------------------------------- */
+/* MODALE                           */
+/* -------------------------------- */
 
 .modal {
   display: none;
@@ -337,8 +383,8 @@ nav {
 .modal-content {
   max-width: 600px;
   max-height: 810px;
-  height: 810px; /* ajout de cette propriété pour forcer la hauteur */
-  overflow-y: auto; /* pour ajouter une barre de défilement vertical si le contenu dépasse la hauteur */
+  height: 810px;
+  overflow-y: auto;
   background-color: #fff;
   margin: 10% auto;
   padding: 20px;
@@ -347,19 +393,18 @@ nav {
 }
 
 .modal-header img {
-  width: 100%; /* pour que l'image prenne la largeur du conteneur */
-  height: 100%; /* pour que l'image prenne la hauteur du conteneur */
-  object-fit: cover; /* pour que l'image soit coupée si elle dépasse les dimensions du conteneur */
-  /* overflow: hidden; pour cacher les parties de l'image qui débordent du conteneur */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .header-container {
   width: 550px;
   height: 110px;
-  overflow: hidden; /* pour cacher les parties de l'image qui débordent du conteneur */
-  margin: 0 auto; /* pour centrer le conteneur */
-  padding: 0; /* pour supprimer les padding par défaut */
-  border: none; /* pour supprimer les bordures par défaut */
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
 }
 
 .modal-body {
@@ -369,37 +414,36 @@ nav {
   justify-content: center;
 }
 
-/* Mise en page des champs de la modale*/
-
+/* Mise en page des champs de la modale */
 .wpcf7-form {
-	margin-top: 50px;
-  font-family: 'space Mono';
+  margin-top: 50px;
+  font-family: 'Space Mono';
 }
 
 .wpcf7-form-control-wrap {
-	display: inline-block;
-	height: 60px;
+  display: inline-block;
+  height: 60px;
 }
 
 .wpcf7-form-control {
-	height:40px;
+  height: 40px;
   border-radius: 3px;
   border: 1px solid #d8d8d8;
 }
 
 .wpcf7-textarea {
-		height:190px;
+  height: 190px;
 }
 
 .wpcf7-submit {
-  margin: 20px auto; /* centrer le bouton */
-  display: block; /* pour que le bouton prenne la largeur maximale */
-  text-align: center; /* centrer le texte du bouton */
+  margin: 20px auto;
+  display: block;
+  text-align: center;
   background-color: #d8d8d8; 
-  border: none; /* supprimer la bordure */
-  cursor: pointer; /* ajouter un curseur de pointeur */
-  width: 100%; /* ajuster la largeur du bouton à 100% */
-  box-sizing: border-box; /* prendre en compte les bordures et les padding dans la largeur */
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
   font-size: 16px;
 }
 
@@ -409,41 +453,33 @@ nav {
   transition: background-color 1s, color 1s;
 }
 
+/* -------------------------------- */
+/* FOOTER                           */
+/* -------------------------------- */
 
-
-/*MENU FOOTER */
 footer {
   width: 100%;
   background-color: #ffffff;
   padding: 20px;
   border-top: 1px solid black;
 }
-  
+
 .nav-footer {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
-  
-.nav-footer li {
-    margin-right: 20px;
-}
-  
-.nav-footer li:last-child {
-    margin-right: 0;
-}
-  
-.nav-footer a {
-    color: #333;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 16px;
-    letter-spacing: 2px;
-    font-family: 'Space Mono';
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
-.nav-footer span a {
+.nav-footer li {
+  margin-right: 20px;
+}
+
+.nav-footer li:last-child {
+  margin-right: 0;
+}
+
+.nav-footer a, .nav-footer span a {
   color: #333;
   text-transform: uppercase;
   text-decoration: none;
@@ -451,6 +487,3 @@ footer {
   letter-spacing: 2px;
   font-family: 'Space Mono';
 }
-
-  
-
