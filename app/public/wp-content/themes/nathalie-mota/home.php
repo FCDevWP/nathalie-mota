@@ -25,7 +25,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
     <div class="menu-container">
         <div class="left-side">
             <section class="category-general">
-            <select name="category" id="category" class="category" onfocus="this.size=4;" onblur="this.size=0;" onchange="this.size=1; this.blur()">
+            <select name="category" id="category" class="category">
                     <option value="" disabled selected>CATÉGORIES</option>
                     <option value="reception" class="reception custom-option">Réception</option>
                     <option value="concert" class="concert custom-option">Concert</option>
@@ -34,7 +34,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
                 </select>
             </section>
             <section class="format-general">
-                <select name="format" id="format" class="format" onfocus="this.size=2;" onblur="this.size=0;" onchange="this.size=1; this.blur()">
+                <select name="format" id="format" class="format">
                     <option value="" disabled selected>FORMAT</option>
                     <option value="paysage" class="paysage custom-option">Paysage</option>
                     <option value="portrait" class="portrait custom-option">Portrait</option>
@@ -43,7 +43,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
         </div>
         <div class="right-side">
             <section class="tri-general">
-                <select name="tri" id="tri" class="tri" onfocus="this.size=2;" onblur="this.size=0;" onchange="this.size=1; this.blur()">
+                <select name="tri" id="tri" class="tri">
                     <option value="" disabled selected>TRIER PAR</option>
                     <option value="new" class="new custom-option">Nouveautés</option>
                     <option value="old" class="old custom-option">Oeuvres anciennes</option>

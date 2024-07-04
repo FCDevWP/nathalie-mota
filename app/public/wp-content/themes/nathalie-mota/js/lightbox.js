@@ -11,6 +11,24 @@ class Lightbox {
             e.preventDefault();
             new Lightbox(e.currentTarget.getAttribute('href'), gallery);
         }));
+        const photoItems = document.querySelectorAll('.photo-item');
+        photoItems.forEach(item => {
+            const eyeIcon = item.querySelector('.photo-eye-icon');
+            const expandIcon = item.querySelector('.photo-expand-icon');
+            const link = item.querySelector('a.fancybox');
+    
+            eyeIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = link.getAttribute('data-single-url');
+            });
+    
+            expandIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                link.click();
+            });
+        });
     }
 
     constructor(url, images) {
@@ -102,24 +120,8 @@ class Lightbox {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log ('test')
     Lightbox.init();
 
-    const photoItems = document.querySelectorAll('.photo-item');
-    photoItems.forEach(item => {
-        const eyeIcon = item.querySelector('.photo-eye-icon');
-        const expandIcon = item.querySelector('.photo-expand-icon');
-        const link = item.querySelector('a.fancybox');
 
-        eyeIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.location.href = link.getAttribute('data-single-url');
-        });
-
-        expandIcon.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            link.click();
-        });
-    });
 });
