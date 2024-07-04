@@ -316,6 +316,9 @@ padding: 20px 50px;
   transition: 0.3s;
 }
 
+.hidden-link {
+  display: none;
+}
 
 /*MODALE */
 

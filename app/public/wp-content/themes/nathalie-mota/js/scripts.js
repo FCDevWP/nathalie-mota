@@ -23,7 +23,7 @@
       url: nathaliemotaAjax.ajaxurl,
       type: 'post',
       data: {
-        action: 'request_photos'
+        action: 'request_photos' 
       },
       success: function(response) {
         if(response) {
@@ -156,6 +156,3 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 });
-
-
-
