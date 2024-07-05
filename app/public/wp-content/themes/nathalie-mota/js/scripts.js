@@ -181,5 +181,3 @@ document.addEventListener('DOMContentLoaded', function() {
     nextArrow.setAttribute('data-image', images[nextIndex]);
   }
 });
-
-

@@ -161,6 +161,8 @@
                 while ($related_query->have_posts()) {
                     $related_query->the_post();
                     $full_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                    $categories = get_the_terms(get_the_ID(), 'categorie');
+                    $category = $categories ? $categories[0]->name : '';
                     ?>
                     <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
                         <a href="<?php echo esc_url($full_image_url); ?>" 
@@ -169,8 +171,10 @@
                            data-single-url="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
                             <div class="photo-overlay">
+                                <div class="photo-title"><?php the_title(); ?></div>
                                 <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
                                 <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
+                                <div class="photo-category"><?php echo $category; ?></div>
                             </div>
                         </a>
                     </div>
@@ -183,7 +187,8 @@
             ?>
         </div>
     </div>
-</section>
+    </section>
+
 
 </div>
 
