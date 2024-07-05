@@ -44,7 +44,7 @@
     <section class="section-2">
     <div class="left-side">
         <p>Cette photo vous intéresse ?</p>
-        <a href="#" class="btn-contact" data-bs-toggle="modal" data-bs-target="#contact-modal">Contact</a>
+        <a href="#" class="btn-contact" data-bs-toggle="modal" data-bs-target="#contact-modal" data-reference="<?php echo get_field('reference'); ?>">Contact</a>
     </div>
     <div class="right-side">
     <?php
