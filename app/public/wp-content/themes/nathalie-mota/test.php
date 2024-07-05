@@ -1,154 +1,262 @@
-(function($) {
-  $(document).ready(function() {
-    // Initialisation de Select2
-    $("#category").select2();
-    $("#format").select2();
-    $("#tri").select2();
+p {
+    font-size: 14px;
+}
 
-    // Gestion de la modale de contact
-    var modal = document.getElementById('contact-modal');
+hr {
+    width: 100%;
+    margin: auto;
+    height: 1px;
+    padding-right: 15px;
+}
 
-    $('.open-contact-modal, .btn-contact').on('click', function(e) {
-      e.preventDefault();
-      var reference = $(this).data('reference') || '';
-      
-      $('#contact-modal').fadeIn();
-      
-      // Remplir le champ de référence
-      var referenceField = $('#contact-modal input[name="reference"]');
-      if (referenceField.length) {
-          referenceField.val(reference);
-      }
-    });
+/* Section 1 */
+.section-1 {
+    display: flex;
+    align-items: end;
+    text-transform: uppercase;
+    font-weight: 400;
+}
 
-    // Ferme la modale lors du clic en dehors de celle-ci
-    $(document).on('click', function(e) {
-      if ($(e.target).closest('.modal-content').length === 0 && !$(e.target).hasClass('open-contact-modal') && !$(e.target).hasClass('btn-contact')) {
-        $('#contact-modal').fadeOut();
-      }
-    });
+.section-1 .content {
+    flex: 1;
+}
 
-    // Ferme la modale lorsque le formulaire est envoyé
-    $('#contact-modal form').on('submit', function() {
-      $('#contact-modal').fadeOut();
-    });
+.section-1 h1 {
+    font-size: 50px;
+}
 
-    // Requête AJAX pour récupérer les données des photos
-    $.ajax({
-      url: nathaliemotaAjax.ajaxurl,
-      type: 'post',
-      data: {
-        action: 'request_photos' 
-      },
-      success: function(response) {
-        if(response) {
-          let output = '';
-          $.each(response, function(index, photo) {
-            output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
-            output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
-            output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
-            output += '<div class="photo-overlay">';
-            output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
-            output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
-            output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
-            output += '<div class="photo-category">' + photo.category + '</div>';
-            output += '</div>';
-            output += '</a>';
-            output += '</div>';
-          });
-          $('#photo-gallery').html(output);
 
-          // Initialiser la nouvelle lightbox après avoir ajouté les photos
-          Lightbox.init();
+.photo-content {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
 
-          // Gestionnaire d'événements pour l'icône de l'œil
-          $('.photo-eye-icon').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var photoLink = $(this).closest('.photo-item').find('a').attr('data-single-url');
-            window.location.href = photoLink;
-          });
+.photo-title-new {
+    color: black;
+    font-family: 'Space Mono';
+}
 
-          // Gestionnaire d'événements pour l'icône d'expansion
-          $('.photo-expand-icon').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).closest('a.fancybox').click();
-          });
 
-          // Empêcher le titre d'être cliquable
-          $('.photo-title').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-          });
-        } else {
-          $('#photo-gallery').html('<p>No photos found</p>');
-        }
-      }
-    });
-  });
+.photo-meta {
+    padding-bottom: 10px;
+}
 
-  // Gestion du bouton "Charger plus"
-  var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
-  $('#load-more').on('click', function() {
-      $.ajax({
-          url: nathaliemotaAjax.ajaxurl,
-          type: 'post',
-          data: {
-              action: 'load_more_photos',
-              paged: paged
-          },
-          success: function(response) {
-              console.log ("succes")
-              if(response.success) {
-                console.log (response.data)
-                  $('.photo-gallery').append(response.data);
-                  paged++;
-                  
-                  // Réinitialise Lightbox pour les nouvelles photos
-                  Lightbox.init();
-                  
-                  // Si toutes les photos sont chargées, masque le bouton
-                  if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
-                      $('#load-more').hide();
-                  }
-              } else {
-                  $('#load-more').hide();
-              }
-          }
-      });
-  });
-})(jQuery);
 
-document.addEventListener('DOMContentLoaded', function() {
-  const arrows = document.querySelectorAll('.prev-arrow, .next-arrow');
-  arrows.forEach(arrow => {
-      arrow.addEventListener('click', function(e) {
-          e.preventDefault();
-          const imageName = this.getAttribute('data-image');
-          const imageUrl = '/wp-content/themes/nathalie-mota/assets/images/' + imageName;
-          document.querySelector('.small-photo').src = imageUrl;
-          
-          // Mettre à jour les flèches
-          updateArrows(imageName);
-      });
-  });
+p, h1 {
+    padding-bottom: 20px;
+}
 
-  function updateArrows(currentImage) {
-    const images = window.photoImages || [];
-    let currentIndex = images.indexOf(currentImage);
-    
-    const prevArrow = document.querySelector('.prev-arrow');
-    const nextArrow = document.querySelector('.next-arrow');
-    
-    // Navigation infinie
-    const prevIndex = (currentIndex - 1 + images.length) % images.length;
-    const nextIndex = (currentIndex + 1) % images.length;
-    
-    prevArrow.style.display = 'inline-block';
-    prevArrow.setAttribute('data-image', images[prevIndex]);
-    
-    nextArrow.style.display = 'inline-block';
-    nextArrow.setAttribute('data-image', images[nextIndex]);
-  }
-});
+
+.left-column {
+    margin-left: 15px;
+}
+
+.left-column,
+.right-column,
+.related-photo {
+    width: 50%;
+}
+
+.photo-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.small-photo {
+    width: 50%;
+    height: auto;
+}
+
+
+
+/* Section 2 */
+.section-2 {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; /* Centre verticalement les éléments */
+    height: auto; 
+    padding: 20px 0; 
+}
+
+
+.section-2 p {
+    padding-bottom: 0px;
+    align-content: center;
+    margin-left: 15px;
+}
+
+
+.btn-contact {
+    background-color: #D8D8D8;
+    border-radius: 2px;
+    font-family: 'Space Mono';
+    color: black;
+    text-decoration: none;
+    width: 272px;
+    height: 50px;
+    font-size: 14px;
+    align-content: center;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+    /* margin-right: 15px; */
+}
+
+
+.section-2 .field-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-2 .instructions {
+    max-width: 600px;
+}
+
+.section-2 .instructions .wrap {
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.07);
+    padding: 20px 25px;
+}
+
+#line {
+    margin-left: 15px;
+}
+
+.left-side {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-around;
+    align-items: center;
+    height: 100%; /* Assurez-vous que le parent a une hauteur définie */
+}
+
+.left-side p {
+    margin: 0; /* Supprime la marge par défaut du paragraphe */
+    padding: 0; /* Supprime le padding par défaut du paragraphe */
+}
+
+
+.right-side {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: flex-end; /* Aligne les éléments à droite */
+    width: 100%; 
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement dans le container */
+
+}
+
+.small-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Cela garantit que l'image couvre bien le carré sans être déformée */
+    margin-bottom: 10px;
+}
+
+
+.navigation-arrows {
+    display: flex;
+    justify-content: center; 
+    gap: 20px;
+    width: 100%; /* Utilise toute la largeur du container */
+}
+
+.prev-arrow,
+.next-arrow {
+    font-size: 20px; /* Taille des icônes de flèche */
+    color: #000; /* Couleur des flèches */
+    text-decoration: none;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Section 3 */
+.entry-content .section-3 .wrap {
+    max-width: 800px;
+    padding: 40px;
+}
+
+.section-3 {
+    display: flex;
+    text-transform: uppercase;
+    font-family: 'Space Mono';
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.section-3 p {
+    font-size: 18px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.section-3-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.photo-item {
+    margin-bottom: 20px;
+}
+
+.section-3 .photo-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-3 .photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-3 .photo-item:hover .photo-overlay {
+    opacity: 1;
+}
+
+.section-3 .photo-eye,
+.section-3 .photo-expand {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.section-3 .photo-eye {
+    margin-right: 20px;
+}
+
+.section-3 .photo-expand {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

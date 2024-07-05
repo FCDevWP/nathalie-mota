@@ -86,37 +86,66 @@
         }
       }
     });
-  });
 
-  // Gestion du bouton "Charger plus"
-  var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
-  $('#load-more').on('click', function() {
-      $.ajax({
-          url: nathaliemotaAjax.ajaxurl,
-          type: 'post',
-          data: {
-              action: 'load_more_photos',
-              paged: paged
-          },
-          success: function(response) {
-              console.log ("succes")
-              if(response.success) {
-                console.log (response.data)
-                  $('.photo-gallery').append(response.data);
-                  paged++;
-                  
-                  // Réinitialise Lightbox pour les nouvelles photos
-                  Lightbox.init();
-                  
-                  // Si toutes les photos sont chargées, masque le bouton
-                  if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
-                      $('#load-more').hide();
-                  }
-              } else {
-                  $('#load-more').hide();
-              }
-          }
-      });
+    // Gestion du bouton "Charger plus"
+    var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
+    $('#load-more').on('click', function() {
+        $.ajax({
+            url: nathaliemotaAjax.ajaxurl,
+            type: 'post',
+            data: {
+                action: 'load_more_photos',
+                paged: paged
+            },
+            success: function(response) {
+                console.log ("succes")
+                if(response.success) {
+                  console.log (response.data)
+                    $('.photo-gallery').append(response.data);
+                    paged++;
+                    
+                    // Réinitialise Lightbox pour les nouvelles photos
+                    Lightbox.init();
+                    
+                    // Si toutes les photos sont chargées, masque le bouton
+                    if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
+                        $('#load-more').hide();
+                    }
+                } else {
+                    $('#load-more').hide();
+                }
+            }
+        });
+    });
+
+    // Nouvelle section pour gérer la section 3 de single.php/content-photo.php
+    // Gestionnaire d'événements pour l'icône de l'œil dans la section 3
+    $('.section-3 .photo-eye-icon').on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var photoLink = $(this).closest('a').attr('data-single-url');
+        window.location.href = photoLink;
+    });
+
+    // Gestionnaire d'événements pour l'icône d'expansion dans la section 3
+    $('.section-3 .photo-expand-icon').on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).closest('a.fancybox').click();
+    });
+
+    // Initialiser FancyBox pour les nouvelles images dans la section 3
+    $(".section-3 .fancybox").fancybox({
+        buttons: [
+            "zoom",
+            "share",
+            "slideShow",
+            "fullScreen",
+            "download",
+            "thumbs",
+            "close"
+        ],
+    });
   });
 })(jQuery);
 
@@ -152,3 +181,5 @@ document.addEventListener('DOMContentLoaded', function() {
     nextArrow.setAttribute('data-image', images[nextIndex]);
   }
 });
+
+
