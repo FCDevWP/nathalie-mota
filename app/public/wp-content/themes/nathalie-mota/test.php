@@ -5,10 +5,20 @@
     $("#format").select2();
     $("#tri").select2();
 
-    // Ouvre la modale lors du clic sur le lien "Contact" (existant)
+    // Gestion de la modale de contact
+    var modal = document.getElementById('contact-modal');
+
     $('.open-contact-modal, .btn-contact').on('click', function(e) {
       e.preventDefault();
+      var reference = $(this).data('reference') || '';
+      
       $('#contact-modal').fadeIn();
+      
+      // Remplir le champ de référence
+      var referenceField = $('#contact-modal input[name="reference"]');
+      if (referenceField.length) {
+          referenceField.val(reference);
+      }
     });
 
     // Ferme la modale lors du clic en dehors de celle-ci
@@ -141,17 +151,4 @@ document.addEventListener('DOMContentLoaded', function() {
     nextArrow.style.display = 'inline-block';
     nextArrow.setAttribute('data-image', images[nextIndex]);
   }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  var myModal = new bootstrap.Modal(document.getElementById('contact-modal'), {
-      keyboard: false
-  });
-
-  document.querySelectorAll('.btn-contact').forEach(function(button) {
-      button.addEventListener('click', function(event) {
-          event.preventDefault();
-          myModal.show();
-      });
-  });
 });
