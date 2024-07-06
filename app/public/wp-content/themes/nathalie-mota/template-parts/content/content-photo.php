@@ -32,7 +32,7 @@
                 <p>Catégories : <?php echo $categorie; ?></p>
                 <p>Format : <?php echo $format; ?></p>
                 <p>Type : <?php echo get_field('type'); ?></p>
-                <p>Année : <?php echo get_field('annee'); ?></p>
+                <p>Année : <?php echo get_the_date('Y'); ?></p>
                 <hr />
             </div>
         </div>
