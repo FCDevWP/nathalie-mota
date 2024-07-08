@@ -33,89 +33,101 @@
       $('#contact-modal').fadeOut();
     });
 
-    // Requête AJAX pour récupérer les données des photos
-    $.ajax({
-      url: nathaliemotaAjax.ajaxurl,
-      type: 'post',
-      data: {
-        action: 'request_photos' 
-      },
-      success: function(response) {
-        if(response) {
-          let output = '';
-          $.each(response, function(index, photo) {
-            output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
-            output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
-            output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
-            output += '<div class="photo-overlay">';
-            output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
-            output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
-            output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
-            output += '<div class="photo-category">' + photo.category + '</div>';
-            output += '</div>';
-            output += '</a>';
-            output += '</div>';
-          });
-          $('#photo-gallery').html(output);
+    // Variables pour le filtrage et la pagination
+    var currentPage = 1;
+    var category = '';
+    var format = '';
+    var tri = '';
 
-          // Initialiser la nouvelle lightbox après avoir ajouté les photos
-          Lightbox.init();
+    // Fonction pour charger les photos
+    function loadPhotos(page = 1, replace = true) {
+      $.ajax({
+        url: nathaliemotaAjax.ajaxurl,
+        type: 'post',
+        data: {
+          action: 'request_photos',
+          paged: page,
+          category: category,
+          format: format,
+          tri: tri
+        },
+        success: function(response) {
+          if(response.success) {
+            let output = '';
+            $.each(response.data.photos, function(index, photo) {
+              output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
+              output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
+              output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
+              output += '<div class="photo-overlay">';
+              output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
+              output += '<div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>';
+              output += '<div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>';
+              output += '<div class="photo-category">' + photo.category + '</div>';
+              output += '</div>';
+              output += '</a>';
+              output += '</div>';
+            });
+            
+            if (replace) {
+              $('.photo-gallery').html(output);
+            } else {
+              $('.photo-gallery').append(output);
+            }
 
-          // Gestionnaire d'événements pour l'icône de l'œil
-          $('.photo-eye-icon').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var photoLink = $(this).closest('.photo-item').find('a').attr('data-single-url');
-            window.location.href = photoLink;
-          });
+            // Mettre à jour le bouton "Charger plus"
+            if (page >= response.data.max_pages) {
+              $('#load-more').hide();
+            } else {
+              $('#load-more').show();
+            }
 
-          // Gestionnaire d'événements pour l'icône d'expansion
-          $('.photo-expand-icon').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).closest('a.fancybox').click();
-          });
+            // Initialiser la nouvelle lightbox après avoir ajouté les photos
+            Lightbox.init();
 
-          // Empêcher le titre d'être cliquable
-          $('.photo-title').on('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-          });
-        } else {
-          $('#photo-gallery').html('<p>No photos found</p>');
+            // Gestionnaire d'événements pour l'icône de l'œil
+            $('.photo-eye-icon').on('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              var photoLink = $(this).closest('.photo-item').find('a').attr('data-single-url');
+              window.location.href = photoLink;
+            });
+
+            // Gestionnaire d'événements pour l'icône d'expansion
+            $('.photo-expand-icon').on('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              $(this).closest('a.fancybox').click();
+            });
+
+            // Empêcher le titre d'être cliquable
+            $('.photo-title').on('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+            });
+          } else {
+            $('.photo-gallery').html('<p>Aucune photo trouvée</p>');
+            $('#load-more').hide();
+          }
         }
-      }
+      });
+    }
+
+    // Charger les photos initiales
+    loadPhotos();
+
+    // Gestionnaires d'événements pour les menus déroulants
+    $('#category, #format, #tri').on('change', function() {
+      category = $('#category').val();
+      format = $('#format').val();
+      tri = $('#tri').val();
+      currentPage = 1;
+      loadPhotos(currentPage, true);
     });
 
     // Gestion du bouton "Charger plus"
-    var paged = 2; // Commencez à la page 2 car la première page est déjà chargée
     $('#load-more').on('click', function() {
-        $.ajax({
-            url: nathaliemotaAjax.ajaxurl,
-            type: 'post',
-            data: {
-                action: 'load_more_photos',
-                paged: paged
-            },
-            success: function(response) {
-                console.log ("succes")
-                if(response.success) {
-                  console.log (response.data)
-                    $('.photo-gallery').append(response.data);
-                    paged++;
-                    
-                    // Réinitialise Lightbox pour les nouvelles photos
-                    Lightbox.init();
-                    
-                    // Si toutes les photos sont chargées, masque le bouton
-                    if(paged > 3) { // Supposant que vous avez 16 photos au total (2 pages de 8)
-                        $('#load-more').hide();
-                    }
-                } else {
-                    $('#load-more').hide();
-                }
-            }
-        });
+      currentPage++;
+      loadPhotos(currentPage, false);
     });
 
     // Nouvelle section pour gérer la section 3 de single.php/content-photo.php
@@ -147,37 +159,39 @@
         ],
     });
   });
+
+  // Gestion des flèches de navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const arrows = document.querySelectorAll('.prev-arrow, .next-arrow');
+    arrows.forEach(arrow => {
+        arrow.addEventListener('click', function(e) {
+            e.preventDefault();
+            const imageName = this.getAttribute('data-image');
+            const imageUrl = '/wp-content/themes/nathalie-mota/assets/images/' + imageName;
+            document.querySelector('.small-photo').src = imageUrl;
+            
+            // Mettre à jour les flèches
+            updateArrows(imageName);
+        });
+    });
+
+    function updateArrows(currentImage) {
+      const images = window.photoImages || [];
+      let currentIndex = images.indexOf(currentImage);
+      
+      const prevArrow = document.querySelector('.prev-arrow');
+      const nextArrow = document.querySelector('.next-arrow');
+      
+      // Navigation infinie
+      const prevIndex = (currentIndex - 1 + images.length) % images.length;
+      const nextIndex = (currentIndex + 1) % images.length;
+      
+      prevArrow.style.display = 'inline-block';
+      prevArrow.setAttribute('data-image', images[prevIndex]);
+      
+      nextArrow.style.display = 'inline-block';
+      nextArrow.setAttribute('data-image', images[nextIndex]);
+    }
+  });
 })(jQuery);
 
-document.addEventListener('DOMContentLoaded', function() {
-  const arrows = document.querySelectorAll('.prev-arrow, .next-arrow');
-  arrows.forEach(arrow => {
-      arrow.addEventListener('click', function(e) {
-          e.preventDefault();
-          const imageName = this.getAttribute('data-image');
-          const imageUrl = '/wp-content/themes/nathalie-mota/assets/images/' + imageName;
-          document.querySelector('.small-photo').src = imageUrl;
-          
-          // Mettre à jour les flèches
-          updateArrows(imageName);
-      });
-  });
-
-  function updateArrows(currentImage) {
-    const images = window.photoImages || [];
-    let currentIndex = images.indexOf(currentImage);
-    
-    const prevArrow = document.querySelector('.prev-arrow');
-    const nextArrow = document.querySelector('.next-arrow');
-    
-    // Navigation infinie
-    const prevIndex = (currentIndex - 1 + images.length) % images.length;
-    const nextIndex = (currentIndex + 1) % images.length;
-    
-    prevArrow.style.display = 'inline-block';
-    prevArrow.setAttribute('data-image', images[prevIndex]);
-    
-    nextArrow.style.display = 'inline-block';
-    nextArrow.setAttribute('data-image', images[nextIndex]);
-  }
-});

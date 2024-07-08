@@ -132,6 +132,7 @@ function nathaliemota_entry_footer() {
     );
 }
 
+
 // Fonction pour choix aléatoire des photos hero header
 function get_images_from_directory($directory) {
     $images = glob($directory . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE);
@@ -140,24 +141,66 @@ function get_images_from_directory($directory) {
 
 // Ajout fonction AJAX pour photos
 function nathaliemota_request_photos() {
-    $query = new WP_Query([
-        'post_type' => 'Mes photographies',
-        'posts_per_page' => 2
-    ]);
+    $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+    $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
+    $tri = isset($_POST['tri']) ? sanitize_text_field($_POST['tri']) : '';
+    $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
+
+    $args = [
+        'post_type' => 'photographies',
+        'posts_per_page' => 8,
+        'paged' => $paged,
+        'tax_query' => [],
+    ];
+
+    if (!empty($category)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $category,
+        ];
+    }
+
+    if (!empty($format)) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $format,
+        ];
+    }
+
+    if ($tri === 'new') {
+        $args['orderby'] = 'date';
+        $args['order'] = 'DESC';
+    } elseif ($tri === 'old') {
+        $args['orderby'] = 'date';
+        $args['order'] = 'ASC';
+    }
+
+    $query = new WP_Query($args);
 
     if ($query->have_posts()) {
         $photos = [];
         while ($query->have_posts()) {
             $query->the_post();
+            $categories = get_the_terms(get_the_ID(), 'categorie');
+            $category = $categories ? $categories[0]->name : '';
+            $reference = get_field('reference');
             $photos[] = [
+                'id' => get_the_ID(),
                 'title' => get_the_title(),
                 'link' => get_permalink(),
-                'image' => get_the_post_thumbnail_url(get_the_ID(), 'full')
+                'image' => get_the_post_thumbnail_url(get_the_ID(), 'full'),
+                'category' => $category,
+                'reference' => $reference,
             ];
         }
-        wp_send_json($photos);
+        wp_send_json_success([
+            'photos' => $photos,
+            'max_pages' => $query->max_num_pages,
+        ]);
     } else {
-        wp_send_json(false);
+        wp_send_json_error('No photos found');
     }
 
     wp_die();
@@ -180,7 +223,6 @@ function nathaliemota_enqueue_fancybox_scripts() {
     wp_enqueue_script('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', array('jquery'), '3.5.7', true);
 }
 add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_scripts');
-
 
 function nathaliemota_enqueue_fancybox_custom_styles() {
     wp_enqueue_style('fancybox-custom', get_template_directory_uri() . '/css/fancybox-custom.css', array(), '1.0');
@@ -250,3 +292,5 @@ function load_more_photos() {
 
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
+
+
