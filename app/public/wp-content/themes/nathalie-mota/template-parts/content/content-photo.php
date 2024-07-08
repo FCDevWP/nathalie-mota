@@ -1,5 +1,10 @@
 
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 /**
  * Template part for displaying photo content
  *
@@ -79,53 +84,56 @@
     <section class="section-3">
     <div class="section-3-container">
         <p style="text-align: justify;">Vous aimerez aussi</p>
-        <div class="photo-grid">
-            <?php
-            $related_args = array(
-                'post_type' => 'photographies',
-                'posts_per_page' => 2,
-                'post__not_in' => array(get_the_ID()),
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'categorie',
-                        'field' => 'slug',
-                        'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'slugs')),
-                    ),
+        <?php
+        $related_args = array(
+            'post_type' => 'photographies',
+            'posts_per_page' => 2,
+            'post__not_in' => array(get_the_ID()),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'categorie',
+                    'field' => 'term_id',
+                    'terms' => wp_get_post_terms(get_the_ID(), 'categorie', array('fields' => 'ids')),
                 ),
-            );
-            $related_query = new WP_Query($related_args);
-
-            if ($related_query->have_posts()) {
-                while ($related_query->have_posts()) {
-                    $related_query->the_post();
+            ),
+        );
+        $related_query = new WP_Query($related_args);
+        // var_dump($related_query);
+        ?>
+        <div class="photo-grid <?php echo ($related_query->post_count == 1) ? 'single-photo' : ''; ?>">
+            <?php
+            if ($related_query->have_posts()) :
+                global $post;
+                while ($related_query->have_posts()) : $related_query->the_post();
                     $full_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     $categories = get_the_terms(get_the_ID(), 'categorie');
                     $category = $categories ? $categories[0]->name : '';
                     ?>
-                    <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
-                        <a href="<?php echo esc_url($full_image_url); ?>" 
-                           class="fancybox" 
-                           data-fancybox="gallery" 
+                    <div class="photo-item <?php echo ($related_query->post_count == 1) ? 'single-photo-item' : ''; ?>" style="margin-bottom: 20px;">
+                        <a href="<?php echo esc_url($full_image_url); ?>"
+                           class="fancybox"
+                           data-fancybox="gallery"
                            data-single-url="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
                             <div class="photo-overlay">
                                 <div class="photo-title"><?php the_title(); ?></div>
                                 <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
                                 <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
-                                <div class="photo-category"><?php echo $category; ?></div>
+                                <div class="photo-category"><?php echo esc_html($category); ?></div>
                             </div>
                         </a>
                     </div>
                     <?php
-                }
+                endwhile;
                 wp_reset_postdata();
-            } else {
+            else :
                 echo '<p>Il n\'y a aucune photo supplémentaire dans cette catégorie</p>';
-            }
+            endif;
             ?>
         </div>
     </div>
-    </section>
+</section>
+
 
 
 </div>
