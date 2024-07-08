@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Template part for displaying photo content
@@ -47,93 +48,30 @@
         <a href="#" class="btn-contact" data-bs-toggle="modal" data-bs-target="#contact-modal" data-reference="<?php echo get_field('reference'); ?>">Contact</a>
     </div>
     <div class="right-side">
-    <?php
-    // Vérifier si une image en vedette est définie pour le message en cours
-    if (has_post_thumbnail()) {
-        // Récupérer l'ID de l'image mise en avant
-        $featured_image_id = get_post_thumbnail_id(get_the_ID());
-
-        // Vérifier si une image mise en avant existe
-        if (!$featured_image_id) {
-            echo '<p>Pas d&#039;image mise en avant pour cet article.</p>';
-            return;
-        }
-
-        // Récupérer l'URL de l'image mise en avant
-        $featured_image_url = wp_get_attachment_image_url($featured_image_id, 'full');
-
-        // Récupérer le nom de fichier de l'image mise en avant
-        $featured_image_file = basename($featured_image_url);
-
-        // Récupérer le répertoire des images
-        $image_dir = get_template_directory() . '/assets/images/';
-
-        if (!is_dir($image_dir)) {
-            echo '<p>Le répertoire des images n&#039;existe pas.</p>';
-            return;
-        }
-
-        // Récupérer les fichiers d'image dans le répertoire
-        $images = preg_grep('~\.(jpeg|jpg|png|gif|webp)$~', scandir($image_dir));
-
-        // Réindexer le tableau $images
-        $images = array_values($images);
-
-        // Fonction pour comparer les noms de fichiers en ignorant "-scaled"
-        function compare_filenames($filename1, $filename2) {
-            $filename1_base = pathinfo($filename1, PATHINFO_FILENAME);
-            $filename2_base = pathinfo($filename2, PATHINFO_FILENAME);
-
-            // Ignorer "-scaled" dans les noms de fichiers
-            $filename1_base = str_replace('-scaled', '', $filename1_base);
-            $filename2_base = str_replace('-scaled', '', $filename2_base);
-
-            return $filename1_base === $filename2_base;
-        }
-
-        $current_index = -1;
-        $thumbnail_index = -1;
-        foreach ($images as $index => $image) {
-            if (compare_filenames($featured_image_file, $image)) {
-                $current_index = $index;
-                break;
+        <div class="navigation-container">
+            <?php
+            $prev_post = get_previous_post(false);
+            $next_post = get_next_post(false);
+        
+            if (!empty($prev_post)) {
+                $prev_thumbnail = get_the_post_thumbnail_url($prev_post->ID, 'thumbnail');
+                echo '<a href="' . get_permalink($prev_post->ID) . '" class="nav-link prev-link">';
+                echo '<i class="fa-solid fa-arrow-left-long"></i>';
+                echo '<img src="' . esc_url($prev_thumbnail) . '" alt="Photo précédente" class="nav-thumbnail prev-thumbnail">';
+                echo '</a>';
             }
-        }
-
-        if ($current_index != -1) {
-            $thumbnail_index = ($current_index + 1) % count($images);
-            $thumbnail_file = $images[$thumbnail_index];
-            $thumbnail_url = get_template_directory_uri() . '/assets/images/' . $thumbnail_file;
-
-            $prev_index = ($current_index - 1 + count($images)) % count($images);
-            $next_index = ($current_index + 1) % count($images);
-
-            echo '<div class="image-container">';
-            echo '<img src="' . esc_url($thumbnail_url) . '" alt="Miniature" class="small-photo">';
-
-            echo '<div class="arrow-container">';
-            if ($prev_index != $current_index) {
-                $prev_image = $images[$prev_index];
-                echo '<a href="#" class="prev-arrow" data-image="' . esc_attr($prev_image) . '"><i class="fa-solid fa-arrow-left-long"></i></a>';
+        
+            if (!empty($next_post)) {
+                $next_thumbnail = get_the_post_thumbnail_url($next_post->ID, 'thumbnail');
+                echo '<a href="' . get_permalink($next_post->ID) . '" class="nav-link next-link">';
+                echo '<i class="fa-solid fa-arrow-right-long"></i>';
+                echo '<img src="' . esc_url($next_thumbnail) . '" alt="Photo suivante" class="nav-thumbnail next-thumbnail">';
+                echo '</a>';
             }
-            if ($next_index != $current_index) {
-                $next_image = $images[$next_index];
-                echo '<a href="#" class="next-arrow" data-image="' . esc_attr($next_image) . '"><i class="fa-solid fa-arrow-right-long"></i></a>';
-            }
-            echo '</div>'; // Fermeture de arrow-container
-
-            echo '</div>'; // Fermeture de image-container
-        } else {
-            echo '<p>Aucune miniature disponible. Current index: ' . $current_index . ', Thumbnail index: ' . $thumbnail_index . '</p>';
-        }
-    } else {
-        echo '<p>Aucune image en vedette n&#039;est définie pour ce message.</p>';
-    }
-    ?>
-        <script>
-        var photoImages = <?php echo json_encode(array_values($images)); ?>;
-        </script>
+            ?>
+        </div>
     </div>
+
     </section>
 
 
@@ -191,5 +129,3 @@
 
 
 </div>
-
-

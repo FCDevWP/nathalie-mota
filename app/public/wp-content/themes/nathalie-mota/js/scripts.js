@@ -1,3 +1,4 @@
+
 (function($) {
   $(document).ready(function() {
     // Initialisation de Select2
@@ -193,5 +194,14 @@
       nextArrow.setAttribute('data-image', images[nextIndex]);
     }
   });
+
+  // Gestion des liens de navigation
+  $('.nav-link').on('mouseenter', function() {
+      $(this).find('.nav-thumbnail').stop().fadeIn(200);
+  }).on('mouseleave', function() {
+      $(this).find('.nav-thumbnail').stop().fadeOut(200);
+  });
+  
 })(jQuery);
+
 
