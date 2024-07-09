@@ -1,6 +1,6 @@
 class Lightbox {
     static init() {
-        const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".webp"]'));
+        const links = Array.from(document.querySelectorAll('a.custom-lightbox'));
         const gallery = links.map(link => ({
             href: link.getAttribute('href'),
             title: link.getAttribute('data-title'),
@@ -15,7 +15,7 @@ class Lightbox {
         photoItems.forEach(item => {
             const eyeIcon = item.querySelector('.photo-eye-icon');
             const expandIcon = item.querySelector('.photo-expand-icon');
-            const link = item.querySelector('a.fancybox');
+            const link = item.querySelector('a.custom-lightbox');
     
             eyeIcon.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -30,6 +30,7 @@ class Lightbox {
             });
         });
     }
+
 
     constructor(url, images) {
         this.element = this.buildDOM();

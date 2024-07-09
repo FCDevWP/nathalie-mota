@@ -104,7 +104,7 @@
                     ?>
                     <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
                         <a href="<?php echo esc_url($full_image_url); ?>" 
-                           class="fancybox" 
+                           class="custom-lightbox" 
                            data-fancybox="gallery" 
                            data-single-url="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
@@ -310,7 +310,7 @@
                     ?>
                     <div class="photo-item" style="width: 50%; margin-bottom: 20px;">
                         <a href="<?php echo esc_url($full_image_url); ?>" 
-                           class="fancybox" 
+                           class="custom-lightbox" 
                            data-fancybox="gallery" 
                            data-single-url="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>

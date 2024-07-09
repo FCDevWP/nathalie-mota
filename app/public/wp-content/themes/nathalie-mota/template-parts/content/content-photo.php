@@ -111,7 +111,7 @@ error_reporting(E_ALL);
                     ?>
                     <div class="photo-item <?php echo ($related_query->post_count == 1) ? 'single-photo-item' : ''; ?>" style="margin-bottom: 20px;">
                         <a href="<?php echo esc_url($full_image_url); ?>"
-                           class="fancybox"
+                           class="custom-lightbox"
                            data-fancybox="gallery"
                            data-single-url="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>

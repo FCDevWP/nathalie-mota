@@ -218,16 +218,16 @@ function nathaliemota_enqueue_single_photo_styles() {
 add_action( 'wp_enqueue_scripts', 'nathaliemota_enqueue_single_photo_styles' );
 
 // Ajout FancyBox pour lightbox & Fancybox CSS
-function nathaliemota_enqueue_fancybox_scripts() {
-    wp_enqueue_style('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css', array(), '3.5.7');
-    wp_enqueue_script('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', array('jquery'), '3.5.7', true);
-}
-add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_scripts');
+// function nathaliemota_enqueue_fancybox_scripts() {
+//     wp_enqueue_style('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css', array(), '3.5.7');
+//     wp_enqueue_script('fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', array('jquery'), '3.5.7', true);
+// }
+// add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_scripts');
 
-function nathaliemota_enqueue_fancybox_custom_styles() {
-    wp_enqueue_style('fancybox-custom', get_template_directory_uri() . '/css/fancybox-custom.css', array(), '1.0');
-}
-add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_custom_styles');
+// function nathaliemota_enqueue_fancybox_custom_styles() {
+//     wp_enqueue_style('fancybox-custom', get_template_directory_uri() . '/css/fancybox-custom.css', array(), '1.0');
+// }
+// add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_fancybox_custom_styles');
 
 // Ajout Fontawesome
 function nathaliemota_enqueue_fontawesome() {
@@ -263,7 +263,7 @@ function load_more_photos() {
             ?>
             <div class="photo-item">
                     <a href="<?php echo esc_url($full_image_url); ?>" 
-                       class="fancybox" 
+                       class="custom-lightbox" 
                        data-fancybox="gallery" 
                        data-single-url="<?php the_permalink(); ?>"
                        data-title="<?php the_title(); ?>"

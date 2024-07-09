@@ -70,7 +70,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
                 ?>
                 <div class="photo-item">
                     <a href="<?php echo esc_url($full_image_url); ?>" 
-                       class="fancybox" 
+                       class="custom-lightbox" 
                        data-fancybox="gallery" 
                        data-single-url="<?php the_permalink(); ?>"
                        data-title="<?php the_title(); ?>"

@@ -1,4 +1,3 @@
-
 (function($) {
   $(document).ready(function() {
     // Initialisation de Select2
@@ -57,7 +56,7 @@
             let output = '';
             $.each(response.data.photos, function(index, photo) {
               output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
-              output += '<a href="' + photo.image + '" class="fancybox" data-fancybox="gallery" data-single-url="' + photo.link + '">';
+              output += '<a href="' + photo.image + '" class="custom-lightbox" data-single-url="' + photo.link + '">';
               output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
               output += '<div class="photo-overlay">';
               output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
@@ -97,7 +96,7 @@
             $('.photo-expand-icon').on('click', function(e) {
               e.preventDefault();
               e.stopPropagation();
-              $(this).closest('a.fancybox').click();
+              $(this).closest('a.custom-lightbox').click();
             });
 
             // Empêcher le titre d'être cliquable
@@ -144,21 +143,11 @@
     $('.section-3 .photo-expand-icon').on('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        $(this).closest('a.fancybox').click();
+        $(this).closest('a.custom-lightbox').click();
     });
 
-    // Initialiser FancyBox pour les nouvelles images dans la section 3
-    $(".section-3 .fancybox").fancybox({
-        buttons: [
-            "zoom",
-            "share",
-            "slideShow",
-            "fullScreen",
-            "download",
-            "thumbs",
-            "close"
-        ],
-    });
+    // Initialiser Lightbox pour les nouvelles images dans la section 3
+    Lightbox.init();
   });
 
   // Gestion des flèches de navigation
@@ -203,5 +192,3 @@
   });
   
 })(jQuery);
-
-
