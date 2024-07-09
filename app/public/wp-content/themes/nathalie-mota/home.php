@@ -46,49 +46,51 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
     </div>    
     <!-- Galerie de photos -->
     <div class="photo-gallery">
-        <?php
-        $args = array(
-            'post_type' => 'photographies',
-            'posts_per_page' => 8,
-        );
-        $query = new WP_Query($args);
+    <?php
+    $args = array(
+        'post_type' => 'photographies',
+        'posts_per_page' => 8,
+    );
+    $query = new WP_Query($args);
 
-        if ($query->have_posts()) {
-            while ($query->have_posts()) {
-                $query->the_post();
-                $full_image_url = get_the_post_thumbnail_url($post->ID, 'full');
-                $categories = get_the_terms($post->ID, 'categorie');
-                $category = $categories ? $categories[0]->name : '';
-                $reference = get_field('reference');
-
-                echo '<div class="photo-item">';
-                echo '<a href="' . esc_url($full_image_url) . '" 
-                   class="custom-lightbox" 
-                   data-fancybox="gallery" 
-                   data-single-url="' . get_permalink() . '"
-                   data-title="' . get_the_title() . '"
-                   data-category="' . esc_attr($category) . '"
-                   data-reference="' . esc_attr($reference) . '">';
-                echo get_the_post_thumbnail(get_the_ID(), 'large', array('class' => 'photo-img'));
-                echo '<div class="photo-overlay">
-                    <div class="photo-title">' . get_the_title() . '</div>
-                    <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
-                    <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
-                    <div class="photo-category">' . esc_html($category) . '</div>
-                </div>';
-                echo '</a>';
-                echo '</div>';
-            }
-            wp_reset_postdata();
-        } else {
-            echo '<p>No photos found</p>';
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $full_image_url = get_the_post_thumbnail_url($post->ID, 'full');
+            $categories = get_the_terms($post->ID, 'categorie');
+            $category = $categories ? $categories[0]->name : '';
+            $reference = get_field('reference');
+            ?>
+            <div class="photo-item">
+                <a href="<?php echo esc_url($full_image_url); ?>"
+                   class="custom-lightbox"
+                   data-fancybox="gallery"
+                   data-single-url="<?php echo get_permalink(); ?>"
+                   data-title="<?php echo get_the_title(); ?>"
+                   data-category="<?php echo esc_attr($category); ?>"
+                   data-reference="<?php echo esc_attr($reference); ?>">
+                    <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
+                    <div class="photo-overlay">
+                        <div class="photo-title"><?php the_title(); ?></div>
+                        <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
+                        <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
+                        <div class="photo-category"><?php echo esc_html($category); ?></div>
+                    </div>
+                </a>
+            </div>
+            <?php
         }
-        ?>
+        wp_reset_postdata();
+    } else {
+        echo '<p>No photos found</p>';
+    }
+    ?>
     </div>
     <!-- Bouton "Charger plus" -->
     <div class="load-more-container">
-        <button id="load-more" class="load-more-btn">Charger plus</button>
+    <button id="load-more" class="load-more-btn">Charger plus</button>
     </div>
+
 </div>  
 
 <?php get_footer(); ?>
