@@ -194,16 +194,16 @@ nav {
 } */
 
 
-/* .select2-dropdown {
+.select2-dropdown {
   border: 1px solid #000;
-  border-radius: 5px;
-} */
+  border-radius: 10px;
+}
 
-/* .select2-results__option {
+.select2-results__option {
   font-family: 'Space Mono';
   font-size: 16px;
   padding: 10px;
-} */
+}
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
   background-color: #ff0000 !important;

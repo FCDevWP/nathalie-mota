@@ -1,9 +1,10 @@
 (function($) {
   $(document).ready(function() {
     // Initialisation de Select2
-    $("#category").select2();
-    $("#format").select2();
-    $("#tri").select2();
+    $("#category, #format, #tri").select2({
+      minimumResultsForSearch: Infinity, // Désactive la barre de recherche
+      width: '100%' // Assure que le select prend toute la largeur disponible
+    });
 
     // Gestion de la modale de contact
     var modal = document.getElementById('contact-modal');
