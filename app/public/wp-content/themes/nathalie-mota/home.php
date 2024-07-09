@@ -1,19 +1,12 @@
 <?php get_header(); ?>
 
-
 <?php
 $images = get_images_from_directory(get_template_directory() . '/assets/images');
 $random_image = $images[array_rand($images)];
 $random_image_url = get_template_directory_uri() . '/assets/images/' . basename($random_image);
 ?>
 
-
-
-
-
 <div class="container">
-    <!-- Hero header avec une image et un texte en surimpression -->
-
     <!-- Hero header avec une image aléatoire et un texte en surimpression -->
     <div class="hero-header" style="background-image: url('<?php echo $random_image_url; ?>');">
         <div class="hero-overlay">
@@ -25,7 +18,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
     <div class="menu-container">
         <div class="left-side">
             <section class="category-general">
-            <select name="category" id="category" class="category">
+                <select name="category" id="category" class="category">
                     <option value="" disabled selected>CATÉGORIES</option>
                     <option value="reception" class="reception custom-option">Réception</option>
                     <option value="concert" class="concert custom-option">Concert</option>
@@ -66,31 +59,27 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
                 $full_image_url = get_the_post_thumbnail_url($post->ID, 'full');
                 $categories = get_the_terms($post->ID, 'categorie');
                 $category = $categories ? $categories[0]->name : '';
-                $reference = get_field('reference'); // Assurez-vous que 'reference' est le nom correct du champ ACF
-                ?>
-                <div class="photo-item">
-                    <a href="<?php echo esc_url($full_image_url); ?>" 
-                       class="custom-lightbox" 
-                       data-fancybox="gallery" 
-                       data-single-url="<?php the_permalink(); ?>"
-                       data-title="<?php the_title(); ?>"
-                       data-category="<?php echo esc_attr($category); ?>"
-                       data-reference="<?php echo esc_attr($reference); ?>">
-                        <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
-                        <div class="photo-overlay">
-                            <div class="photo-title"><?php the_title(); ?></div>
-                            <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
-                            <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
-                            <div class="photo-category"><?php echo $category; ?></div>
-                        </div>
-                    </a>
-                </div>
+                $reference = get_field('reference');
 
-
-                <?php
+                echo '<div class="photo-item">';
+                echo '<a href="' . esc_url($full_image_url) . '" 
+                   class="custom-lightbox" 
+                   data-fancybox="gallery" 
+                   data-single-url="' . get_permalink() . '"
+                   data-title="' . get_the_title() . '"
+                   data-category="' . esc_attr($category) . '"
+                   data-reference="' . esc_attr($reference) . '">';
+                echo get_the_post_thumbnail(get_the_ID(), 'large', array('class' => 'photo-img'));
+                echo '<div class="photo-overlay">
+                    <div class="photo-title">' . get_the_title() . '</div>
+                    <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
+                    <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
+                    <div class="photo-category">' . esc_html($category) . '</div>
+                </div>';
+                echo '</a>';
+                echo '</div>';
             }
             wp_reset_postdata();
-    
         } else {
             echo '<p>No photos found</p>';
         }
@@ -100,9 +89,6 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
     <div class="load-more-container">
         <button id="load-more" class="load-more-btn">Charger plus</button>
     </div>
-
-
 </div>  
-
 
 <?php get_footer(); ?>

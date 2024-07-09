@@ -7,6 +7,7 @@ class Lightbox {
             category: link.getAttribute('data-category'),
             reference: link.getAttribute('data-reference')
         }));
+
         links.forEach(link => link.addEventListener('click', e => {
             e.preventDefault();
             new Lightbox(e.currentTarget.getAttribute('href'), gallery);
@@ -53,12 +54,15 @@ class Lightbox {
         img.onload = () => {
             container.removeChild(loader);
             container.appendChild(img);
-            this.element.querySelector('.lightbox__category').textContent = `${imageInfo.category}`;
-            this.element.querySelector('.lightbox__reference').textContent = `${imageInfo.reference}`;
+            if (imageInfo) {
+                this.element.querySelector('.lightbox__category').textContent = `Catégorie : ${imageInfo.category || 'Non spécifiée'}`;
+                this.element.querySelector('.lightbox__reference').textContent = `Référence : ${imageInfo.reference || 'Non spécifiée'}`;
+            }
             this.element.classList.add('lightbox--open');
         }
         img.src = url;
     }
+
 
     onKeyUp(e) {
         if (e.key === 'Escape') {

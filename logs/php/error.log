@@ -2497,3 +2497,4 @@ Stack trace:
 [08-Jul-2024 14:34:53 UTC] PHP Warning:  Attempt to read property "post_count" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 82
 [08-Jul-2024 14:34:57 UTC] PHP Warning:  Undefined variable $related_query in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 82
 [08-Jul-2024 14:34:57 UTC] PHP Warning:  Attempt to read property "post_count" on null in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/template-parts/content/content-photo.php on line 82
+[09-Jul-2024 12:55:16 UTC] PHP Parse error:  syntax error, unexpected token "<" in /Users/frederic/Local Sites/nathalie-mota/app/public/wp-content/themes/nathalie-mota/home.php on line 79

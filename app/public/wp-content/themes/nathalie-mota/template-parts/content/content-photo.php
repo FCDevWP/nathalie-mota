@@ -106,14 +106,18 @@ error_reporting(E_ALL);
                 global $post;
                 while ($related_query->have_posts()) : $related_query->the_post();
                     $full_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                    $categories = get_the_terms(get_the_ID(), 'categorie');
+                    $categories = get_the_terms($post->ID, 'categorie');
                     $category = $categories ? $categories[0]->name : '';
-                    ?>
+                    $reference = get_field('reference');
+            ?>
                     <div class="photo-item <?php echo ($related_query->post_count == 1) ? 'single-photo-item' : ''; ?>" style="margin-bottom: 20px;">
-                        <a href="<?php echo esc_url($full_image_url); ?>"
-                           class="custom-lightbox"
-                           data-fancybox="gallery"
-                           data-single-url="<?php the_permalink(); ?>">
+                        <a href="<?php echo esc_url($full_image_url); ?>" 
+                           class="custom-lightbox" 
+                           data-fancybox="gallery" 
+                           data-single-url="<?php echo get_permalink(); ?>"
+                           data-title="<?php echo get_the_title(); ?>"
+                           data-category="<?php echo esc_attr($category); ?>"
+                           data-reference="<?php echo esc_attr($reference); ?>">
                             <?php the_post_thumbnail('large', array('class' => 'photo-img')); ?>
                             <div class="photo-overlay">
                                 <div class="photo-title"><?php the_title(); ?></div>
@@ -123,7 +127,7 @@ error_reporting(E_ALL);
                             </div>
                         </a>
                     </div>
-                    <?php
+            <?php
                 endwhile;
                 wp_reset_postdata();
             else :
