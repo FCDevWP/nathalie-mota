@@ -510,6 +510,13 @@ footer {
 @media screen and (max-width: 480px) {
   nav {
     padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    margin-right: auto;
   }
 
   .logo img {
@@ -523,6 +530,7 @@ footer {
 
   .burger-menu {
     display: block;
+    margin-left: auto;
   }
 
   .burger-icon {
@@ -548,13 +556,15 @@ footer {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 50vh; /* 50% de la hauteur de l'écran */
     background-color: #ff0000;
     z-index: 1000;
   }
 
   .mobile-menu.active {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .close-icon {
@@ -568,7 +578,8 @@ footer {
 
   .mobile-menu-items {
     list-style-type: none;
-    padding: 50px 20px;
+    padding: 0;
+    text-align: center;
   }
 
   .mobile-menu-items li {
@@ -577,7 +588,7 @@ footer {
 
   .mobile-menu-items a {
     color: #fff;
-    font-size: 18px;
+    font-size: 36px;
     text-decoration: none;
     text-transform: uppercase;
   }
