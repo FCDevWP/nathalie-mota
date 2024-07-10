@@ -63,8 +63,8 @@ class Lightbox {
             container.removeChild(loader);
             container.appendChild(img);
             if (imageInfo) {
-                this.element.querySelector('.lightbox__category').textContent = `Catégorie : ${imageInfo.category || 'Non spécifiée'}`;
-                this.element.querySelector('.lightbox__reference').textContent = `Référence : ${imageInfo.reference || 'Non spécifiée'}`;
+                this.element.querySelector('.lightbox__category').textContent = `${imageInfo.category || 'Non spécifiée'}`;
+                this.element.querySelector('.lightbox__reference').textContent = `${imageInfo.reference || 'Non spécifiée'}`;
             }
             this.element.classList.add('lightbox--open');
             console.log('Category element:', this.element.querySelector('.lightbox__category'));
