@@ -588,8 +588,30 @@ footer {
 
   .mobile-menu-items a {
     color: #fff;
+    font-family: 'Space mono';
     font-size: 36px;
     text-decoration: none;
     text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  footer {
+    padding: 10px;
+  }
+
+  .nav-footer {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .nav-footer span {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .nav-footer a {
+    font-size: 14px;
   }
 }
