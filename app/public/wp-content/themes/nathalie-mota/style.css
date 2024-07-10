@@ -86,6 +86,11 @@ nav {
   letter-spacing: 2px;
 }
 
+.main-menu a:hover {
+  font-weight: bold;
+  transition: font-weight 0.3s ease;
+}
+
 /* -------------------------------- */
 /* HERO HEADER                      */
 /* -------------------------------- */
@@ -490,4 +495,9 @@ footer {
   font-size: 16px;
   letter-spacing: 2px;
   font-family: 'Space Mono';
+}
+
+.nav-footer a:hover {
+  font-weight: bold;
+  transition: font-weight 0.3s ease;
 }
