@@ -3,8 +3,15 @@
     // Initialisation de Select2
     $("#category, #format, #tri").select2({
       minimumResultsForSearch: Infinity, // Désactive la barre de recherche
-      width: '100%' // Assure que le select prend toute la largeur disponible
+      width: '100%', // Assure que le select prend toute la largeur disponible
+      placeholder: function() {
+        return $(this).data('placeholder');
+      }
+    }).on('select2:select', function(e) {
+      var selectedText = $(e.params.data.element).text();
+      $(this).next('.select2-container').find('.select2-selection__rendered').text(selectedText.toUpperCase());
     });
+    
 
     // Gestion de la modale de contact
     var modal = document.getElementById('contact-modal');
@@ -71,7 +78,6 @@
               output += '</a>';
               output += '</div>';
             });
-          
             
             if (replace) {
               $('.photo-gallery').html(output);
