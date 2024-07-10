@@ -178,8 +178,9 @@ nav {
   border-radius: 10px;
   background-color: #ffffff;
   color: #000000;
-  display: flex; 
-  align-items: center; 
+  text-transform: uppercase;
+  /* display: flex; 
+  align-items: center;  */
 }
 
 /* .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -202,6 +203,7 @@ nav {
 .select2-dropdown {
   border: 1px solid #000;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .select2-results__option {
@@ -235,6 +237,7 @@ nav {
   line-height: normal;
   padding: 0;
 } */
+
 
 /* -------------------------------- */
 /* GALERIE DE PHOTOS                */
@@ -500,4 +503,82 @@ footer {
 .nav-footer a:hover {
   font-weight: bold;
   transition: font-weight 0.3s ease;
+}
+
+
+/* Styles pour le menu burger */
+@media screen and (max-width: 480px) {
+  nav {
+    padding: 15px;
+  }
+
+  .logo img {
+    height: 14px;
+    margin-left: 0;
+  }
+
+  .main-menu {
+    display: none;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+
+  .burger-icon {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+  }
+
+  .burger-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ff0000;
+    z-index: 1000;
+  }
+
+  .mobile-menu.active {
+    display: block;
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .mobile-menu-items {
+    list-style-type: none;
+    padding: 50px 20px;
+  }
+
+  .mobile-menu-items li {
+    margin-bottom: 20px;
+  }
+
+  .mobile-menu-items a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
 }

@@ -293,4 +293,8 @@ function load_more_photos() {
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
+function enqueue_custom_scripts() {
+    wp_enqueue_script('custom-menu', get_template_directory_uri() . '/js/menu.js', array(), '1.0.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 

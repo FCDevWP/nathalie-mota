@@ -27,6 +27,23 @@
       )); 
     ?>
   </nav>
+  <div class="burger-menu">
+  <div class="burger-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  </div>
+  <div class="mobile-menu">
+  <div class="close-icon">&#10005;</div>
+  <?php 
+    wp_nav_menu(array(
+      'theme_location' => 'main-menu',
+      'container' => false,
+      'menu_class' => 'mobile-menu-items',
+      'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s<li><a href="#" class="open-contact-modal">Contact</a></li></ul>',
+    )); 
+  ?>
+  </div>
+
 </header>
-
-

@@ -19,7 +19,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
         <div class="left-side">
             <section class="category-general">
                 <select name="category" id="category" class="category" data-placeholder="CATÉGORIES">
-                    <option value="" disabled selected></option>
+                    <option value=""></option>
                     <option value="reception" class="reception custom-option">Réception</option>
                     <option value="concert" class="concert custom-option">Concert</option>
                     <option value="mariage" class="mariage custom-option">Mariage</option>
@@ -28,7 +28,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
             </section>
             <section class="format-general">
                 <select name="format" id="format" class="format" data-placeholder="FORMAT">
-                    <option value="" disabled selected></option>
+                    <option value=""></option>
                     <option value="paysage" class="paysage custom-option">Paysage</option>
                     <option value="portrait" class="portrait custom-option">Portrait</option>
                 </select>
@@ -37,7 +37,7 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
         <div class="right-side">
             <section class="tri-general">
                 <select name="tri" id="tri" class="tri" data-placeholder="TRIER PAR">
-                    <option value="" disabled selected></option>
+                    <option value=""></option>
                     <option value="new" class="new custom-option">Nouveautés</option>
                     <option value="old" class="old custom-option">Oeuvres anciennes</option>
                 </select>
