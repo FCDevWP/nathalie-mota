@@ -1,94 +1,135 @@
-<?php get_header(); ?>
+class Lightbox {
+    static init() {
+    const links = Array.from(document.querySelectorAll('a.custom-lightbox'));
+    const gallery = links.map(link => ({
+        href: link.getAttribute('href'),
+        title: link.getAttribute('data-title'),
+        category: link.getAttribute('data-category'),
+        reference: link.getAttribute('data-reference')
+    }));
 
-<?php
-$images = get_images_from_directory(get_template_directory() . '/assets/images');
-$random_image = $images[array_rand($images)];
-$random_image_url = get_template_directory_uri() . '/assets/images/' . basename($random_image);
-?>
+    links.forEach(link => link.addEventListener('click', e => {
+        e.preventDefault();
+        new Lightbox(e.currentTarget.getAttribute('href'), gallery);
+    }));
 
-<div class="container">
-    <!-- Hero header avec une image aléatoire et un texte en surimpression -->
-    <div class="hero-header" style="background-image: url('<?php echo $random_image_url; ?>');">
-        <div class="hero-overlay">
-            <img src="<?php echo get_template_directory_uri() ?>/assets/images/images/Titre-header.png" alt="Titre en-tête" class="hero-text">
-        </div>
-    </div>
+        const photoItems = document.querySelectorAll('.photo-item');
+        photoItems.forEach(item => {
+            const eyeIcon = item.querySelector('.photo-eye-icon');
+            const expandIcon = item.querySelector('.photo-expand-icon');
+            const link = item.querySelector('a.custom-lightbox');
+    
+            eyeIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = link.getAttribute('data-single-url');
+            });
+    
+            expandIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                link.click();
+            });
+        });
+    }
 
-    <!-- Menus déroulants -->
-    <div class="menu-container">
-        <div class="left-side">
-            <section class="category-general">
-                <select name="category" id="category" class="category">
-                    <option value="" disabled selected>CATÉGORIES</option>
-                    <option value="reception" class="reception custom-option">Réception</option>
-                    <option value="concert" class="concert custom-option">Concert</option>
-                    <option value="mariage" class="mariage custom-option">Mariage</option>
-                    <option value="television" class="television custom-option">Télévision</option>
-                </select>
-            </section>
-            <section class="format-general">
-                <select name="format" id="format" class="format">
-                    <option value="" disabled selected>FORMAT</option>
-                    <option value="paysage" class="paysage custom-option">Paysage</option>
-                    <option value="portrait" class="portrait custom-option">Portrait</option>
-                </select>
-            </section>
-        </div>
-        <div class="right-side">
-            <section class="tri-general">
-                <select name="tri" id="tri" class="tri">
-                    <option value="" disabled selected>TRIER PAR</option>
-                    <option value="new" class="new custom-option">Nouveautés</option>
-                    <option value="old" class="old custom-option">Oeuvres anciennes</option>
-                </select>
-            </section>
-        </div>
-    </div>    
-    <!-- Galerie de photos -->
-    <div class="photo-gallery">
-        <?php
-        $args = array(
-            'post_type' => 'photographies',
-            'posts_per_page' => 8,
-        );
-        $query = new WP_Query($args);
 
-        if ($query->have_posts()) {
-            while ($query->have_posts()) {
-                $query->the_post();
-                $full_image_url = get_the_post_thumbnail_url($post->ID, 'full');
-                $categories = get_the_terms($post->ID, 'categorie');
-                $category = $categories ? $categories[0]->name : '';
-                $reference = get_field('reference');
+    constructor(url, images) {
+        this.element = this.buildDOM();
+        this.images = images;
+        this.loadImage(url);
+        this.onKeyUp = this.onKeyUp.bind(this);
+        document.body.appendChild(this.element);
+        document.addEventListener('keyup', this.onKeyUp);
+    }
 
-                echo '<div class="photo-item">';
-                echo '<a href="' . esc_url($full_image_url) . '" 
-                   class="custom-lightbox" 
-                   data-fancybox="gallery" 
-                   data-single-url="' . get_permalink() . '"
-                   data-title="' . get_the_title() . '"
-                   data-category="' . esc_attr($category) . '"
-                   data-reference="' . esc_attr($reference) . '">';
-                echo get_the_post_thumbnail(get_the_ID(), 'large', array('class' => 'photo-img'));
-                echo '<div class="photo-overlay">
-                    <div class="photo-title">' . get_the_title() . '</div>
-                    <div class="photo-eye"><i class="fa-regular fa-eye photo-eye-icon"></i></div>
-                    <div class="photo-expand"><i class="fa-solid fa-expand photo-expand-icon"></i></div>
-                    <div class="photo-category">' . esc_html($category) . '</div>
-                </div>';
-                echo '</a>';
-                echo '</div>';
-            }
-            wp_reset_postdata();
-        } else {
-            echo '<p>No photos found</p>';
+    loadImage(url) {
+    const imageInfo = this.images.find(img => img.href === url);
+    this.url = url;
+    const container = this.element.querySelector('.lightbox__container');
+    const loader = document.createElement('div');
+    loader.classList.add('lightbox__loader');
+    container.innerHTML = '';
+    container.appendChild(loader);
+    const img = new Image();
+    img.onload = () => {
+        container.removeChild(loader);
+        container.appendChild(img);
+        if (imageInfo) {
+            this.element.querySelector('.lightbox__category').textContent = `Catégorie : ${imageInfo.category || 'Non spécifiée'}`;
+            this.element.querySelector('.lightbox__reference').textContent = `Référence : ${imageInfo.reference || 'Non spécifiée'}`;
         }
-        ?>
-    </div>
-    <!-- Bouton "Charger plus" -->
-    <div class="load-more-container">
-        <button id="load-more" class="load-more-btn">Charger plus</button>
-    </div>
-</div>  
+        this.element.classList.add('lightbox--open');
+    }
+    img.src = url;
+    }
 
-<?php get_footer(); ?>
+    onKeyUp(e) {
+        if (e.key === 'Escape') {
+            this.close(e);
+        } else if (e.key === 'ArrowLeft') {
+            this.prev(e);
+        } else if (e.key === 'ArrowRight') {
+            this.next(e);
+        }
+    }
+
+    close(e) {
+        e.preventDefault();
+        this.element.classList.remove('lightbox--open');
+        window.setTimeout(() => {
+            this.element.parentElement.removeChild(this.element);
+        }, 500);
+        document.removeEventListener('keyup', this.onKeyUp);
+    }
+
+    next(e) {
+        e.preventDefault();
+        let i = this.images.findIndex(image => image.href === this.url);
+        if (i === this.images.length - 1) {
+            i = -1;
+        }
+        this.loadImage(this.images[i + 1].href);
+    }
+
+    prev(e) {
+        e.preventDefault();
+        let i = this.images.findIndex(image => image.href === this.url);
+        if (i === 0) {
+            i = this.images.length;
+        }
+        this.loadImage(this.images[i - 1].href);
+    }
+
+    buildDOM() {
+        const dom = document.createElement('div');
+        dom.classList.add('lightbox');
+        dom.innerHTML = `
+            <button class="lightbox__close">X</button>
+            <button class="lightbox__next"><span class="button-icon"></span>Suivante</button>
+            <button class="lightbox__prev"><span class="button-icon"></span>Précédente</button>
+            <div class="lightbox__content">
+                <div class="lightbox__container"></div>
+                <div class="lightbox__info">
+                    <p class="lightbox__reference"></p>
+                    <p class="lightbox__category"></p>
+                </div>
+            </div>
+
+        `;
+        dom.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this));
+        dom.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this));
+        dom.querySelector('.lightbox__prev').addEventListener('click', this.prev.bind(this));
+        
+        console.log('Lightbox DOM:', dom.innerHTML);
+        
+        return dom;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log ('test')
+    Lightbox.init();
+
+
+});

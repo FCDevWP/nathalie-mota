@@ -1,9 +1,10 @@
 (function($) {
   $(document).ready(function() {
     // Initialisation de Select2
-    $("#category").select2();
-    $("#format").select2();
-    $("#tri").select2();
+    $("#category, #format, #tri").select2({
+      minimumResultsForSearch: Infinity, // Désactive la barre de recherche
+      width: '100%' // Assure que le select prend toute la largeur disponible
+    });
 
     // Gestion de la modale de contact
     var modal = document.getElementById('contact-modal');
@@ -56,7 +57,10 @@
             let output = '';
             $.each(response.data.photos, function(index, photo) {
               output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
-              output += '<a href="' + photo.image + '" class="custom-lightbox" data-single-url="' + photo.link + '">';
+              output += '<a href="' + photo.image + '" class="custom-lightbox" data-fancybox="gallery" data-single-url="' + photo.link + '"';
+              output += ' data-title="' + photo.title + '"';
+              output += ' data-category="' + photo.category + '"';
+              output += ' data-reference="' + photo.reference + '">';
               output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
               output += '<div class="photo-overlay">';
               output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
@@ -67,6 +71,7 @@
               output += '</a>';
               output += '</div>';
             });
+          
             
             if (replace) {
               $('.photo-gallery').html(output);

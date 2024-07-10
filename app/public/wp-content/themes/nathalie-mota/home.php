@@ -81,15 +81,16 @@ $random_image_url = get_template_directory_uri() . '/assets/images/' . basename(
             <?php
         }
         wp_reset_postdata();
-    } else {
-        echo '<p>No photos found</p>';
-    }
-    ?>
+        } else {
+            echo '<p>No photos found</p>';
+        }
+        ?>
     </div>
     <!-- Bouton "Charger plus" -->
     <div class="load-more-container">
     <button id="load-more" class="load-more-btn">Charger plus</button>
     </div>
+
 
 </div>  
 

@@ -57,7 +57,10 @@
             let output = '';
             $.each(response.data.photos, function(index, photo) {
               output += '<div class="photo-item" data-photo-id="' + photo.id + '">';
-              output += '<a href="' + photo.image + '" class="custom-lightbox" data-single-url="' + photo.link + '">';
+              output += '<a href="' + photo.image + '" class="custom-lightbox" data-fancybox="gallery" data-single-url="' + photo.link + '"';
+              output += ' data-title="' + photo.title + '"';
+              output += ' data-category="' + photo.category + '"';
+              output += ' data-reference="' + photo.reference + '">';
               output += '<img src="' + photo.image + '" alt="' + photo.title + '">';
               output += '<div class="photo-overlay">';
               output += '<div class="photo-title" id="photo-title-' + photo.id + '">' + photo.title + '</div>';
