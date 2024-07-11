@@ -637,6 +637,50 @@ footer {
   }
 }
 
+/* ------------------------------------------ */
+/* MENUS DEROULANTS  RESPONSIVE               */
+/* ------------------------------------------ */
+
+@media screen and (max-width: 480px) {
+  .menu-container {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .left-side, .right-side {
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+  }
+
+  .left-side {
+    padding-top: 50px;
+  }
+
+  .category-general, .format-general, .tri-general {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  /* Réorganiser l'ordre des menus */
+  .format-general {
+    order: 1;
+  }
+
+  .category-general {
+    order: 2;
+  }
+
+  .tri-general {
+    order: 3;
+  }
+}
+
+
+
+
+
+
 
 /* -------------------------------- */
 /* FOOTER  RESPONSIVE               */
