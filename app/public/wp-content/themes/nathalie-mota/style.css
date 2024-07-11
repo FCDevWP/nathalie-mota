@@ -720,6 +720,62 @@ footer {
 }
 
 /* -------------------------------- */
+/* MODALE  RESPONSIVE               */
+/* -------------------------------- */
+
+@media screen and (max-width: 480px) {
+  .modal-content {
+    width: 90%; 
+    max-width: none;
+    max-height: 90vh; 
+    height: auto;
+    margin: 5% auto; 
+    overflow: hidden; 
+  }
+
+  .header-container {
+    width: 120%; 
+    margin-left: -10%; /* Décaler l'image vers la gauche */
+    height: auto;
+    overflow: hidden; 
+  }
+
+
+  .modal-header img {
+    width: 100%;
+    height: auto;
+    display: block; 
+  }
+
+  .wpcf7-form {
+    width: 80%; 
+    margin: 20px auto;
+  }
+
+  .wpcf7-form-control-wrap {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .wpcf7-form-control {
+    width: 100%;
+    height: 40px;
+  }
+
+  .wpcf7-textarea {
+    height: 120px; 
+  }
+
+  .wpcf7-submit {
+    width: 100%;
+    height: 40px;
+  }
+}
+
+
+
+
+/* -------------------------------- */
 /* FOOTER  RESPONSIVE               */
 /* -------------------------------- */
 
