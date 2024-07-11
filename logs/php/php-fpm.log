@@ -133,3 +133,10 @@
 [10-Jul-2024 23:39:23] NOTICE: exiting, bye-bye!
 [11-Jul-2024 07:44:03] NOTICE: fpm is running, pid 1052
 [11-Jul-2024 07:44:03] NOTICE: ready to handle connections
+[11-Jul-2024 13:08:27] NOTICE: Terminating ...
+[11-Jul-2024 13:08:27] NOTICE: Terminating ...
+[11-Jul-2024 13:08:27] NOTICE: exiting, bye-bye!
+[11-Jul-2024 13:12:43] NOTICE: fpm is running, pid 952
+[11-Jul-2024 13:12:43] NOTICE: ready to handle connections
+[11-Jul-2024 13:24:37] NOTICE: fpm is running, pid 3002
+[11-Jul-2024 13:24:37] NOTICE: ready to handle connections
