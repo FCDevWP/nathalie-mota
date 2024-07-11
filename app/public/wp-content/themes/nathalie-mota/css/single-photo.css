@@ -358,14 +358,17 @@ p, h1 {
       width: 100%;
       flex-direction: column;
       align-items: flex-start;
-      padding: none;
+      padding-top: 0;
     }
   
     .btn-contact {
       width: 100%;
       margin-top: 10px;
     }
-  
+
+    #line {
+        margin-left: 0px;
+    }
     /* Section 3 */
     .section-3 {
       flex-direction: column;
