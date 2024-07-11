@@ -505,8 +505,15 @@ footer {
   transition: font-weight 0.3s ease;
 }
 
+/* -------------------------------- */
+/* MENU BURGER                           */
+/* -------------------------------- */
 
-/* Styles pour le menu burger */
+.mobile-menu {
+  display: none;
+}
+
+
 @media screen and (max-width: 480px) {
   nav {
     padding: 15px;
